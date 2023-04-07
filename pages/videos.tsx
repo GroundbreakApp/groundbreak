@@ -60,9 +60,11 @@ return <>
               Your browser does not support the video tag.
             </video>
           </div>
-          <p className='text-white absolute top-4 cursor-pointer bg-slate-700 shadow-md p-2 rounded-lg bg-opacity-70'>
-            <a href={data.calendlyUrl} target="_blank" />
-            {data.calendlyUrl}
+          <p className='text-white absolute top-4 cursor-pointer bg-[#3D56B0] shadow-md p-2 rounded-lg bg-opacity-70'>
+            <a target="_blank" href={data.calendlyUrl}>
+              Book on Calendly
+            </a>
+            
           </p>
         </div>
         }
