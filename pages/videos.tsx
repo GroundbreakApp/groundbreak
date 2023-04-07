@@ -53,14 +53,15 @@ return <>
           <Loading />
         </div>
         }
-        {!isLoading && data && <div className='flex flex-col items-center justify-center w-full h-full'>
+        {!isLoading && data && <div className='flex flex-col items-center justify-center w-full h-full relative'>
           <div>
             <video width="320" height="240" controls>
               <source src={data.videoUrl} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
-          <p className='text-white'>
+          <p className='text-white absolute top-4 cursor-pointer bg-slate-700 shadow-md p-2 rounded-lg bg-opacity-70'>
+            <a href={data.calendlyUrl} target="_blank" />
             {data.calendlyUrl}
           </p>
         </div>
