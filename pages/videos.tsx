@@ -33,8 +33,8 @@ export default function VideoPage() {
       })
 
       setTimeout(() => {
-        $("#calendly-book").insertAfter(".plyr__captions");
-      }, 300)
+        $("#calendly-book").removeClass("hidden").addClass("block").insertAfter(".plyr__captions");
+      }, 10000)
     }
     else {
       console.log("No Such Document");
@@ -62,7 +62,7 @@ return <>
         }
         {!isLoading && data && <div className='flex flex-col items-center justify-center w-full h-full relative'>
           <div className='w-full'>
-            <a id="calendly-book" target="_blank" href={data.calendlyUrl} className='text-white absolute top-4 cursor-pointer bg-[#3D56B0] shadow-md p-2 rounded-lg bg-opacity-70 z-30'>
+            <a id="calendly-book" target="_blank" href={data.calendlyUrl} className='hidden text-white absolute top-4 cursor-pointer bg-[#3D56B0] shadow-md p-2 rounded-lg bg-opacity-70 z-30'>
               Book on Calendly
             </a>
             <Plyr
