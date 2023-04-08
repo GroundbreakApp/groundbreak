@@ -80,6 +80,7 @@ return <>
             options={
               {
                 autoplay: true,
+                muted: true,
                 fullscreen: {
                   enabled: true,
                 }
