@@ -1,10 +1,12 @@
 import Head from 'next/head'
 import { collection, doc, getDoc } from "firebase/firestore";
 import {db} from '../services/firebase';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Loading, NotFound } from '@/components/elements';
-import ReactPlayer from 'react-player';
+import Plyr, { APITypes, PlyrSource} from "plyr-react"
+import "plyr-react/plyr.css"
+import $ from "jquery"
 
 interface VideoPageUI {
   videoUrl: string;
@@ -17,6 +19,7 @@ export default function VideoPage() {
   const videoId: string = router.query.id as string;
   const [data, setData] = useState<VideoPageUI | null>(null);
   const [isLoading, setLoading] = useState<boolean>(false);
+  const ref = useRef<APITypes>(null);
   
   const fetchData = async () => {
     if (!db || !videoId) return;
@@ -28,6 +31,10 @@ export default function VideoPage() {
         calendlyUrl: docSnap.data().calendlyUrl,
         videoUrl: docSnap.data().url,
       })
+
+      setTimeout(() => {
+        $("#calendly-book").insertAfter(".plyr__captions");
+      }, 300)
     }
     else {
       console.log("No Such Document");
@@ -55,20 +62,29 @@ return <>
         }
         {!isLoading && data && <div className='flex flex-col items-center justify-center w-full h-full relative'>
           <div className='container'>
-            <ReactPlayer
-              url={data.videoUrl}
-              className='react-player'
-              width='100%'
-              height='100%'
-              playing={true}
-              wrapper={(props) => {
-                return <div className='flex flex-col items-center'>
-                <a target="_blank" href={data?.calendlyUrl} className='text-white absolute top-4 cursor-pointer bg-[#3D56B0] shadow-md p-2 rounded-lg bg-opacity-70 z-30'>
+            <a id="calendly-book" target="_blank" href={data.calendlyUrl} className='text-white absolute top-4 cursor-pointer bg-[#3D56B0] shadow-md p-2 rounded-lg bg-opacity-70 z-30'>
               Book on Calendly
             </a>
-            {props.children}
-                </div>
-              }}
+            <Plyr
+              ref={ref}
+             source={{
+              type: 'video',
+              sources: [
+                {
+                  src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+                  type: 'video/mp4',
+                }
+              ],
+              
+            }}
+            options={
+              {
+                autoplay: true,
+                
+              }
+            }
+            
+
             />
           </div>
           
