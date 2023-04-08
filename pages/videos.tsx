@@ -71,7 +71,7 @@ return <>
               type: 'video',
               sources: [
                 {
-                  src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+                  src: data.videoUrl,
                   type: 'video/mp4',
                 }
               ],
