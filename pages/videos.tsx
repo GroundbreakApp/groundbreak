@@ -54,14 +54,14 @@ return <>
         <link rel="icon" href="/favicon.ico" />
         <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
       </Head>
-      <main className='flex flex-row justify-between items-center p-6 min-h-screen w-full'>
+      <main className='flex flex-row justify-between items-center p-0 min-h-screen w-full'>
         {isLoading && 
         <div className='mx-auto'>
           <Loading />
         </div>
         }
         {!isLoading && data && <div className='flex flex-col items-center justify-center w-full h-full relative'>
-          <div className='container'>
+          <div className='w-full'>
             <a id="calendly-book" target="_blank" href={data.calendlyUrl} className='text-white absolute top-4 cursor-pointer bg-[#3D56B0] shadow-md p-2 rounded-lg bg-opacity-70 z-30'>
               Book on Calendly
             </a>
@@ -80,7 +80,9 @@ return <>
             options={
               {
                 autoplay: true,
-                
+                fullscreen: {
+                  enabled: true,
+                }
               }
             }
             
