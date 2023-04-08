@@ -54,7 +54,7 @@ return <>
         <link rel="icon" href="/favicon.ico" />
         <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
       </Head>
-      <main className='flex flex-row justify-between items-center p-0 min-h-screen w-full'>
+      <main className='flex flex-row justify-between items-center p-0 min-h-screen w-full bg-gradient-to-tl from-[#DDFE6B] to-[#FFF170]'>
         {isLoading && 
         <div className='mx-auto'>
           <Loading />
