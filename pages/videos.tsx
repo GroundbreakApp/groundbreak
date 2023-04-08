@@ -1,11 +1,10 @@
 import Head from 'next/head'
 import { collection, doc, getDoc } from "firebase/firestore";
 import {db} from '../services/firebase';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Loading, NotFound } from '@/components/elements';
-import Plyr, { PlyrSource} from "plyr-react"
-import "plyr-react/plyr.css"
+import ReactPlayer from 'react-player';
 
 interface VideoPageUI {
   videoUrl: string;
@@ -34,13 +33,12 @@ export default function VideoPage() {
       console.log("No Such Document");
     }
     setLoading(false)
-}
+  }
 
-useEffect(()=>{
-  setLoading(true);
-  fetchData();
-}, [videoId])
-
+  useEffect(()=>{
+    setLoading(true);
+    fetchData();
+  }, [videoId])
 
 return <>
       <Head>
@@ -56,27 +54,24 @@ return <>
         </div>
         }
         {!isLoading && data && <div className='flex flex-col items-center justify-center w-full h-full relative'>
-          {/* <video id="player" controls crossOrigin="anonymous" playsInline width="320" height="240">
-            <a target="_blank" href={data.calendlyUrl} className='text-white absolute top-4 cursor-pointer bg-[#3D56B0] shadow-md p-2 rounded-lg bg-opacity-70 z-30'>
+          <div className='container'>
+            <ReactPlayer
+              url={data.videoUrl}
+              className='react-player'
+              width='100%'
+              height='100%'
+              playing={true}
+              wrapper={(props) => {
+                return <div className='flex flex-col items-center'>
+                <a target="_blank" href={data?.calendlyUrl} className='text-white absolute top-4 cursor-pointer bg-[#3D56B0] shadow-md p-2 rounded-lg bg-opacity-70 z-30'>
               Book on Calendly
             </a>
-            <source src={data.videoUrl} type="video/mp4" />
-            
-            Your browser does not support the video tag.
-          </video> */}
-          <Plyr source={{
-            type: 'video',
-            sources: [
-              {
-                src: data.videoUrl,
-                type: 'video/mp4',
-              }
-            ]
-          }}>
-            <a target="_blank" href={data.calendlyUrl} className='text-white absolute top-4 cursor-pointer bg-[#3D56B0] shadow-md p-2 rounded-lg bg-opacity-70 z-30'>
-              Book on Calendly
-            </a>
-          </Plyr>
+            {props.children}
+                </div>
+              }}
+            />
+          </div>
+          
         </div>
         }
         {!isLoading && !data && <div className='mx-auto'>
