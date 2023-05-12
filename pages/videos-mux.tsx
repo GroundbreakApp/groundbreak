@@ -4,7 +4,10 @@ import { db } from '../services/firebase';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Loading, NotFound } from '@/components/elements';
-import MuxPlayer from "@mux/mux-player-react";
+// import MuxPlayer from "@mux/mux-player-react";
+import MuxPlayer, { WidgetAttributes } from '@groundbreak/groundbreak-player-react';
+import type { CSSProperties } from 'react';
+import { useWindowSize } from '@/services/utils';
 
 interface VideoPageUI {
   videoUrl: string;
@@ -15,10 +18,37 @@ export default function VideoPage() {
 
   const router = useRouter()
   const videoId: string = router.query.id as string;
-
-
-
-
+  const size = useWindowSize();
+  const widgetsJSON = JSON.stringify(
+    [
+      {
+        type: 'TEXT',
+        label: `Hey, Michael, We're so excited to have`,
+        spawnTime: 1000,
+        duration: 4000,
+        style: {
+          position: 'absolute',
+          left: '10%',
+          top: '30%',
+          PointerEvents: 'auto'
+        }
+      },
+      {
+        type: 'LINK',
+        label: `Tap to move to google.com`,
+        href: "https://www.google.com",
+        spawnTime: 2000,
+        duration: 4000,
+        style: {
+          position: 'absolute',
+          left: '40%',
+          top: '60%',
+          color: '#FF00FF',
+          PointerEvents: 'auto'
+        }
+      }
+    ]
+  );
 
   return <>
     <Head>
@@ -27,15 +57,14 @@ export default function VideoPage() {
       <link rel="icon" href="/favicon.ico" />
       <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
     </Head>
-    <main className='flex flex-row justify-between items-center p-0 min-h-screen w-full bg-gradient-to-tl from-[#DDFE6B] to-[#FFF170]'>
+    <main className='flex flex-row justify-between items-center p-0 min-h-screen w-full bg-gradient-to-tl from-[#DDFE6B] to-[#FFF170] h-screen'>
       <MuxPlayer
-        streamType="on-demand"
-        playbackId="KFAJMssW02feBDvM00LUpjCDmMjtN201NARf9MwMstyTrU"
-        metadata={{
-          video_id: "video-id-54321",
-          video_title: "Test video title",
-          viewer_user_id: "user-id-007",
+        playbackId="LAMVdiAjs00smxl9H3PNCkwYRMiFzkgYPizuMdiFzgUk"
+        style={{
+          height: "100%"
         }}
+        widgets={widgetsJSON}
+        aspectRatio={9 / 16}
       />
     </main>
   </>
