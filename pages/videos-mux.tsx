@@ -1,24 +1,8 @@
-import Head from 'next/head'
-import { collection, doc, getDoc } from "firebase/firestore";
-import { db } from '../services/firebase';
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { useRouter } from 'next/router';
-import { Loading, NotFound } from '@/components/elements';
 // import MuxPlayer from "@mux/mux-player-react";
-import MuxPlayer, { WidgetAttributes } from '@groundbreak/groundbreak-player-react';
-import type { CSSProperties } from 'react';
-import { useWindowSize } from '@/services/utils';
-
-interface VideoPageUI {
-  videoUrl: string;
-  calendlyUrl: string;
-}
+import MuxPlayer from '@groundbreak/groundbreak-player-react';
+import Head from 'next/head';
 
 export default function VideoPage() {
-
-  const router = useRouter()
-  const videoId: string = router.query.id as string;
-  const size = useWindowSize();
   const widgetsJSON = JSON.stringify(
     [
       {
@@ -59,7 +43,7 @@ export default function VideoPage() {
     </Head>
     <main className='flex flex-row justify-between items-center p-0 min-h-screen w-full bg-gradient-to-tl from-[#DDFE6B] to-[#FFF170] h-screen'>
       <MuxPlayer
-        playbackId="LAMVdiAjs00smxl9H3PNCkwYRMiFzkgYPizuMdiFzgUk"
+        playbackId="0134PWuDt2kvXirzaeNtPRezs7t9Dp3LeFgxtvNbvzRo"
         style={{
           height: "100%"
         }}
