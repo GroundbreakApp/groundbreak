@@ -107,6 +107,7 @@ export const Renderer: IRenderer = ({
             autoPlay
             webkit-playsinline="true"
           /> */}
+          {story.overlay && <story.overlay></story.overlay>}
           <MuxPlayer
             ref={vid}
             playbackId={story.playbackId}
