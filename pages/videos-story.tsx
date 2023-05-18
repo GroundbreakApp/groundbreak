@@ -4,7 +4,7 @@ import StoriesLazy from '@/components/story'
 
 const stories2 = [
   {
-    playbackId: "U6oA02Lp8WKqwHdu3yexAwOrSRSIMt1wpjrcilg363rQ",
+    playbackId: "Fo4004ggpHhxpLoBmiJ5302VQAUJF7qTZKzFhwuh9Y9Wk",
     duration: 10 * 1000,
     type: "mux-video",
   },
@@ -14,7 +14,12 @@ const stories2 = [
     duration: 6.5 * 1000,
   },
   {
-    playbackId: "LDxRsBkTCmaDwpUzQwyvH8DWFAVPmJPsu01QMO2Enaz00",
+    playbackId: "UB02uduyMugRkGVvNHypNQszUdQ4300Qfw7UnmHgE3dME",
+    duration: 5 * 1000,
+    type: "mux-video",
+  },
+  {
+    playbackId: "kxPkolm1cFhR02eaDkESrBVxeNSuHdfs9Z1TAiPDTIfo",
     duration: 10 * 1000,
     type: "mux-video",
   },
@@ -24,12 +29,12 @@ const stories2 = [
     duration: 6.5 * 1000,
   },
   {
-    playbackId: "x9h902uaW7TxCE3euREskpHA8lATkD302vYR5e00C5tong",
+    playbackId: "3RVRLNgGMso10291haDQk4AoPyMpiBHfdiFKFGExnv004",
     duration: 10 * 1000,
     type: "mux-video",
   },
   {
-    playbackId: "lbd5FkTc00SdkNwMnR2HrbMNKLevCT2yUlEdy3YtXs98",
+    playbackId: "VCir1i1jaEiKP9fJZJZlCU8usf4c9M8u6PuuvM3Zcr00",
     duration: 3 * 1000,
     type: "mux-video",
   },
