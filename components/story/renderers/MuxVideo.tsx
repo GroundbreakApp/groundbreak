@@ -18,36 +18,36 @@ export const Renderer: IRenderer = ({
   const [muted, setMuted] = React.useState(false);
   const { width, height, loader, storyStyles } = config;
 
-  const widgetsJSON = JSON.stringify(
-    [
-      {
-        type: 'TEXT',
-        label: `Hey, Michael, We're so excited to have`,
-        spawnTime: 1000,
-        duration: 4000,
-        style: {
-          position: 'absolute',
-          left: '10%',
-          top: '30%',
-          PointerEvents: 'auto'
-        }
-      },
-      {
-        type: 'LINK',
-        label: `Tap to move to google.com`,
-        href: "https://www.google.com",
-        spawnTime: 2000,
-        duration: 4000,
-        style: {
-          position: 'absolute',
-          left: '40%',
-          top: '60%',
-          color: '#FF00FF',
-          PointerEvents: 'auto'
-        }
-      }
-    ]
-  );
+  // const widgetsJSON = JSON.stringify(
+  //   [
+  //     {
+  //       type: 'TEXT',
+  //       label: `Hey, Michael, We're so excited to have`,
+  //       spawnTime: 1000,
+  //       duration: 4000,
+  //       style: {
+  //         position: 'absolute',
+  //         left: '10%',
+  //         top: '30%',
+  //         PointerEvents: 'auto'
+  //       }
+  //     },
+  //     {
+  //       type: 'LINK',
+  //       label: `Tap to move to google.com`,
+  //       href: "https://www.google.com",
+  //       spawnTime: 2000,
+  //       duration: 4000,
+  //       style: {
+  //         position: 'absolute',
+  //         left: '40%',
+  //         top: '60%',
+  //         color: '#FF00FF',
+  //         PointerEvents: 'auto'
+  //       }
+  //     }
+  //   ]
+  // );
 
   let computedStyles = {
     ...styles.storyContent,
@@ -113,7 +113,7 @@ export const Renderer: IRenderer = ({
             style={{
               height: "100%"
             }}
-            widgets={widgetsJSON}
+            // widgets={widgetsJSON}
             aspectRatio={9 / 16}
             autoPlay={true}
             onPlaying={onPlaying}
