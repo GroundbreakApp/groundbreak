@@ -117,10 +117,11 @@ export const Renderer: IRenderer = ({
             }}
             // widgets={widgetsJSON}
             aspectRatio={9 / 16}
-            muted={true}
+            muted={false}
             onPlaying={onPlaying}
             onWaiting={onWaiting}
             onLoadedData={videoLoaded}
+            autoPlay={true}
           />
           {!loaded && (
             <div
