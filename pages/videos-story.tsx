@@ -9,14 +9,9 @@ const stories2 = [
     type: "mux-video",
   },
   {
-    url: "https://i.ibb.co/vx62r8X/image-first.png",
-    type: "image",
-    duration: 6.5 * 1000,
-  },
-  {
-    playbackId: "UB02uduyMugRkGVvNHypNQszUdQ4300Qfw7UnmHgE3dME",
-    duration: 5 * 1000,
+    playbackId: "sbZHpPgR00501ZNCqVimHwezVyGoWA5tBUgctwAtva3uQ",
     type: "mux-video",
+    duration: 7 * 1000,
   },
   {
     playbackId: "kxPkolm1cFhR02eaDkESrBVxeNSuHdfs9Z1TAiPDTIfo",
@@ -24,9 +19,9 @@ const stories2 = [
     type: "mux-video",
   },
   {
-    url: "https://i.ibb.co/094p0Gh/2nd-image.png",
-    type: "image",
-    duration: 6.5 * 1000,
+    playbackId: "UB02uduyMugRkGVvNHypNQszUdQ4300Qfw7UnmHgE3dME",
+    duration: 5 * 1000,
+    type: "mux-video",
   },
   {
     playbackId: "3RVRLNgGMso10291haDQk4AoPyMpiBHfdiFKFGExnv004",
@@ -37,6 +32,7 @@ const stories2 = [
     playbackId: "VCir1i1jaEiKP9fJZJZlCU8usf4c9M8u6PuuvM3Zcr00",
     duration: 3 * 1000,
     type: "mux-video",
+
   },
 ];
 
