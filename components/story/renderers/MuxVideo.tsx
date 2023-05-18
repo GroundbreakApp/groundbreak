@@ -15,7 +15,7 @@ export const Renderer: IRenderer = ({
   messageHandler,
 }) => {
   const [loaded, setLoaded] = React.useState(false);
-  const [muted, setMuted] = React.useState(false);
+  const [muted, setMuted] = React.useState(true);
   const { width, height, loader, storyStyles } = config;
 
   // const widgetsJSON = JSON.stringify(
@@ -77,14 +77,15 @@ export const Renderer: IRenderer = ({
   const videoLoaded = () => {
     messageHandler("UPDATE_VIDEO_DURATION", { duration: story.duration });
     setLoaded(true);
-    vid.current
-      .play()
+    const vid: any = document.querySelector("mux-player");
+    console.log("vid", vid);
+    vid?.play()
       .then(() => {
         action("play");
       })
       .catch(() => {
         setMuted(true);
-        vid.current.play().finally(() => {
+        vid?.play().finally(() => {
           action("play");
         });
       });
@@ -116,7 +117,7 @@ export const Renderer: IRenderer = ({
             }}
             // widgets={widgetsJSON}
             aspectRatio={9 / 16}
-            autoPlay={true}
+            muted={true}
             onPlaying={onPlaying}
             onWaiting={onWaiting}
             onLoadedData={videoLoaded}
