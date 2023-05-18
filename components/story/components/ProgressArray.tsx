@@ -10,7 +10,7 @@ import GlobalContext from "./../context/Global";
 import StoriesContext from "./../context/Stories";
 import { timestamp } from "../util/time";
 
-export default () => {
+export default function ProgressArray() {
   const [count, setCount] = useState<number>(0);
   const lastTime = useRef<number>();
 
@@ -34,7 +34,7 @@ export default () => {
       lastTime.current = timestamp();
     }
     return () => {
-      cancelAnimationFrame(animationFrameId.current);
+      cancelAnimationFrame(animationFrameId.current ?? 0);
     };
   }, [currentId, pause]);
 
@@ -49,14 +49,14 @@ export default () => {
     lastTime.current = t;
     setCount((count: number) => {
       const interval = getCurrentInterval();
-      countCopy = count + (dt * 100) / interval;
+      countCopy = count + (dt * 100) / (interval ?? 1000);
       return countCopy;
     });
     if (countCopy < 100) {
       animationFrameId.current = requestAnimationFrame(incrementCount);
     } else {
       storyEndCallback();
-      cancelAnimationFrame(animationFrameId.current);
+      cancelAnimationFrame(animationFrameId.current ?? 0);
       next();
     }
   };

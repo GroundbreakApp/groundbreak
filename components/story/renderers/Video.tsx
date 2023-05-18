@@ -1,10 +1,10 @@
 import * as React from "react";
 import Spinner from "../components/Spinner";
-import { Renderer, Tester } from "./../interfaces";
+import { Renderer as IRenderer, Tester } from "./../interfaces";
 import WithHeader from "./wrappers/withHeader";
 import WithSeeMore from "./wrappers/withSeeMore";
 
-export const renderer: Renderer = ({
+export const Renderer: IRenderer = ({
   story,
   action,
   isPaused,
@@ -41,7 +41,9 @@ export const renderer: Renderer = ({
   };
 
   const videoLoaded = () => {
-    messageHandler("UPDATE_VIDEO_DURATION", { duration: vid.current.duration });
+    if (!vid || !vid.current) return;
+
+    messageHandler("UPDATE_VIDEO_DURATION", { duration: vid?.current?.duration });
     setLoaded(true);
     vid.current
       .play()
@@ -50,7 +52,7 @@ export const renderer: Renderer = ({
       })
       .catch(() => {
         setMuted(true);
-        vid.current.play().finally(() => {
+        vid?.current?.play().finally(() => {
           action("play");
         });
       });
@@ -120,6 +122,6 @@ export const tester: Tester = (story) => {
 };
 
 export default {
-  renderer,
+  renderer: Renderer,
   tester,
 };

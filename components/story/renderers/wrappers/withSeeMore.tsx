@@ -2,7 +2,7 @@ import React, { ComponentType, useState } from "react";
 import { Action, SeeMoreProps, Story } from "../../interfaces";
 import SeeMore from "./../../components/SeeMore";
 
-const withSeeMore: React.FC<React.PropsWithChildren<{
+const WithSeeMore: React.FC<React.PropsWithChildren<{
   story: Story;
   action: Action;
   customCollapsed?: SeeMoreProps["customCollapsed"];
@@ -40,4 +40,4 @@ const withSeeMore: React.FC<React.PropsWithChildren<{
   );
 };
 
-export default withSeeMore;
+export default WithSeeMore;

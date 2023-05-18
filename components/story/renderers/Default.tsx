@@ -1,7 +1,7 @@
 import * as React from "react";
-import { Renderer, Tester } from "./../interfaces";
+import { Renderer as IRenderer, Tester } from "./../interfaces";
 
-export const renderer: Renderer = ({ story, action }) => {
+export const Renderer: IRenderer = ({ story, action }) => {
   React.useEffect(() => {
     action("play");
   }, [story]);
@@ -35,6 +35,6 @@ export const tester: Tester = () => {
 };
 
 export default {
-  renderer,
+  renderer: Renderer,
   tester,
 };

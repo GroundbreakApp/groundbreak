@@ -1,6 +1,6 @@
 
 import React, { Suspense } from "react";
-import StoriesLazy, { WithSeeMore } from '@/components/story'
+import StoriesLazy from '@/components/story'
 
 const stories2 = [
   {

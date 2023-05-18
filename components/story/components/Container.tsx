@@ -10,7 +10,7 @@ import {
 } from "./../interfaces";
 import useIsMounted from "./../util/use-is-mounted";
 
-export default function () {
+export default function Container() {
   const [currentId, setCurrentId] = useState<number>(0);
   const [pause, setPause] = useState<boolean>(true);
   const [bufferAction, setBufferAction] = useState<boolean>(true);
@@ -78,13 +78,13 @@ export default function () {
     setBufferAction(!!bufferAction);
   };
 
-  const setCurrentIdWrapper = (callback) => {
+  const setCurrentIdWrapper = (callback: React.SetStateAction<number>) => {
     setCurrentId(callback);
     toggleState("pause", true);
   };
 
   const previous = () => {
-    setCurrentIdWrapper((prev) => (prev > 0 ? prev - 1 : prev));
+    setCurrentIdWrapper((prev: number) => (prev > 0 ? prev - 1 : prev));
   };
 
   const next = () => {
@@ -99,7 +99,7 @@ export default function () {
   };
 
   const updateNextStoryIdForLoop = () => {
-    setCurrentIdWrapper((prev) => {
+    setCurrentIdWrapper((prev: number) => {
       if (prev >= stories.length - 1) {
         onAllStoriesEnd && onAllStoriesEnd(currentId, stories);
       }
@@ -108,7 +108,7 @@ export default function () {
   };
 
   const updateNextStoryId = () => {
-    setCurrentIdWrapper((prev) => {
+    setCurrentIdWrapper((prev: number) => {
       if (prev < stories.length - 1) return prev + 1;
       onAllStoriesEnd && onAllStoriesEnd(currentId, stories);
       return prev;

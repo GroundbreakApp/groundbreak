@@ -7,16 +7,16 @@ const ProgressWrapper = (props: ProgressWrapperProps) => {
 
     return (
         <div style={{
-            ...styles.progress, 
-            ...progressWrapperStyles, 
-            ...getProgressWrapperStyle(props) 
+            ...styles.progress,
+            ...progressWrapperStyles,
+            ...getProgressWrapperStyle(props)
         }}>
             {props.children}
         </div>
     )
 }
 
-const getProgressWrapperStyle = ({ width }) => ({
+const getProgressWrapperStyle = ({ width }: { width: any }) => ({
     width: `${width * 100}%`,
 })
 

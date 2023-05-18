@@ -4,7 +4,7 @@ import Header from "./../../components/Header";
 
 const withHeader: React.FC<React.PropsWithChildren<{
   story: Story;
-  globalHeader: Function;
+  globalHeader?: Function;
 }>> = ({ story, globalHeader, children }) => {
   return (
     <>

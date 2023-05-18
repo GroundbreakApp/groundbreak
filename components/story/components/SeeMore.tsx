@@ -3,7 +3,7 @@ import GlobalContext from './../context/Global'
 import { GlobalCtx } from './../interfaces'
 import { SeeMoreProps } from './../interfaces'
 
-export default function seeMore(props: SeeMoreProps) {
+export default function SeeMore(props: SeeMoreProps) {
     const SeeMoreContent = props.seeMoreContent;
     const CustomCollapsed = props.customCollapsed;
 

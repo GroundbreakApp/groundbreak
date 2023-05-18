@@ -23,7 +23,7 @@ const Story = (props: StoryProps) => {
   };
 
   const getStoryContent = () => {
-    let InnerContent = props.story.content;
+    let InnerContent = props.story.content as React.ElementType;
     let config = { width, height, loader, header, storyStyles };
     return (
       <InnerContent

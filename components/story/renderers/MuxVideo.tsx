@@ -2,12 +2,12 @@ import * as React from "react";
 import MuxPlayer from '@groundbreak/groundbreak-player-react';
 // import MuxPlayer from '../../node_modules/@groundbreak/groundbreak-player-react/src/index'
 import Spinner from "../components/Spinner";
-import { Renderer, Tester } from "./../interfaces";
+import { Renderer as IRenderer, Tester } from "./../interfaces";
 import WithHeader from "./wrappers/withHeader";
 import WithSeeMore from "./wrappers/withSeeMore";
 
 
-export const renderer: Renderer = ({
+export const Renderer: IRenderer = ({
   story,
   action,
   isPaused,
@@ -54,7 +54,7 @@ export const renderer: Renderer = ({
     ...(storyStyles || {}),
   };
 
-  let vid = React.useRef<MuxPlayerElement>(null);
+  let vid = React.useRef<any>(null);
 
   React.useEffect(() => {
     if (vid.current) {
@@ -168,6 +168,6 @@ export const tester: Tester = (story) => {
 };
 
 export default {
-  renderer,
+  renderer: Renderer,
   tester,
 };

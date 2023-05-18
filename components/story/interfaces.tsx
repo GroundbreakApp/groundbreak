@@ -126,10 +126,10 @@ export interface SeeMoreProps {
   showContent: boolean;
   action: Action;
   toggleMore: (show: boolean) => void;
-  customCollapsed: React.ComponentType<{
-    toggleMore: (show: boolean) => void;
-    action: Action;
-  }>;
+  customCollapsed?: React.ComponentType<{
+    toggleMore?: (show: boolean) => void;
+    action?: Action;
+  }> | any;
 }
 
 export interface HeaderProps {

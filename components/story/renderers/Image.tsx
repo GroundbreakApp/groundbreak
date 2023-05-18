@@ -1,10 +1,10 @@
 import * as React from "react";
 import Spinner from "../components/Spinner";
-import { Renderer, Tester } from "./../interfaces";
+import { Renderer as IRenderer, Tester } from "./../interfaces";
 import WithHeader from "./wrappers/withHeader";
 import WithSeeMore from "./wrappers/withSeeMore";
 
-export const renderer: Renderer = ({ story, action, isPaused, config }) => {
+export const Renderer: IRenderer = ({ story, action, isPaused, config }) => {
   const [loaded, setLoaded] = React.useState(false);
   const { width, height, loader, storyStyles } = config;
   let computedStyles = {
@@ -17,7 +17,7 @@ export const renderer: Renderer = ({ story, action, isPaused, config }) => {
     action("play");
   };
   return (
-    <WithHeader {...{ story, globalHeader: config.header }}>
+    <WithHeader story={story} globalHeader={config.header} >
       <WithSeeMore {...{ story, action }}>
         <div>
           <img style={computedStyles} src={story.url} onLoad={imageLoaded} />
@@ -68,6 +68,6 @@ export const tester: Tester = (story) => {
 };
 
 export default {
-  renderer,
+  renderer: Renderer,
   tester,
 };

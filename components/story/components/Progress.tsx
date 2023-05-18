@@ -4,11 +4,12 @@ import ProgressWrapper from './ProgressWrapper'
 import GlobalContext from "./../context/Global";
 import ProgressCtx from './../context/Progress'
 
+// eslint-disable-next-line react/display-name, import/no-anonymous-default-export
 export default (props: ProgressProps) => {
     const { progressStyles } = useContext<GlobalCtx>(GlobalContext);
     const { bufferAction, pause } = useContext<ProgressContext>(ProgressCtx)
 
-    const getProgressStyle = ({ active }) => {
+    const getProgressStyle = ({ active }: { active: number }) => {
         switch (active) {
             case 2:
                 return { width: '100%' }
@@ -25,7 +26,7 @@ export default (props: ProgressProps) => {
     return (
         <ProgressWrapper width={width} pause={pause} bufferAction={bufferAction}>
             <div
-                style={{ 
+                style={{
                     ...styles.inner,
                     ...progressStyles,
                     ...getProgressStyle({ active }),

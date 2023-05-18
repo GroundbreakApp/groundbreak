@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Renderer, Tester } from './../interfaces';
+import { Renderer as IRenderer, Tester } from './../interfaces';
 
-export const renderer: Renderer = (props) => {
+export const Renderer: IRenderer = (props) => {
     React.useEffect(() => {
         props.action('play');
     }, [props.story])
-    const Content = props.story.originalContent;
+    const Content = props.story.originalContent as React.ElementType;
     return <Content {...props} />
 }
 
@@ -17,6 +17,6 @@ export const tester: Tester = (story) => {
 }
 
 export default {
-    renderer,
+    renderer: Renderer,
     tester
 }
