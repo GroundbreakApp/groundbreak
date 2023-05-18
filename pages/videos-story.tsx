@@ -14,9 +14,9 @@ const stories2 = [
     duration: 7 * 1000,
   },
   {
-    playbackId: "3RVRLNgGMso10291haDQk4AoPyMpiBHfdiFKFGExnv004",
-    duration: 10 * 1000,
+    playbackId: "kxPkolm1cFhR02eaDkESrBVxeNSuHdfs9Z1TAiPDTIfo", // groundbreak is short form video
     type: "mux-video",
+    duration: 9 * 1000,
   },
   {
     playbackId: "UB02uduyMugRkGVvNHypNQszUdQ4300Qfw7UnmHgE3dME", // best sales tool
@@ -26,6 +26,11 @@ const stories2 = [
   {
     playbackId: "XJDBT01jYRQCBmKplsYGB23KASPbdEc6HnTV4oOQPlJA",
     duration: 8 * 1000,
+    type: "mux-video",
+  },
+  {
+    playbackId: "3RVRLNgGMso10291haDQk4AoPyMpiBHfdiFKFGExnv004",
+    duration: 10 * 1000,
     type: "mux-video",
   },
   {
