@@ -9,19 +9,9 @@ const stories2 = [
     type: "mux-video",
   },
   {
-    playbackId: "sbZHpPgR00501ZNCqVimHwezVyGoWA5tBUgctwAtva3uQ",
+    playbackId: "sbZHpPgR00501ZNCqVimHwezVyGoWA5tBUgctwAtva3uQ", // groundbreak is short form video
     type: "mux-video",
     duration: 7 * 1000,
-  },
-  {
-    playbackId: "kxPkolm1cFhR02eaDkESrBVxeNSuHdfs9Z1TAiPDTIfo",
-    duration: 10 * 1000,
-    type: "mux-video",
-  },
-  {
-    playbackId: "UB02uduyMugRkGVvNHypNQszUdQ4300Qfw7UnmHgE3dME",
-    duration: 5 * 1000,
-    type: "mux-video",
   },
   {
     playbackId: "3RVRLNgGMso10291haDQk4AoPyMpiBHfdiFKFGExnv004",
@@ -29,10 +19,19 @@ const stories2 = [
     type: "mux-video",
   },
   {
+    playbackId: "UB02uduyMugRkGVvNHypNQszUdQ4300Qfw7UnmHgE3dME", // best sales tool
+    duration: 5 * 1000,
+    type: "mux-video",
+  },
+  {
+    playbackId: "XJDBT01jYRQCBmKplsYGB23KASPbdEc6HnTV4oOQPlJA",
+    duration: 8 * 1000,
+    type: "mux-video",
+  },
+  {
     playbackId: "VCir1i1jaEiKP9fJZJZlCU8usf4c9M8u6PuuvM3Zcr00",
     duration: 3 * 1000,
     type: "mux-video",
-
   },
 ];
 
