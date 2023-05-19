@@ -14,9 +14,52 @@ const stories2 = [
     duration: 5 * 1000,
   },
   {
-    playbackId: "6Rask9izbjGHMBGZiFS5xMoEDV2TYB6of27cuqpvIZk", // groundbreak is short form video
+    playbackId: "W7Eu00ptZ3wQ01eG00wCxy2py3BsVJ8102k01glvu00pUM4pA", // groundbreak is short form video
     type: "mux-video",
-    duration: 22 * 1000,
+    duration: 13 * 1000,
+  },
+  {
+    playbackId: "02q01RjQj8zjOodDiS67fHGIJiTa12IyNRvUSu8U41XwM", // groundbreak is short form video
+    type: "mux-video",
+    duration: 9 * 1000,
+    overlay: () => {
+      return (
+        <div style={{
+          position: "absolute",
+          left: 0,
+          right: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: "9999",
+          pointerEvents: "none"
+        }}>
+          <a
+            href="https://docs.google.com/presentation/d/1oNcfzR-yjERDBtwihW86UqKGfvi0AR8T/edit?usp=sharing&ouid=113854719469946467137&rtpof=true&sd=true"
+            target="_blank"
+            style={{
+              pointerEvents: "auto",
+              position: "absolute",
+              left: "27%",
+              top: "66%",
+              padding: "10px 20px",
+              fontSize: "24px",
+              color: "white",
+              display: "flex",
+              alignItems: "center",
+              cursor: "pointer",
+              borderRadius: "5px",
+              background: "linear-gradient(to right, #6adbb1, #03de70)"
+            }}
+          >
+            <span style={{
+              marginRight: "10px"
+            }}>
+              <LinkSVG />
+            </span>
+            kickoff-deck </a>
+        </div>
+      )
+    }
   },
   {
     playbackId: "DhjdILWdsQSoqUs2ps9nFLs02K00c4Dx2hP1Iyemd8oAw", // best sales tool
@@ -37,6 +80,95 @@ const stories2 = [
     playbackId: "00CzDwETt01Sh1eNqIgp4DM01008SqWdqbeGEIkkAITagp8",
     duration: 10 * 1000,
     type: "mux-video",
+    overlay: () => {
+      return (
+        <div style={{
+          position: "absolute",
+          left: 0,
+          right: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: "9999",
+          pointerEvents: "none"
+        }}>
+          <a
+            href=" https://docs.google.com/document/d/1FlVj-62uJBrHadc_A3il2e6RWnGmJ-XBbU1F-Q3RsvI/edit?usp=sharing"
+            target="_blank"
+            style={{
+              pointerEvents: "auto",
+              position: "absolute",
+              left: "30%",
+              top: "30%",
+              width: "39%",
+              padding: "10px 20px",
+              fontSize: "24px",
+              color: "white",
+              display: "flex",
+              alignItems: "center",
+              cursor: "pointer",
+              borderRadius: "5px",
+              background: "linear-gradient(to right, #6adbb1, #03de70)"
+            }}
+          >
+            <span style={{
+              marginRight: "10px"
+            }}>
+              <LinkSVG />
+            </span>
+            Experiment </a>
+          <a
+            href="https://docs.google.com/spreadsheets/d/17vQW0nEmSmC_B6AhA_igT6vma1WYZlKI7MA6TsAVCYI/edit?usp=sharing"
+            target="_blank"
+            style={{
+              pointerEvents: "auto",
+              position: "absolute",
+              left: "30%",
+              top: "45%",
+              width: "39%",
+              padding: "10px 20px",
+              fontSize: "24px",
+              color: "white",
+              display: "flex",
+              alignItems: "center",
+              cursor: "pointer",
+              borderRadius: "5px",
+              background: "linear-gradient(to right, #6adbb1, #03de70)"
+            }}
+          >
+            <span style={{
+              marginRight: "10px"
+            }}>
+              <LinkSVG />
+            </span>
+            Interview </a>
+          <a
+            href="https://docs.google.com/spreadsheets/d/1Ku1U1IoHarK-h-eqt02YwvCMHfvLg3RQ41YbHb3YL9E/edit?usp=sharing"
+            target="_blank"
+            style={{
+              pointerEvents: "auto",
+              position: "absolute",
+              left: "30%",
+              top: "60%",
+              width: "39%",
+              padding: "10px 20px",
+              fontSize: "24px",
+              color: "white",
+              display: "flex",
+              alignItems: "center",
+              cursor: "pointer",
+              borderRadius: "5px",
+              background: "linear-gradient(to right, #6adbb1, #03de70)"
+            }}
+          >
+            <span style={{
+              marginRight: "10px"
+            }}>
+              <LinkSVG />
+            </span>
+            Squad </a>
+        </div>
+      )
+    }
   },
 ];
 
