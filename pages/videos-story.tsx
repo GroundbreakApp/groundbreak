@@ -38,54 +38,6 @@ const stories2 = [
     duration: 10 * 1000,
     type: "mux-video",
   },
-  {
-    playbackId: "3RVRLNgGMso10291haDQk4AoPyMpiBHfdiFKFGExnv004",
-    duration: 10 * 1000,
-    type: "mux-video",
-    overlay: () => {
-      return (
-        <div style={{
-          position: "absolute",
-          left: 0,
-          right: 0,
-          width: "100%",
-          height: "100%",
-          zIndex: "9999",
-          pointerEvents: "none"
-        }}>
-          <a
-            href="https://calendly.com/josh-israel/30min"
-            target="_blank"
-            style={{
-              pointerEvents: "auto",
-              position: "absolute",
-              left: "30%",
-              top: "20%",
-              padding: "10px 20px",
-              fontSize: "24px",
-              color: "white",
-              display: "flex",
-              alignItems: "center",
-              cursor: "pointer",
-              borderRadius: "5px",
-              background: "linear-gradient(to right, #6adbb1, #03de70)"
-            }}
-          >
-            <span style={{
-              marginRight: "10px"
-            }}>
-              <LinkSVG />
-            </span>
-            Calendly</a>
-        </div>
-      )
-    }
-  },
-  {
-    playbackId: "VCir1i1jaEiKP9fJZJZlCU8usf4c9M8u6PuuvM3Zcr00",
-    duration: 3 * 1000,
-    type: "mux-video",
-  },
 ];
 
 function App() {
