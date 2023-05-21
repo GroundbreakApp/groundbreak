@@ -14,14 +14,9 @@ const stories2 = [
     duration: 5 * 1000,
   },
   {
-    playbackId: "W7Eu00ptZ3wQ01eG00wCxy2py3BsVJ8102k01glvu00pUM4pA", // groundbreak is short form video
+    playbackId: "6Rask9izbjGHMBGZiFS5xMoEDV2TYB6of27cuqpvIZk", // groundbreak is short form video
     type: "mux-video",
-    duration: 13 * 1000,
-  },
-  {
-    playbackId: "02q01RjQj8zjOodDiS67fHGIJiTa12IyNRvUSu8U41XwM", // groundbreak is short form video
-    type: "mux-video",
-    duration: 9 * 1000,
+    duration: 22 * 1000,
     overlay: () => {
       return (
         <div style={{
@@ -43,12 +38,12 @@ const stories2 = [
               top: "66%",
               padding: "10px 20px",
               fontSize: "24px",
-              color: "white",
+              color: "black",
               display: "flex",
               alignItems: "center",
               cursor: "pointer",
-              borderRadius: "5px",
-              background: "linear-gradient(to right, #6adbb1, #03de70)"
+              borderRadius: "40px",
+              border: "5px solid black"
             }}
           >
             <span style={{
@@ -56,7 +51,7 @@ const stories2 = [
             }}>
               <LinkSVG />
             </span>
-            kickoff-deck </a>
+            Kickoff Deck </a>
         </div>
       )
     }
@@ -97,17 +92,18 @@ const stories2 = [
             style={{
               pointerEvents: "auto",
               position: "absolute",
-              left: "30%",
+              left: "20%",
               top: "30%",
-              width: "39%",
-              padding: "10px 20px",
+              width: "60%",
+              padding: "10px",
               fontSize: "24px",
-              color: "white",
+              color: "black",
               display: "flex",
               alignItems: "center",
+              justifyContent: "center",
               cursor: "pointer",
-              borderRadius: "5px",
-              background: "linear-gradient(to right, #6adbb1, #03de70)"
+              borderRadius: "40px",
+              border: "5px solid black"
             }}
           >
             <span style={{
@@ -115,24 +111,25 @@ const stories2 = [
             }}>
               <LinkSVG />
             </span>
-            Experiment </a>
+            Product Experiment </a>
           <a
             href="https://docs.google.com/spreadsheets/d/17vQW0nEmSmC_B6AhA_igT6vma1WYZlKI7MA6TsAVCYI/edit?usp=sharing"
             target="_blank"
             style={{
               pointerEvents: "auto",
               position: "absolute",
-              left: "30%",
+              left: "20%",
               top: "45%",
-              width: "39%",
-              padding: "10px 20px",
+              width: "60%",
+              padding: "10px",
               fontSize: "24px",
-              color: "white",
+              color: "black",
               display: "flex",
               alignItems: "center",
+              justifyContent: "center",
               cursor: "pointer",
-              borderRadius: "5px",
-              background: "linear-gradient(to right, #6adbb1, #03de70)"
+              borderRadius: "40px",
+              border: "5px solid black"
             }}
           >
             <span style={{
@@ -140,24 +137,25 @@ const stories2 = [
             }}>
               <LinkSVG />
             </span>
-            Interview </a>
+            Interview Questions</a>
           <a
             href="https://docs.google.com/spreadsheets/d/1Ku1U1IoHarK-h-eqt02YwvCMHfvLg3RQ41YbHb3YL9E/edit?usp=sharing"
             target="_blank"
             style={{
               pointerEvents: "auto",
               position: "absolute",
-              left: "30%",
+              left: "20%",
               top: "60%",
-              width: "39%",
-              padding: "10px 20px",
+              width: "60%",
+              padding: "10px",
               fontSize: "24px",
-              color: "white",
+              color: "black",
               display: "flex",
               alignItems: "center",
+              justifyContent: "center",
               cursor: "pointer",
-              borderRadius: "5px",
-              background: "linear-gradient(to right, #6adbb1, #03de70)"
+              borderRadius: "40px",
+              border: "5px solid black"
             }}
           >
             <span style={{
@@ -165,7 +163,7 @@ const stories2 = [
             }}>
               <LinkSVG />
             </span>
-            Squad </a>
+            Squad Assignments </a>
         </div>
       )
     }
