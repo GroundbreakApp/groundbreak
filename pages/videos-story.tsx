@@ -180,7 +180,7 @@ const stories2 = [
 
 function App() {
   return (
-    <div className="App" style={{ display: 'grid', justifyContent: 'center', alignItems: 'center', height: '-webkit-fill-available', width: '100%' }}>
+    <div className="App" style={{ display: 'grid', justifyContent: 'center', alignItems: 'center', height: '100dvh' }}>
       <div className="stories">
         <Suspense>
           <StoriesLazy
