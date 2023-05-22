@@ -184,8 +184,8 @@ function App() {
       <div className="stories">
         <Suspense>
           <StoriesLazy
-            height="100vh"
-            width="calc(100vh * 9 / 16)"
+            height="100%"
+            width="100%"
             loop
             keyboardNavigation
             defaultInterval={15000}
