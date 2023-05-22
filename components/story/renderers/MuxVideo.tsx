@@ -86,23 +86,21 @@ export const Renderer: IRenderer = ({
 
   const playVideo = () => {
     console.log("playing video");
-    setTimeout(() => {
-      const vid: any = document.querySelector("mux-player");
-      console.log("vid", vid)
-      vid?.play()
-        .then(() => {
-          action("play");
-          console.log("Video started successfully")
-        })
-        .catch((e: any) => {
-          console.error(e)
+    const vid: any = document.querySelector("mux-player");
+    console.log("vid", vid)
+    vid?.play()
+      .then(() => {
+        action("play");
+        console.log("Video started successfully")
+      })
+      .catch((e: any) => {
+        console.error(e)
 
-          setMuted(true);
-          vid?.play().finally(() => {
-            action("play");
-          });
+        setMuted(true);
+        vid?.play().finally(() => {
+          action("play");
         });
-    }, 150)
+      });
   }
 
   const videoLoaded = () => {
