@@ -180,7 +180,7 @@ const stories2 = [
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
       <div className="stories">
         <Suspense>
           <StoriesLazy
