@@ -185,9 +185,10 @@ export const Renderer: IRenderer = ({
             // widgets={widgetsJSON}
             aspectRatio={9 / 16}
             muted={muted}
-            onPlaying={onPlaying}
+            onPlaying={() => { onPlaying(); console.log("MUX ONPLAYING EVENT COMMITED") }}
             onWaiting={onWaiting}
             onPause={onPause}
+            onEnded={onPause}
             onLoadedData={videoLoaded}
             autoPlay={story.isAutoplay}
 

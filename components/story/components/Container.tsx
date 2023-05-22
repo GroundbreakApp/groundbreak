@@ -126,11 +126,11 @@ export default function Container() {
     (type: string) => (e: React.MouseEvent | React.TouchEvent) => {
       e.preventDefault();
       mousedownId.current && clearTimeout(mousedownId.current);
-      if (pause) {
-        toggleState("play");
-      } else {
-        type === "next" ? next() : previous();
-      }
+      // if (pause) {
+      //   toggleState("play");
+      // } else {
+      type === "next" ? next() : previous();
+      // }
     };
 
   const getVideoDuration = (duration: number) => {
