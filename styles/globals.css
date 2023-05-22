@@ -116,7 +116,7 @@ mux-player {
 
   /* --media-control-display: none; */
   --media-control-bar-display: none;
-  --play-button: "block";
+  --play-button: none;
   --live-button: none;
   --seek-backward-button: none;
   --seek-forward-button: none;
