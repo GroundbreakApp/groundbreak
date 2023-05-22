@@ -77,18 +77,18 @@ export const Renderer: IRenderer = ({
   const videoLoaded = () => {
     messageHandler("UPDATE_VIDEO_DURATION", { duration: story.duration });
     setLoaded(true);
-    const vid: any = document.querySelector("mux-player");
-    console.log("vid", vid);
-    vid?.play()
-      .then(() => {
-        action("play");
-      })
-      .catch(() => {
-        setMuted(true);
-        vid?.play().finally(() => {
-          action("play");
-        });
-      });
+    // const vid: any = document.querySelector("mux-player");
+    // console.log("vid", vid);
+    // vid?.play()
+    //   .then(() => {
+    //     action("play");
+    //   })
+    //   .catch(() => {
+    //     setMuted(true);
+    //     vid?.play().finally(() => {
+    //       action("play");
+    //     });
+    //   });
   };
 
   return (
@@ -121,7 +121,7 @@ export const Renderer: IRenderer = ({
             onPlaying={onPlaying}
             onWaiting={onWaiting}
             onLoadedData={videoLoaded}
-            autoPlay={true}
+            autoPlay={story.isAutoplay}
           />
           {!loaded && (
             <div

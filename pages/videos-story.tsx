@@ -7,16 +7,19 @@ const stories2 = [
     playbackId: "4vipwgRq4p01pYskY5oGjM02fwL6kGA00eG53ux02aQRl5w",
     duration: 9 * 1000,
     type: "mux-video",
+    isAutoplay: false,
   },
   {
     playbackId: "SmaCpxZUcHzrwE6qIuIzyrjwWSPy00OFWExu4waY2WA8", // groundbreak is short form video
     type: "mux-video",
     duration: 5 * 1000,
+    isAutoplay: true,
   },
   {
     playbackId: "6Rask9izbjGHMBGZiFS5xMoEDV2TYB6of27cuqpvIZk", // groundbreak is short form video
     type: "mux-video",
     duration: 22 * 1000,
+    isAutoplay: true,
     overlay: () => {
       return (
         <div style={{
@@ -60,21 +63,25 @@ const stories2 = [
     playbackId: "DhjdILWdsQSoqUs2ps9nFLs02K00c4Dx2hP1Iyemd8oAw", // best sales tool
     duration: 25 * 1000,
     type: "mux-video",
+    isAutoplay: true,
   },
   {
     playbackId: "AAjzwXeiO551UAvjID8fPS02bESiRX8jwyqUj024gcA28",
     duration: 15 * 1000,
     type: "mux-video",
+    isAutoplay: true,
   },
   {
     playbackId: "I01aOPryQi5hVuir02mqM02B3G01g45s00EFDaGzqlS3bQY4",
     duration: 11 * 1000,
     type: "mux-video",
+    isAutoplay: true,
   },
   {
     playbackId: "00CzDwETt01Sh1eNqIgp4DM01008SqWdqbeGEIkkAITagp8",
     duration: 10 * 1000,
     type: "mux-video",
+    isAutoplay: true,
     overlay: () => {
       return (
         <div style={{

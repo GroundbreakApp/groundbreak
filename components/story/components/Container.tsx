@@ -198,5 +198,6 @@ const styles = {
     height: "inherit",
     width: "inherit",
     display: "flex",
+    pointerEvents: "none",
   },
 };
