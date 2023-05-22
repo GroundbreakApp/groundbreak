@@ -133,4 +133,6 @@ mux-player {
   --duration-display: none;
   z-index: 1000;
   pointer-events: none;
+
+  --media-poster-image-display: none;
 }

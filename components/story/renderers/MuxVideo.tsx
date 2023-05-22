@@ -82,12 +82,15 @@ export const Renderer: IRenderer = ({
   const playVideo = () => {
     console.log("playing video");
     const vid: any = document.querySelector("mux-player");
+    console.log("playing video 1");
 
     vid?.play()
       .then(() => {
         action("play");
       })
-      .catch(() => {
+      .catch((e: any) => {
+        console.error(e)
+
         setMuted(true);
         vid?.play().finally(() => {
           action("play");
@@ -99,7 +102,7 @@ export const Renderer: IRenderer = ({
     messageHandler("UPDATE_VIDEO_DURATION", { duration: story.duration });
     setLoaded(true);
 
-    // if (!story.isAutoplay) return;
+    if (!story.isAutoplay) return;
 
     /// if autoplay 
     playVideo()
