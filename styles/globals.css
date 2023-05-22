@@ -115,7 +115,8 @@ mux-player {
   --dialog: none;
 
   /* --media-control-display: none; */
-  --media-control-bar-display: none;
+  /* --media-control-bar-display: none; */
+  --media-loading-indicator-display: "block";
   --play-button: none;
   --live-button: none;
   --seek-backward-button: none;
@@ -132,7 +133,4 @@ mux-player {
   --time-display: none;
   --duration-display: none;
   z-index: 1000;
-  pointer-events: none;
-
-  --media-poster-image-display: none;
 }

@@ -178,6 +178,7 @@ const stories2 = [
   },
 ];
 
+
 function App() {
   return (
     <div className="App" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
@@ -188,7 +189,7 @@ function App() {
             width="calc(100vh * 9 / 16)"
             loop
             keyboardNavigation
-            defaultInterval={15000}
+            defaultInterval={8000}
             stories={stories2}
             onStoryEnd={(s: any, st: any) => console.log("story ended", s, st)}
             onAllStoriesEnd={(s: any, st: any) => console.log("all stories ended", s, st)}

@@ -57,15 +57,15 @@ export const Renderer: IRenderer = ({
 
   let vid = React.useRef<any>(null);
 
-  React.useEffect(() => {
-    if (vid.current) {
-      if (isPaused) {
-        vid.current.pause();
-      } else {
-        vid.current.play().catch(() => { });
-      }
-    }
-  }, [isPaused]);
+  // React.useEffect(() => {
+  //   if (vid.current) {
+  //     if (isPaused) {
+  //       vid.current.pause();
+  //     } else {
+  //       vid.current.play().catch(() => { });
+  //     }
+  //   }
+  // }, [isPaused]);
 
   const onWaiting = () => {
     action("pause", true);
@@ -75,27 +75,34 @@ export const Renderer: IRenderer = ({
     action("play", true);
   };
 
+  const onEnded = () => {
+    action("next", true);
+  }
+
   const onPause = () => {
+    console.log("Video is paused")
     action("pause", true);
   }
 
   const playVideo = () => {
     console.log("playing video");
-    const vid: any = document.querySelector("mux-player");
-    console.log("playing video 1");
-
-    vid?.play()
-      .then(() => {
-        action("play");
-      })
-      .catch((e: any) => {
-        console.error(e)
-
-        setMuted(true);
-        vid?.play().finally(() => {
+    setTimeout(() => {
+      const vid: any = document.querySelector("mux-player");
+      console.log("vid", vid)
+      vid?.play()
+        .then(() => {
           action("play");
+          console.log("Video started successfully")
+        })
+        .catch((e: any) => {
+          console.error(e)
+
+          setMuted(true);
+          vid?.play().finally(() => {
+            action("play");
+          });
         });
-      });
+    }, 150)
   }
 
   const videoLoaded = () => {
@@ -190,10 +197,11 @@ export const Renderer: IRenderer = ({
             muted={muted}
             onPlaying={() => { onPlaying(); console.log("MUX ONPLAYING EVENT COMMITED") }}
             onWaiting={onWaiting}
-            onPause={onPause}
-            onEnded={onPause}
+            onPause={(e: any) => { console.log(e); onPause() }}
+            onEnded={onEnded}
             onLoadedData={videoLoaded}
-            autoPlay={story.isAutoplay}
+            onError={(e: any) => { console.log("ERROR", e) }}
+          // autoPlay={story.isAutoplay}
 
           />
           {!loaded && (
