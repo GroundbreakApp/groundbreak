@@ -146,6 +146,7 @@ export const Renderer: IRenderer = ({
         onClick={() => {
           playVideo();
           setShowOverlay(false)
+          story.isAutoplay = true;
         }}
       >
         Play Now
