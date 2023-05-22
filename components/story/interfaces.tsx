@@ -113,7 +113,8 @@ export interface Story {
   content?: Renderer;
   originalContent?: Renderer;
   playbackId?: string;
-  overlay?: React.ElementType
+  overlay?: React.ElementType;
+  isAutoplay?: boolean;
 }
 
 export interface Header {
