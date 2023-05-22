@@ -199,7 +199,7 @@ export const Renderer: IRenderer = ({
             onEnded={onEnded}
             onLoadedData={videoLoaded}
             onError={(e: any) => { console.log("ERROR", e) }}
-          // autoPlay={story.isAutoplay}
+            autoPlay={story.isAutoplay}
 
           />
           {!loaded && (
