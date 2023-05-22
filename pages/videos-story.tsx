@@ -5,7 +5,7 @@ import LinkSVG from "@/assets/link.svg";
 const stories2 = [
   {
     playbackId: "4vipwgRq4p01pYskY5oGjM02fwL6kGA00eG53ux02aQRl5w",
-    duration: 9 * 1000,
+    duration: 9.7 * 1000,
     type: "mux-video",
     isAutoplay: false,
     isFirstSlide: true,
@@ -19,7 +19,7 @@ const stories2 = [
   {
     playbackId: "6Rask9izbjGHMBGZiFS5xMoEDV2TYB6of27cuqpvIZk", // groundbreak is short form video
     type: "mux-video",
-    duration: 22 * 1000,
+    duration: 22.055367 * 1000,
     isAutoplay: true,
     overlay: () => {
       return (
@@ -62,13 +62,13 @@ const stories2 = [
   },
   {
     playbackId: "DhjdILWdsQSoqUs2ps9nFLs02K00c4Dx2hP1Iyemd8oAw", // best sales tool
-    duration: 25 * 1000,
+    duration: 25.133333 * 1000,
     type: "mux-video",
     isAutoplay: true,
   },
   {
     playbackId: "AAjzwXeiO551UAvjID8fPS02bESiRX8jwyqUj024gcA28",
-    duration: 15 * 1000,
+    duration: 15.081733 * 1000,
     type: "mux-video",
     isAutoplay: true,
   },
