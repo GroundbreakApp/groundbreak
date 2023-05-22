@@ -115,6 +115,7 @@ export interface Story {
   playbackId?: string;
   overlay?: React.ElementType;
   isAutoplay?: boolean;
+  isFirstSlide?: boolean;
 }
 
 export interface Header {

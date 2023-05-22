@@ -8,6 +8,7 @@ const stories2 = [
     duration: 9 * 1000,
     type: "mux-video",
     isAutoplay: false,
+    isFirstSlide: true,
   },
   {
     playbackId: "SmaCpxZUcHzrwE6qIuIzyrjwWSPy00OFWExu4waY2WA8", // groundbreak is short form video
@@ -187,7 +188,7 @@ function App() {
             width="calc(100vh * 9 / 16)"
             loop
             keyboardNavigation
-            defaultInterval={8000}
+            defaultInterval={15000}
             stories={stories2}
             onStoryEnd={(s: any, st: any) => console.log("story ended", s, st)}
             onAllStoriesEnd={(s: any, st: any) => console.log("all stories ended", s, st)}

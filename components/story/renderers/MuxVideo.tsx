@@ -5,7 +5,7 @@ import Spinner from "../components/Spinner";
 import { Renderer as IRenderer, Tester } from "./../interfaces";
 import WithHeader from "./wrappers/withHeader";
 import WithSeeMore from "./wrappers/withSeeMore";
-
+import MuteSVG from "@/components/story/assets/mute.svg";
 
 export const Renderer: IRenderer = ({
   story,
@@ -15,7 +15,8 @@ export const Renderer: IRenderer = ({
   messageHandler,
 }) => {
   const [loaded, setLoaded] = React.useState(false);
-  const [muted, setMuted] = React.useState(true);
+  const [muted, setMuted] = React.useState(false);
+  const [showOverlay, setShowOverlay] = React.useState(story.isFirstSlide);
   const { width, height, loader, storyStyles } = config;
 
   // const widgetsJSON = JSON.stringify(
@@ -74,23 +75,86 @@ export const Renderer: IRenderer = ({
     action("play", true);
   };
 
+  const onPause = () => {
+    action("pause", true);
+  }
+
+  const playVideo = () => {
+    console.log("playing video");
+    const vid: any = document.querySelector("mux-player");
+
+    vid?.play()
+      .then(() => {
+        action("play");
+      })
+      .catch(() => {
+        setMuted(true);
+        vid?.play().finally(() => {
+          action("play");
+        });
+      });
+  }
+
   const videoLoaded = () => {
     messageHandler("UPDATE_VIDEO_DURATION", { duration: story.duration });
     setLoaded(true);
-    // const vid: any = document.querySelector("mux-player");
-    // console.log("vid", vid);
-    // vid?.play()
-    //   .then(() => {
-    //     action("play");
-    //   })
-    //   .catch(() => {
-    //     setMuted(true);
-    //     vid?.play().finally(() => {
-    //       action("play");
-    //     });
-    //   });
+
+    // if (!story.isAutoplay) return;
+
+    /// if autoplay 
+    playVideo()
   };
 
+  function unMute() {
+    setMuted(false);
+  }
+
+  const UnMute = () => <>
+    <div
+      onClick={unMute}
+      style={{
+        display: "flex",
+        background: "white",
+        borderRadius: "15px",
+        padding: "10px 25px",
+        position: "absolute",
+        color: "black",
+        zIndex: 9999,
+        cursor: "pointer",
+        left: "10px",
+        top: "30px",
+      }}>
+      <MuteSVG />
+      <span style={{
+        marginLeft: "5px",
+        fontSize: "19px"
+      }}>Unmute</span>
+    </div>
+  </>
+
+  const FirstSlideOverlay = () => <>
+    <div
+      className="absolute left-0 bottom-0 flex flex-col p-8 z-[9999] bg-black bg-opacity-80 w-full gap-5 items-center"
+    >
+      <span
+        className="text-white "
+      >
+        You received a Groundbreak from High Alpha
+      </span>
+      <button
+        className="w-full bg-[#c1ff72] text-black p-2"
+        onClick={() => {
+          playVideo();
+          setShowOverlay(false)
+        }}
+      >
+        Play Now
+      </button>
+      <a href="https://groundbreak.app" target="_blank" className="p-2">
+        Learn More
+      </a>
+    </div>
+  </>
   return (
     <WithHeader {...{ story, globalHeader: config.header }}>
       <WithSeeMore {...{ story, action }}>
@@ -109,6 +173,8 @@ export const Renderer: IRenderer = ({
             webkit-playsinline="true"
           /> */}
           {story.overlay && <story.overlay></story.overlay>}
+          {muted && <UnMute />}
+          {showOverlay && <FirstSlideOverlay />}
           <MuxPlayer
             ref={vid}
             playbackId={story.playbackId}
@@ -117,11 +183,13 @@ export const Renderer: IRenderer = ({
             }}
             // widgets={widgetsJSON}
             aspectRatio={9 / 16}
-            muted={false}
+            muted={muted}
             onPlaying={onPlaying}
             onWaiting={onWaiting}
+            onPause={onPause}
             onLoadedData={videoLoaded}
             autoPlay={story.isAutoplay}
+
           />
           {!loaded && (
             <div
