@@ -131,6 +131,6 @@ mux-player {
   --time-range: none;
   --time-display: none;
   --duration-display: none;
-  z-index: 999;
+  z-index: 1000;
   pointer-events: none;
 }
