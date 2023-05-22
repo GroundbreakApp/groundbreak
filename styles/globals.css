@@ -114,8 +114,8 @@ a {
 mux-player {
   --dialog: none;
 
-  --media-control-display: none;
-
+  /* --media-control-display: none; */
+  --media-control-bar-display: none;
   --play-button: "block";
   --live-button: none;
   --seek-backward-button: none;
