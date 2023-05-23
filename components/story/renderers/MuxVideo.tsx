@@ -55,6 +55,15 @@ export const Renderer: IRenderer = ({
 
   const onEnded = () => {
     action("next", true);
+
+    // hide widgets
+    const newWidgets: any = story?.widgets?.map(widget => (
+      {
+        ...widget,
+        isVisible: false
+      }
+    ))
+    setWidgets(newWidgets ?? []);
   }
 
   const onPause = () => {
