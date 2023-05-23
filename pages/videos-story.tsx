@@ -23,7 +23,7 @@ const stories2 = [
     isAutoplay: true,
     widgets: [{
       spawnTime: 13000,
-      duration: 9000,
+      duration: 8500,
       render: () => {
         return (
           <div style={{
