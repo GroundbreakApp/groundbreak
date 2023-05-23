@@ -116,6 +116,11 @@ export interface Story {
   overlay?: React.ElementType;
   isAutoplay?: boolean;
   isFirstSlide?: boolean;
+  widgets?: Array<{
+    spawnTime: number; // milliseconds
+    duration: number; // milliseconds
+    render: React.ElementType;
+  }>
 }
 
 export interface Header {

@@ -21,44 +21,48 @@ const stories2 = [
     type: "mux-video",
     duration: 22.055367 * 1000,
     isAutoplay: true,
-    overlay: () => {
-      return (
-        <div style={{
-          position: "absolute",
-          left: 0,
-          right: 0,
-          width: "100%",
-          height: "100%",
-          zIndex: "9999",
-          pointerEvents: "none"
-        }}>
-          <a
-            href="https://docs.google.com/presentation/d/1oNcfzR-yjERDBtwihW86UqKGfvi0AR8T/edit?usp=sharing&ouid=113854719469946467137&rtpof=true&sd=true"
-            target="_blank"
-            style={{
-              pointerEvents: "auto",
-              position: "absolute",
-              left: "27%",
-              top: "66%",
-              padding: "10px 20px",
-              fontSize: "24px",
-              color: "black",
-              display: "flex",
-              alignItems: "center",
-              cursor: "pointer",
-              borderRadius: "40px",
-              border: "5px solid black"
-            }}
-          >
-            <span style={{
-              marginRight: "10px"
-            }}>
-              <LinkSVG />
-            </span>
-            Kickoff Deck </a>
-        </div>
-      )
-    }
+    widgets: [{
+      spawnTime: 13000,
+      duration: 9000,
+      render: () => {
+        return (
+          <div style={{
+            position: "absolute",
+            left: 0,
+            right: 0,
+            width: "100%",
+            height: "100%",
+            zIndex: "9999",
+            pointerEvents: "none"
+          }}>
+            <a
+              href="https://docs.google.com/presentation/d/1oNcfzR-yjERDBtwihW86UqKGfvi0AR8T/edit?usp=sharing&ouid=113854719469946467137&rtpof=true&sd=true"
+              target="_blank"
+              style={{
+                pointerEvents: "auto",
+                position: "absolute",
+                left: "27%",
+                top: "66%",
+                padding: "10px 20px",
+                fontSize: "24px",
+                color: "black",
+                display: "flex",
+                alignItems: "center",
+                cursor: "pointer",
+                borderRadius: "40px",
+                border: "5px solid black"
+              }}
+            >
+              <span style={{
+                marginRight: "10px"
+              }}>
+                <LinkSVG />
+              </span>
+              Kickoff Deck </a>
+          </div>
+        )
+      }
+    }]
   },
   {
     playbackId: "DhjdILWdsQSoqUs2ps9nFLs02K00c4Dx2hP1Iyemd8oAw", // best sales tool
@@ -83,98 +87,102 @@ const stories2 = [
     duration: 10 * 1000,
     type: "mux-video",
     isAutoplay: true,
-    overlay: () => {
-      return (
-        <div style={{
-          position: "absolute",
-          left: 0,
-          right: 0,
-          width: "100%",
-          height: "100%",
-          zIndex: "9999",
-          pointerEvents: "none"
-        }}>
-          <a
-            href=" https://docs.google.com/document/d/1FlVj-62uJBrHadc_A3il2e6RWnGmJ-XBbU1F-Q3RsvI/edit?usp=sharing"
-            target="_blank"
-            style={{
-              pointerEvents: "auto",
-              position: "absolute",
-              left: "20%",
-              top: "30%",
-              width: "60%",
-              padding: "10px",
-              fontSize: "24px",
-              color: "black",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              cursor: "pointer",
-              borderRadius: "40px",
-              border: "5px solid black"
-            }}
-          >
-            <span style={{
-              marginRight: "10px"
-            }}>
-              <LinkSVG />
-            </span>
-            Product Experiment </a>
-          <a
-            href="https://docs.google.com/spreadsheets/d/17vQW0nEmSmC_B6AhA_igT6vma1WYZlKI7MA6TsAVCYI/edit?usp=sharing"
-            target="_blank"
-            style={{
-              pointerEvents: "auto",
-              position: "absolute",
-              left: "20%",
-              top: "45%",
-              width: "60%",
-              padding: "10px",
-              fontSize: "24px",
-              color: "black",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              cursor: "pointer",
-              borderRadius: "40px",
-              border: "5px solid black"
-            }}
-          >
-            <span style={{
-              marginRight: "10px"
-            }}>
-              <LinkSVG />
-            </span>
-            Interview Questions</a>
-          <a
-            href="https://docs.google.com/spreadsheets/d/1Ku1U1IoHarK-h-eqt02YwvCMHfvLg3RQ41YbHb3YL9E/edit?usp=sharing"
-            target="_blank"
-            style={{
-              pointerEvents: "auto",
-              position: "absolute",
-              left: "20%",
-              top: "60%",
-              width: "60%",
-              padding: "10px",
-              fontSize: "24px",
-              color: "black",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              cursor: "pointer",
-              borderRadius: "40px",
-              border: "5px solid black"
-            }}
-          >
-            <span style={{
-              marginRight: "10px"
-            }}>
-              <LinkSVG />
-            </span>
-            Squad Assignments </a>
-        </div>
-      )
-    }
+    widgets: [{
+      spawnTime: 0,
+      duration: 9000,
+      render: () => {
+        return (
+          <div style={{
+            position: "absolute",
+            left: 0,
+            right: 0,
+            width: "100%",
+            height: "100%",
+            zIndex: "9999",
+            pointerEvents: "none"
+          }}>
+            <a
+              href=" https://docs.google.com/document/d/1FlVj-62uJBrHadc_A3il2e6RWnGmJ-XBbU1F-Q3RsvI/edit?usp=sharing"
+              target="_blank"
+              style={{
+                pointerEvents: "auto",
+                position: "absolute",
+                left: "20%",
+                top: "30%",
+                width: "60%",
+                padding: "10px",
+                fontSize: "24px",
+                color: "black",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: "pointer",
+                borderRadius: "40px",
+                border: "5px solid black"
+              }}
+            >
+              <span style={{
+                marginRight: "10px"
+              }}>
+                <LinkSVG />
+              </span>
+              Product Experiment </a>
+            <a
+              href="https://docs.google.com/spreadsheets/d/17vQW0nEmSmC_B6AhA_igT6vma1WYZlKI7MA6TsAVCYI/edit?usp=sharing"
+              target="_blank"
+              style={{
+                pointerEvents: "auto",
+                position: "absolute",
+                left: "20%",
+                top: "45%",
+                width: "60%",
+                padding: "10px",
+                fontSize: "24px",
+                color: "black",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: "pointer",
+                borderRadius: "40px",
+                border: "5px solid black"
+              }}
+            >
+              <span style={{
+                marginRight: "10px"
+              }}>
+                <LinkSVG />
+              </span>
+              Interview Questions</a>
+            <a
+              href="https://docs.google.com/spreadsheets/d/1Ku1U1IoHarK-h-eqt02YwvCMHfvLg3RQ41YbHb3YL9E/edit?usp=sharing"
+              target="_blank"
+              style={{
+                pointerEvents: "auto",
+                position: "absolute",
+                left: "20%",
+                top: "60%",
+                width: "60%",
+                padding: "10px",
+                fontSize: "24px",
+                color: "black",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: "pointer",
+                borderRadius: "40px",
+                border: "5px solid black"
+              }}
+            >
+              <span style={{
+                marginRight: "10px"
+              }}>
+                <LinkSVG />
+              </span>
+              Squad Assignments </a>
+          </div>
+        )
+      }
+    }]
   },
 ];
 

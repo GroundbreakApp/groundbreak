@@ -19,36 +19,14 @@ export const Renderer: IRenderer = ({
   const [showOverlay, setShowOverlay] = React.useState(story.isFirstSlide);
   const { width, height, loader, storyStyles } = config;
 
-  // const widgetsJSON = JSON.stringify(
-  //   [
-  //     {
-  //       type: 'TEXT',
-  //       label: `Hey, Michael, We're so excited to have`,
-  //       spawnTime: 1000,
-  //       duration: 4000,
-  //       style: {
-  //         position: 'absolute',
-  //         left: '10%',
-  //         top: '30%',
-  //         PointerEvents: 'auto'
-  //       }
-  //     },
-  //     {
-  //       type: 'LINK',
-  //       label: `Tap to move to google.com`,
-  //       href: "https://www.google.com",
-  //       spawnTime: 2000,
-  //       duration: 4000,
-  //       style: {
-  //         position: 'absolute',
-  //         left: '40%',
-  //         top: '60%',
-  //         color: '#FF00FF',
-  //         PointerEvents: 'auto'
-  //       }
-  //     }
-  //   ]
-  // );
+  const initWidgetState = story.widgets ?
+    story.widgets.map((widget) => ({
+      ...widget,
+      isVisible: false
+    }))
+    : []
+
+  const [widgets, setWidgets] = React.useState(initWidgetState);
 
   let computedStyles = {
     ...styles.storyContent,
@@ -85,9 +63,7 @@ export const Renderer: IRenderer = ({
   }
 
   const playVideo = () => {
-    console.log("playing video");
     const vid: any = document.querySelector("mux-player");
-    console.log("vid", vid)
     vid?.play()
       .then(() => {
         action("play");
@@ -117,28 +93,45 @@ export const Renderer: IRenderer = ({
     setMuted(false);
   }
 
-  const UnMute = () => <>
-    <div
-      onClick={unMute}
-      style={{
-        display: "flex",
-        background: "white",
-        borderRadius: "15px",
-        padding: "10px 25px",
-        position: "absolute",
-        color: "black",
-        zIndex: 9999,
-        cursor: "pointer",
-        left: "10px",
-        top: "30px",
-      }}>
-      <MuteSVG />
-      <span style={{
-        marginLeft: "5px",
-        fontSize: "19px"
-      }}>Unmute</span>
-    </div>
-  </>
+
+  const onTimeUpdate = () => {
+    const vid = document.querySelector("mux-player");
+    const media: any = vid?.shadowRoot?.querySelector("mux-video");
+    const currentTime = media?.currentTime ?? 0;
+
+    const newWidgets = story?.widgets?.map(widget => {
+      const isVisible = widget.spawnTime <= currentTime * 1000 &&
+        widget.spawnTime + widget.duration >= currentTime * 1000 ? true : false;
+      return {
+        ...widget,
+        isVisible
+      }
+    })
+    setWidgets(newWidgets ?? []);
+  }
+
+
+  const UnMute = () => <div
+    onClick={unMute}
+    style={{
+      display: "flex",
+      background: "white",
+      borderRadius: "15px",
+      padding: "10px 25px",
+      position: "absolute",
+      color: "black",
+      zIndex: 9999,
+      cursor: "pointer",
+      left: "10px",
+      top: "30px",
+    }}>
+    <MuteSVG />
+    <span style={{
+      marginLeft: "5px",
+      fontSize: "19px"
+    }}>Unmute</span>
+  </div>
+
 
   const FirstSlideOverlay = () => <>
     <div
@@ -183,6 +176,14 @@ export const Renderer: IRenderer = ({
           /> */}
           {story.overlay && <story.overlay></story.overlay>}
           {muted && <UnMute />}
+          {widgets.map((widget, index) => {
+            const Render: React.ElementType = widget.render
+            return (<React.Fragment key={index}>
+              {widget.isVisible && <Render />}
+            </React.Fragment>
+            )
+          }
+          )}
           {showOverlay && <FirstSlideOverlay />}
           <MuxPlayer
             ref={vid}
@@ -200,7 +201,7 @@ export const Renderer: IRenderer = ({
             onLoadedData={videoLoaded}
             onError={(e: any) => { console.log("ERROR", e) }}
             autoPlay={story.isAutoplay}
-
+            onTimeUpdate={onTimeUpdate}
           />
           {!loaded && (
             <div
