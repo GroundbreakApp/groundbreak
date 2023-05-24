@@ -167,7 +167,6 @@ export const Renderer: IRenderer = ({
         className="w-full bg-[#c1ff72] text-black p-2"
         onClick={() => {
           playVideo();
-          setShowOverlay(false)
           story.isAutoplay = true;
         }}
       >
