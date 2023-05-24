@@ -1,5 +1,5 @@
 
-import React, { Suspense, useEffect } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import StoriesLazy from '@/components/story'
 import LinkSVG from "@/assets/link.svg";
 const stories2 = [
@@ -188,29 +188,21 @@ const stories2 = [
 
 
 function App() {
-  useEffect(() => {
-    const updateVH = () => {
-      let vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty('--vh', `${vh}px`);
-    }
-    
-    // Run the function when the component mounts
-    updateVH();
+  const [height, setHeight] = useState('100vh'); // default to vh
 
-    // Also run the function whenever the window is resized
-    window.addEventListener('resize', updateVH);
-    
-    // Clean up the event listener when the component unmounts
-    return () => window.removeEventListener('resize', updateVH);
+  useEffect(() => {
+    if ('CSS' in window && CSS.supports('height', '100svh')) {
+      setHeight('100svh'); // switch to svh if supported
+    }
   }, []);
 
   return (
-    <div className="App" style={{ display: 'grid', justifyContent: 'center', alignItems: 'center', height: 'calc(100 * var(--vh))' }}>
+    <div className="App" style={{ display: 'grid', justifyContent: 'center', alignItems: 'center', height }}>
       <div className="stories">
         <Suspense>
           <StoriesLazy
-            height="calc(100 * var(--vh))"
-            width="calc((100 * var(--vh)) * 9 / 16)"
+            height={height}
+            width="calc(100vh * 9 / 16)" // replace this with the corresponding svh calculation if it exists
             loop
             keyboardNavigation
             defaultInterval={8000}
