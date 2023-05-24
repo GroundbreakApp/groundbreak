@@ -16,6 +16,17 @@ export default function Container() {
   const [bufferAction, setBufferAction] = useState<boolean>(true);
   const [videoDuration, setVideoDuration] = useState<number>(0);
   const isMounted = useIsMounted();
+  const [preloadStory, setPreloadStory] = useState([
+    {
+      storyIndex: 0
+    },
+    {
+      storyIndex: 1
+    },
+    {
+      storyIndex: 2
+    }
+  ])
 
   let mousedownId = useRef<any>();
 
@@ -156,13 +167,20 @@ export default function Container() {
       >
         <ProgressArray />
       </ProgressContext.Provider>
-      <Story
-        action={toggleState}
-        bufferAction={bufferAction}
-        playState={pause}
-        story={stories[currentId]}
-        getVideoDuration={getVideoDuration}
-      />
+      <div className="relative w-full h-full">
+        {preloadStory.map((story) => {
+          console.log("currentId", currentId)
+          return (<Story
+            action={toggleState}
+            bufferAction={bufferAction}
+            playState={pause}
+            disabled={story.storyIndex !== currentId}
+            story={stories[story.storyIndex]}
+            getVideoDuration={getVideoDuration}
+            key={story.storyIndex}
+          />)
+        })}
+      </div>
       {!preventDefault && (
         <div style={styles.overlay}>
           <div

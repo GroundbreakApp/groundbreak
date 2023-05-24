@@ -31,6 +31,7 @@ const Story = (props: StoryProps) => {
         isPaused={props.playState}
         story={props.story}
         config={config}
+        disabled={props.disabled}
         messageHandler={rendererMessageHandler}
       />
     );
@@ -53,9 +54,11 @@ const Story = (props: StoryProps) => {
 const styles = {
   story: {
     display: "flex",
-    position: "relative" as "relative",
+    position: "absolute" as "absolute",
     overflow: "hidden",
     alignItems: "center",
+    left: 0,
+    top: 0,
   },
   storyContent: {
     width: "auto",

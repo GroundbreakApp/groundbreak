@@ -12,6 +12,7 @@ export const Renderer: IRenderer = ({
   action,
   isPaused,
   config,
+  disabled,
   messageHandler,
 }) => {
   const [loaded, setLoaded] = React.useState(false);
@@ -35,15 +36,19 @@ export const Renderer: IRenderer = ({
 
   let vid = React.useRef<any>(null);
 
-  // React.useEffect(() => {
-  //   if (vid.current) {
-  //     if (isPaused) {
-  //       vid.current.pause();
-  //     } else {
-  //       vid.current.play().catch(() => { });
-  //     }
-  //   }
-  // }, [isPaused]);
+  React.useEffect(() => {
+    if (vid.current) {
+      if (isPaused || disabled) {
+        vid.current.pause();
+
+        if (isPaused && !disabled) {
+          vid.current.play();
+        }
+      } else {
+        vid.current.play().catch(() => { });
+      }
+    }
+  }, [isPaused, disabled]);
 
   const onWaiting = () => {
     action("pause", true);
@@ -55,6 +60,7 @@ export const Renderer: IRenderer = ({
 
   const onEnded = () => {
     action("next", true);
+    console.log('onEnded called')
 
     // hide widgets
     const newWidgets: any = story?.widgets?.map(widget => (
@@ -72,6 +78,9 @@ export const Renderer: IRenderer = ({
   }
 
   const playVideo = () => {
+    console.log(disabled);
+    if (disabled) return;
+
     const vid: any = document.querySelector("mux-player");
     vid?.play()
       .then(() => {
@@ -92,7 +101,11 @@ export const Renderer: IRenderer = ({
     messageHandler("UPDATE_VIDEO_DURATION", { duration: story.duration });
     setLoaded(true);
 
+    // this story slide is disabled
+    if (disabled) return;
+
     if (!story.isAutoplay) return;
+
 
     /// if autoplay 
     playVideo()
@@ -169,20 +182,11 @@ export const Renderer: IRenderer = ({
   return (
     <WithHeader {...{ story, globalHeader: config.header }}>
       <WithSeeMore {...{ story, action }}>
-        <div style={styles.videoContainer}>
-          {/* <video
-            ref={vid}
-            style={computedStyles}
-            src={story.url}
-            controls={false}
-            onLoadedData={videoLoaded}
-            playsInline
-            onWaiting={onWaiting}
-            onPlaying={onPlaying}
-            muted={muted}
-            autoPlay
-            webkit-playsinline="true"
-          /> */}
+        <div style={{
+          ...styles.videoContainer,
+          visibility: disabled ? 'hidden' : 'visible'
+        }
+        }>
           {story.overlay && <story.overlay></story.overlay>}
           {muted && <UnMute />}
           {widgets.map((widget, index) => {
@@ -193,7 +197,7 @@ export const Renderer: IRenderer = ({
             )
           }
           )}
-          {showOverlay && <FirstSlideOverlay />}
+          {showOverlay && !disabled && <FirstSlideOverlay />}
           <MuxPlayer
             ref={vid}
             playbackId={story.playbackId}
@@ -203,13 +207,32 @@ export const Renderer: IRenderer = ({
             // widgets={widgetsJSON}
             aspectRatio={9 / 16}
             muted={muted}
-            onPlaying={() => { onPlaying(); console.log("MUX ONPLAYING EVENT COMMITED") }}
-            onWaiting={onWaiting}
-            onPause={(e: any) => { console.log(e); onPause() }}
-            onEnded={onEnded}
-            onLoadedData={videoLoaded}
+            onPlaying={() => {
+              if (disabled) return;
+              onPlaying();
+            }}
+            onWaiting={() => {
+              if (disabled) return;
+
+              onWaiting()
+            }}
+            onPause={() => {
+              if (disabled) return;
+
+              onPause()
+            }}
+            onEnded={() => {
+              if (disabled) return;
+
+              onEnded()
+            }}
+            onLoadedData={() => {
+              if (disabled) return;
+
+              videoLoaded();
+            }}
             onError={(e: any) => { console.log("ERROR", e) }}
-            autoPlay={story.isAutoplay}
+            autoPlay={story.isAutoplay && !disabled}
             onTimeUpdate={onTimeUpdate}
             preload="auto"
           />

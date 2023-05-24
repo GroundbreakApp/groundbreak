@@ -70,6 +70,7 @@ export type Action = (action: string, bufferAction?: boolean) => void;
 export type Renderer = React.FC<{
   action: Action;
   isPaused: boolean;
+  disabled: boolean;
   story: Story;
   config: {
     width?: NumberOrString;
@@ -92,6 +93,7 @@ export interface StoryProps {
   playState: boolean;
   getVideoDuration: Function;
   bufferAction: boolean;
+  disabled: boolean;
 }
 
 export interface StoryState {
