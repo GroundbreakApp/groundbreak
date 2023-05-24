@@ -135,3 +135,24 @@ mux-player {
   --duration-display: none;
   z-index: 1000;
 }
+
+swiper-container {
+  width: 100%;
+  height: 100%;
+}
+
+swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15%;
+  transition: width 0.2s;
+  zoom: 0.6;
+}
+
+swiper-slide.swiper-slide-active {
+  width: 25%;
+  zoom: 1;
+}
