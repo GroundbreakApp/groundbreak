@@ -189,12 +189,12 @@ const stories2 = [
 
 function App() {
   return (
-    <div className="App" style={{ display: 'grid', justifyContent: 'center', alignItems: 'center', height: 'max(50svh, calc(50vh * 98 / 100))' }}>
+    <div className="App" style={{ display: 'grid', justifyContent: 'center', alignItems: 'center', height: '100gavh' }}>
       <div className="stories">
         <Suspense>
           <StoriesLazy
-            height="max(50svh, calc(50vh * 98 / 100))"
-            width="calc(max(50svh, calc(50vh * 98 / 100)) * 9 / 16)"
+            height="100gavh"
+            width="calc(100gavh * 9 / 16)"
             loop
             keyboardNavigation
             defaultInterval={8000}
