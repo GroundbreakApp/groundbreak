@@ -38,10 +38,13 @@ export const Renderer: IRenderer = ({
   React.useEffect(() => {
     if (vid.current) {
       if (isPaused || disabled) {
+        vid.current.currentTime = 0;
+
         vid.current.pause();
 
         if (isPaused && !disabled) {
           vid.current.play();
+          vid.current.currentTime = 0;
         }
       } else {
         vid.current.play().catch(() => { });
