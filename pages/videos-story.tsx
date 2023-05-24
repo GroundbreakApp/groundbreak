@@ -1,5 +1,5 @@
 
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import StoriesLazy from '@/components/story'
 import LinkSVG from "@/assets/link.svg";
 const stories2 = [
@@ -188,13 +188,21 @@ const stories2 = [
 
 
 function App() {
+  const [height, setHeight] = useState('100vh'); // default to vh
+
+  useEffect(() => {
+    if ('CSS' in window && CSS.supports('height', '100svh')) {
+      setHeight('100svh'); // switch to svh if supported
+    }
+  }, []);
+
   return (
-    <div className="App" style={{ display: 'grid', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+    <div className="App" style={{ display: 'grid', justifyContent: 'center', alignItems: 'center', height }}>
       <div className="stories">
         <Suspense>
           <StoriesLazy
-            height="100vh"
-            width="calc(100svh * 9 / 16)"
+            height={height}
+            width="calc(100svh * 9 / 16)" // replace this with the corresponding svh calculation if it exists
             loop
             keyboardNavigation
             defaultInterval={8000}
