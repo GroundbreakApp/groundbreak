@@ -194,7 +194,7 @@ function App() {
         <Suspense>
           <StoriesLazy
             height="max(100svh, 95%)"
-            width="calc(max(100svh, 95%) * 9 / 16)"
+            width="100svw"
             loop
             keyboardNavigation
             defaultInterval={8000}
