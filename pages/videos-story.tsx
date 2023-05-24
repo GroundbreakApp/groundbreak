@@ -1,5 +1,5 @@
 
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import StoriesLazy from '@/components/story'
 import LinkSVG from "@/assets/link.svg";
 const stories2 = [
@@ -188,13 +188,29 @@ const stories2 = [
 
 
 function App() {
+  useEffect(() => {
+    const updateVH = () => {
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+    
+    // Run the function when the component mounts
+    updateVH();
+
+    // Also run the function whenever the window is resized
+    window.addEventListener('resize', updateVH);
+    
+    // Clean up the event listener when the component unmounts
+    return () => window.removeEventListener('resize', updateVH);
+  }, []);
+
   return (
-    <div className="App" style={{ display: 'grid', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+    <div className="App" style={{ display: 'grid', justifyContent: 'center', alignItems: 'center', height: 'calc(100 * var(--vh))' }}>
       <div className="stories">
         <Suspense>
           <StoriesLazy
-            height="100vh"
-            width="calc(100vh * 9 / 16)"
+            height="calc(100 * var(--vh))"
+            width="calc((100 * var(--vh)) * 9 / 16)"
             loop
             keyboardNavigation
             defaultInterval={8000}
