@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@groundbreak/groundbreak-player-react": "git+https://github.com/GroundbreakApp/groundbreak-player-react.git#0afd4feb55c785abeddde78c6c5bc0dce3fbc6e2",
+    "@groundbreak/groundbreak-player-react": "git+https://github.com/GroundbreakApp/groundbreak-player-react.git",
     "@mux/mux-player-react": "^1.10.1",
     "@reduxjs/toolkit": "^1.9.5",
     "@svgr/webpack": "^8.0.1",
