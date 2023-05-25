@@ -9,12 +9,20 @@ import ProgressCtx from "./../context/Progress";
 import GlobalContext from "./../context/Global";
 import StoriesContext from "./../context/Stories";
 import { timestamp } from "../util/time";
+import { useAppDispatch, useAppSelector } from "@/stores/hook";
+
+import { nextSlide, setPause } from "../slices/story.slice";
 
 export default function ProgressArray() {
   const [count, setCount] = useState<number>(0);
   const lastTime = useRef<number>();
 
-  const { currentId, next, videoDuration, pause, bufferAction } =
+  const dispatch = useAppDispatch();
+
+  const pause = useAppSelector(state => state.story.pause);
+  const currentId = useAppSelector(state => state.story.currentIndex)
+
+  const { videoDuration, onNext } =
     useContext<ProgressContext>(ProgressCtx);
   const {
     defaultInterval,
@@ -50,14 +58,16 @@ export default function ProgressArray() {
     setCount((count: number) => {
       const interval = getCurrentInterval();
       countCopy = count + (dt * 100) / (interval ?? 1000);
-      return countCopy;
+      return countCopy > 100 ? 0 : countCopy;
     });
     if (countCopy < 100) {
       animationFrameId.current = requestAnimationFrame(incrementCount);
     } else {
-      storyEndCallback();
       cancelAnimationFrame(animationFrameId.current ?? 0);
-      next();
+      setCount(0);
+      storyEndCallback();
+      dispatch(nextSlide());
+      onNext();
     }
   };
 
@@ -77,7 +87,7 @@ export default function ProgressArray() {
   };
 
   const opacityStyles = {
-    opacity: pause && !bufferAction ? 0 : 1,
+    opacity: 1,
   };
 
   return (

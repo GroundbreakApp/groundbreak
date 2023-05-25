@@ -7,7 +7,6 @@ import ProgressCtx from './../context/Progress'
 // eslint-disable-next-line react/display-name, import/no-anonymous-default-export
 export default (props: ProgressProps) => {
     const { progressStyles } = useContext<GlobalCtx>(GlobalContext);
-    const { bufferAction, pause } = useContext<ProgressContext>(ProgressCtx)
 
     const getProgressStyle = ({ active }: { active: number }) => {
         switch (active) {
@@ -24,7 +23,7 @@ export default (props: ProgressProps) => {
 
     const { width, active } = props
     return (
-        <ProgressWrapper width={width} pause={pause} bufferAction={bufferAction}>
+        <ProgressWrapper width={width} >
             <div
                 style={{
                     ...styles.inner,

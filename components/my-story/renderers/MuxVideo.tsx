@@ -1,4 +1,6 @@
 import * as React from "react";
+import { useEffect } from "react"
+
 import MuxPlayer from '@groundbreak/groundbreak-player-react';
 // import MuxPlayer from '../../node_modules/@groundbreak/groundbreak-player-react/src/index'
 import Spinner from "../components/Spinner";
@@ -6,6 +8,8 @@ import { Renderer as IRenderer, Tester } from "./../interfaces";
 import WithHeader from "./wrappers/withHeader";
 import WithSeeMore from "./wrappers/withSeeMore";
 import MuteSVG from "@/components/story/assets/mute.svg";
+import { BsFillPlayFill } from "react-icons/bs"
+import { useAppSelector } from "@/stores/hook";
 
 export const Renderer: IRenderer = ({
   story,
@@ -18,6 +22,8 @@ export const Renderer: IRenderer = ({
   const [loaded, setLoaded] = React.useState(false);
   const [muted, setMuted] = React.useState(false);
   const { width, height, loader, storyStyles } = config;
+  const [innerStatus, setInnerStatus] = React.useState<"playing" | "paused" | "disabled" | "ended">("paused")
+  const currentBlurColor = useAppSelector(state => state.story.currentBlurColor);
 
   const initWidgetState = story.widgets ?
     story.widgets.map((widget) => ({
@@ -34,35 +40,79 @@ export const Renderer: IRenderer = ({
   };
 
   let vid = React.useRef<any>(null);
+  useEffect(() => {
 
-  React.useEffect(() => {
-    if (vid.current) {
-      if (isPaused || disabled) {
-        vid.current.currentTime = 0;
-
-        vid.current.pause();
-
-        if (isPaused && !disabled) {
-          vid.current.play();
-          vid.current.currentTime = 0;
-        }
-      } else {
-        vid.current.play().catch(() => { });
-      }
+    if (disabled === true) {
+      setInnerStatus("disabled");
+      return;
     }
-  }, [isPaused, disabled]);
+
+    if (isPaused) {
+      setInnerStatus("paused");
+      return;
+    }
+
+    if (innerStatus !== "ended") {
+      setInnerStatus("playing")
+    }
+
+
+  }, [isPaused, disabled])
+
+  useEffect(() => {
+    switch (innerStatus) {
+      case "playing":
+        playVideo();
+        break;
+      case "paused":
+        stopVideo();
+        break;
+      case "disabled":
+        stopVideo();
+        vid.current.currentTime = 0;
+        break;
+    }
+
+  }, [innerStatus])
+
+  // React.useEffect(() => {
+  //   if (disabled) return;
+  //   if (vid.current) {
+  //     if (isPaused) {
+  //       vid.current.pause();
+  //     } else {
+  //       vid.current.play();
+  //     }
+  //   }
+  // }, [isPaused])
+  // React.useEffect(() => {
+  //   if (vid.current) {
+  //     if (isPaused || disabled) {
+  //       vid.current.currentTime = 0;
+
+  //       vid.current.pause();
+
+  //       if (isPaused && !disabled) {
+  //         vid.current.play();
+  //         vid.current.currentTime = 0;
+  //       }
+  //     } else {
+  //       vid.current.play().catch(() => { });
+  //     }
+  //   }
+  // }, [isPaused, disabled]);
 
   const onWaiting = () => {
-    action("pause", true);
+    action("pause");
   };
 
   const onPlaying = () => {
-    action("play", true);
+    action("play");
   };
 
   const onEnded = () => {
     action("next", true);
-    console.log('onEnded called')
+    setInnerStatus("ended")
 
     // hide widgets
     const newWidgets: any = story?.widgets?.map(widget => (
@@ -75,28 +125,29 @@ export const Renderer: IRenderer = ({
   }
 
   const onPause = () => {
-    console.log("Video is paused")
     action("pause", true);
   }
 
   const playVideo = () => {
-    console.log(disabled);
-    if (disabled) return;
+    if (!vid.current) return;
 
-    const vid: any = document.querySelector("mux-player");
-    vid?.play()
+    vid?.current.play()
       .then(() => {
         action("play");
-        console.log("Video started successfully")
       })
       .catch((e: any) => {
         console.error(e)
 
         setMuted(true);
-        vid?.play().finally(() => {
+        vid?.current.play().finally(() => {
           action("play");
         });
       });
+  }
+  const stopVideo = () => {
+    if (!vid.current) return;
+
+    vid?.current.pause();
   }
 
   const videoLoaded = () => {
@@ -134,7 +185,24 @@ export const Renderer: IRenderer = ({
     setWidgets(newWidgets ?? []);
   }
 
-
+  const Blur = () => {
+    return (
+      <div style={{
+        position: "absolute",
+        left: 0,
+        top: 0,
+        right: 0,
+        bottom: 0,
+        opacity: 0.5,
+        background: currentBlurColor,
+        filter: "blur(4px)",
+        zIndex: 9999,
+        marginBottom: "9px"
+      }}
+      >
+      </div>
+    )
+  }
   const UnMute = () => <div
     onClick={unMute}
     style={{
@@ -155,31 +223,13 @@ export const Renderer: IRenderer = ({
       fontSize: "19px"
     }}>Unmute</span>
   </div>
+  const Play = () => <button
+    className="absolute w-full h-full flex items-center justify-center pointer-events-none z-[99999]
+    "
+  >
+    <BsFillPlayFill className="text-white fill-current w-8 h-8 pointer-events-auto" onClick={playVideo} />
+  </button>
 
-
-  const FirstSlideOverlay = () => <>
-    <div
-      className="absolute left-0 bottom-0 flex flex-col p-8 z-[9999] bg-black bg-opacity-80 w-full gap-5 items-center"
-    >
-      <span
-        className="text-white "
-      >
-        You received a Groundbreak from High Alpha
-      </span>
-      <button
-        className="w-full bg-[#c1ff72] text-black p-2"
-        onClick={() => {
-          playVideo();
-          story.isAutoplay = true;
-        }}
-      >
-        Play Now
-      </button>
-      <a href="https://groundbreak.app" target="_blank" className="p-2">
-        Learn More
-      </a>
-    </div>
-  </>
   return (
     <WithHeader {...{ story, globalHeader: config.header }}>
       <WithSeeMore {...{ story, action }}>
@@ -189,6 +239,7 @@ export const Renderer: IRenderer = ({
         }>
           {story.overlay && <story.overlay></story.overlay>}
           {muted && <UnMute />}
+          {innerStatus !== "disabled" && innerStatus === "paused" && <Play />}
           {widgets.map((widget, index) => {
             const Render: React.ElementType = widget.render
             return (<React.Fragment key={index}>
@@ -197,6 +248,7 @@ export const Renderer: IRenderer = ({
             )
           }
           )}
+          {disabled && <Blur />}
           <MuxPlayer
             ref={vid}
             playbackId={story.playbackId}
@@ -207,7 +259,10 @@ export const Renderer: IRenderer = ({
             aspectRatio={9 / 16}
             muted={muted}
             onPlaying={() => {
-              if (disabled) return;
+              if (innerStatus === "disabled") {
+                stopVideo();
+                return;
+              };
               onPlaying();
             }}
             onWaiting={() => {
@@ -215,23 +270,24 @@ export const Renderer: IRenderer = ({
 
               onWaiting()
             }}
-            onPause={() => {
-              if (disabled) return;
+            // onPause={() => {
+            //   console.log("on pause called");
+            //   if (disabled) return;
+            //   onPause()
+            // }}
+            // onEnded={() => {
+            //   console.log("on ended called");
+            //   if (disabled) return;
 
-              onPause()
-            }}
-            onEnded={() => {
-              if (disabled) return;
-
-              onEnded()
-            }}
+            //   onEnded()
+            // }}
             onLoadedData={() => {
               if (disabled) return;
 
               videoLoaded();
             }}
             onError={(e: any) => { console.log("ERROR", e) }}
-            autoPlay={story.isAutoplay && !disabled}
+            // autoPlay={story.isAutoplay && !disabled}
             onTimeUpdate={onTimeUpdate}
             preload="auto"
           />

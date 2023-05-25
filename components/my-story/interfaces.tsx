@@ -40,8 +40,6 @@ export interface GlobalCtx {
   progressStyles?: Object;
   loop?: boolean;
   defaultInterval?: number;
-  isPaused?: boolean;
-  currentIndex?: number;
   renderers?: {
     renderer: Renderer;
     tester: Tester;
@@ -92,7 +90,6 @@ export interface StoryProps {
   action: Action;
   playState: boolean;
   getVideoDuration: Function;
-  bufferAction: boolean;
   disabled: boolean;
 }
 
@@ -122,6 +119,7 @@ export interface Story {
     duration: number; // milliseconds
     render: React.ElementType;
   }>
+  overlayColor?: string;
 }
 
 export interface Header {
@@ -156,16 +154,11 @@ export interface ProgressProps {
 export interface ProgressWrapperProps {
   children: any;
   width: number;
-  pause: boolean;
-  bufferAction: boolean;
 }
 
 export interface ProgressArrayProps { }
 
 export interface ProgressContext {
-  currentId: number;
   videoDuration: number;
-  bufferAction: boolean;
-  pause: boolean;
-  next: Function;
+  onNext: Function
 }

@@ -1,8 +1,10 @@
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
-import { register } from 'swiper/element/bundle';
-register();
+import { Provider } from "react-redux";
+import store from "../stores/store";
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return <Provider store={store}>
+    <Component {...pageProps} />
+  </Provider>
 }

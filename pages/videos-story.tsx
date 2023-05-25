@@ -207,9 +207,9 @@ function App() {
             keyboardNavigation
             defaultInterval={8000}
             stories={stories2}
-            onStoryEnd={(s: any, st: any) => console.log("story ended", s, st)}
-            onAllStoriesEnd={(s: any, st: any) => console.log("all stories ended", s, st)}
-            onStoryStart={(s: any, st: any) => console.log("story started", s, st)}
+            onStoryEnd={(s: any, st: any) => { }}
+            onAllStoriesEnd={(s: any, st: any) => { }}
+            onStoryStart={(s: any, st: any) => { }}
             storyContainerStyles={{ borderRadius: 8, overflow: "hidden" }}
           />
         </Suspense>

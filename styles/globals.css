@@ -138,21 +138,29 @@ mux-player {
 
 swiper-container {
   width: 100%;
-  height: 100%;
+  height: 600px;
 }
 
 swiper-slide {
+  width: 20%;
+  align-items: center;
+  display: flex;
+}
+
+swiper-slide.swiper-slide-active > div {
+  width: 100%;
+  zoom: 1;
+}
+
+swiper-slide > div {
   text-align: center;
   font-size: 18px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 15%;
   transition: width 0.2s;
-  zoom: 0.6;
-}
-
-swiper-slide.swiper-slide-active {
-  width: 25%;
-  zoom: 1;
+  min-width: 200px !important;
+  width: 80%;
+  margin: auto;
+  zoom: 0.8;
 }

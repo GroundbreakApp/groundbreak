@@ -8,18 +8,21 @@ const stories2 = [
     duration: 9.7 * 1000,
     type: "mux-video",
     isAutoplay: false,
+    overlayColor: "#434458"
   },
   {
     playbackId: "SmaCpxZUcHzrwE6qIuIzyrjwWSPy00OFWExu4waY2WA8", // groundbreak is short form video
     type: "mux-video",
     duration: 5 * 1000,
     isAutoplay: true,
+    overlayColor: "#CBFD55"
   },
   {
     playbackId: "6Rask9izbjGHMBGZiFS5xMoEDV2TYB6of27cuqpvIZk", // groundbreak is short form video
     type: "mux-video",
     duration: 22.055367 * 1000,
     isAutoplay: true,
+    overlayColor: "#ABFD55",
     widgets: [{
       spawnTime: 13000,
       duration: 8500,
@@ -68,24 +71,28 @@ const stories2 = [
     duration: 25.133333 * 1000,
     type: "mux-video",
     isAutoplay: true,
+    overlayColor: "#CBAD55",
   },
   {
     playbackId: "AAjzwXeiO551UAvjID8fPS02bESiRX8jwyqUj024gcA28",
     duration: 15.081733 * 1000,
     type: "mux-video",
     isAutoplay: true,
+    overlayColor: "#CBADA5",
   },
   {
     playbackId: "I01aOPryQi5hVuir02mqM02B3G01g45s00EFDaGzqlS3bQY4",
     duration: 11 * 1000,
     type: "mux-video",
     isAutoplay: true,
+    overlayColor: "#CABD55",
   },
   {
     playbackId: "00CzDwETt01Sh1eNqIgp4DM01008SqWdqbeGEIkkAITagp8",
     duration: 10 * 1000,
     type: "mux-video",
     isAutoplay: true,
+    overlayColor: "#CAFDF5",
     widgets: [{
       spawnTime: 0,
       duration: 9000,
@@ -197,9 +204,9 @@ function App() {
             keyboardNavigation
             defaultInterval={8000}
             stories={stories2}
-            onStoryEnd={(s: any, st: any) => console.log("story ended", s, st)}
-            onAllStoriesEnd={(s: any, st: any) => console.log("all stories ended", s, st)}
-            onStoryStart={(s: any, st: any) => console.log("story started", s, st)}
+            onStoryEnd={(s: any, st: any) => { }}
+            onAllStoriesEnd={(s: any, st: any) => { }}
+            onStoryStart={(s: any, st: any) => { }}
             storyContainerStyles={{ borderRadius: 8, overflow: "hidden" }}
           />
         </Suspense>

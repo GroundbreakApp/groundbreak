@@ -7,6 +7,8 @@ import { getRenderer } from './util/renderers'
 import { renderers as defaultRenderers } from './renderers/index';
 import withHeader from './renderers/wrappers/withHeader'
 import withSeeMore from './renderers/wrappers/withSeeMore'
+import { useAppDispatch } from '@/stores/hook';
+import { setStoryLength } from "./slices/story.slice";
 
 const ReactInstaStories = function (props: ReactInstaStoriesProps) {
     let renderers = props.renderers ? props.renderers.concat(defaultRenderers) : defaultRenderers;
@@ -23,8 +25,6 @@ const ReactInstaStories = function (props: ReactInstaStoriesProps) {
         progressStyles: props.progressStyles,
         loop: props.loop,
         defaultInterval: props.defaultInterval,
-        isPaused: props.isPaused,
-        currentIndex: props.currentIndex,
         onStoryStart: props.onStoryStart,
         onStoryEnd: props.onStoryEnd,
         onAllStoriesEnd: props.onAllStoriesEnd,
@@ -32,8 +32,10 @@ const ReactInstaStories = function (props: ReactInstaStoriesProps) {
         preventDefault: props.preventDefault
     }
     const [stories, setStories] = useState<{ stories: Story[] }>({ stories: generateStories(props.stories, renderers) });
+    const dispatch = useAppDispatch();
     useEffect(() => {
         setStories({ stories: generateStories(props.stories, renderers) });
+        dispatch(setStoryLength(props.stories.length));
     }, [props.stories, props.renderers]);
 
     return <GlobalContext.Provider value={context}>

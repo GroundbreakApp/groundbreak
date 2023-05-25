@@ -169,7 +169,6 @@ export default function Container() {
       </ProgressContext.Provider>
       <div className="relative w-full h-full">
         {preloadStory.map((story) => {
-          console.log("currentId", currentId)
           return (<Story
             action={toggleState}
             bufferAction={bufferAction}

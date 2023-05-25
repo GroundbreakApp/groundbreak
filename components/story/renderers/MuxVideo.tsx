@@ -60,7 +60,6 @@ export const Renderer: IRenderer = ({
 
   const onEnded = () => {
     action("next", true);
-    console.log('onEnded called')
 
     // hide widgets
     const newWidgets: any = story?.widgets?.map(widget => (
@@ -73,19 +72,16 @@ export const Renderer: IRenderer = ({
   }
 
   const onPause = () => {
-    console.log("Video is paused")
     action("pause", true);
   }
 
   const playVideo = () => {
-    console.log(disabled);
     if (disabled) return;
 
     const vid: any = document.querySelector("mux-player");
     vid?.play()
       .then(() => {
         action("play");
-        console.log("Video started successfully")
       })
       .catch((e: any) => {
         console.error(e)
