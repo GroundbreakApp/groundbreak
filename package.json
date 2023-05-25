@@ -25,6 +25,7 @@
     "plyr-react": "^5.1.2",
     "react": "18.2.0",
     "react-add-to-calendar": "^0.1.5",
+    "react-device-detect": "^2.2.3",
     "react-dom": "18.2.0",
     "react-hot-loader": "^4.13.1",
     "react-player": "^2.12.0",
