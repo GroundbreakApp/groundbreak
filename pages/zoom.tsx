@@ -12,13 +12,12 @@ const Form = () => {
     try {
         console.log("Making get call to zoom")
 
-        const response = await axios.post('https://groundbreak.onrender.com/metrics/zoom', null, {
-        params: {
-            firstName: firstName,
-            lastName: lastName,
-            email: email,
+        const response = await axios.post('https://groundbreak.onrender.com/metrics/zoom', {
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
         },
-        });
+        );
 
         console.log(response)
         setFirstName('');
