@@ -32,7 +32,6 @@ const StyledInput = styled.input`
 `;
 
 const StyledIcon = styled.div`
-  background-image: url(../assets/Subtract.png)
   width: 25px;
   height: 25px;
   opacity: 0.5;

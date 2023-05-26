@@ -1,7 +1,11 @@
 
-import React, { Suspense } from "react";
+import React, { Suspense,useState, useEffect } from "react";
 import MyStory from '@/components/my-story'
 import LinkSVG from "@/assets/link.svg";
+import styled from 'styled-components';
+import axios from 'axios';
+
+import linkImage from '../assets/Subtract.png';
 /*
 const stories2 = [
   {
@@ -193,20 +197,91 @@ const stories2 = [
   },
 ];
 */
+
+
+const StyledForm = styled.form`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  width: 343px;
+  height: 43px;
+  background: rgba(203, 253, 85, 0.5);
+  border: 3px solid rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  padding: 0 10px;
+`;
+
+const StyledInput = styled.input`
+  box-sizing: border-box;
+  flex-grow: 1;
+  background: transparent;
+  border: none;
+  font-family: 'Graphik';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 25px;
+  color: rgba(0, 0, 0, 0.5);
+`;
+
+const StyledIcon = styled.div`
+  width: 25px;
+  height: 25px;
+  opacity: 0.5;
+  background: #33363F;
+  border-radius: 1px;
+`;
+
 const stories2 = [
   {
     playbackId: "7GTNWaH02xd6HXl9jl602bHkOkLVQUT8VWjnJmVfn00bFc",
     duration: 4.02 * 1000,
     type: "mux-video",
     isAutoplay: false,
-    overlayColor: "#434458"
+    overlayColor: "#434458",
   },
+  
   {
     playbackId: "KzQwJ4SJDpw01gRqM46dOkXtEIfHsjjyx42Bxirm01aGo", // groundbreak is short form video
     type: "mux-video",
     duration: 10.8 * 1000,
     isAutoplay: true,
-    overlayColor: "#CBFD55"
+    overlayColor: "#CBFD55",
+    widgets: [{
+      spawnTime: 2000,
+      duration: 6000,
+      render: () => {
+        const [feedbackText, setFeedbackText] = useState(''); // Add state for feedback text
+      
+        const handleIconClick = async () => {
+      
+          console.log("Submit clicked")
+          try {
+              console.log("Making call to send feedback")
+      
+              const response = await axios.post('https://groundbreak.onrender.com/metrics/feedback', {
+                text: feedbackText,
+              });
+      
+              console.log(response)
+              setFeedbackText('');
+          } catch (error) {
+              console.error('Error sending feedback call:', error);
+          }
+        };
+        return (
+          <StyledForm>
+          <StyledInput
+            placeholder="Send Feedback"
+            value={feedbackText} // Set the value of StyledInput to feedbackText state
+            onChange={(event: any) => setFeedbackText(event.target.value)} // Update feedbackText state on input change
+          />
+          <StyledIcon onClick={handleIconClick as () => void} style={{backgroundImage: `url(${linkImage})`}} />
+        </StyledForm>
+        )
+      }
+    }]
   },
   {
     playbackId: "sWIY011z63lA4hBLmKcuyAUp78CTfGUdZ5JLjx7ljwfk", // groundbreak is short form video
