@@ -69,6 +69,7 @@ export type Renderer = React.FC<{
   action: Action;
   disabled: boolean;
   story: Story;
+  isPaused?: boolean;
   config: {
     width?: NumberOrString;
     height?: NumberOrString;
