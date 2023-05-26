@@ -199,8 +199,6 @@ export const Renderer: IRenderer = ({
             style={{
               height: "100%"
             }}
-            // widgets={widgetsJSON}
-            aspectRatio={9 / 16}
             muted={muted}
             onPlaying={() => {
               if (disabled) return;

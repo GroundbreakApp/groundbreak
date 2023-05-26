@@ -47,8 +47,6 @@ export default function VideoPage() {
         style={{
           height: "100%"
         }}
-        widgets={widgetsJSON}
-        aspectRatio={9 / 16}
         themeProps={{
           control: "none"
         }}
