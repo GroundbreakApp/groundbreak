@@ -349,14 +349,21 @@ const stories2 = [
 
 
 function App() {
-  
+  const [height, setHeight] = useState('100vh'); // default to vh
+
+  useEffect(() => {
+    if ('CSS' in window && CSS.supports('height', '100svh')) {
+      setHeight('100svh'); // switch to svh if supported
+    }
+  }, []);
+
   return (
-    <div className="App" style={{ display: 'grid', justifyContent: 'center', alignItems: 'center', height: '100svh' }}>
+    <div className="App" style={{ display: 'grid', justifyContent: 'center', alignItems: 'center', height }}>
       <div className="stories">
         <Suspense>
           <MyStory
-            height="100svh"
-            width="100svw"
+            height={height}
+            width="calc(100svh * 9 / 16)" // replace this with the corresponding svh calculation if it exists
             keyboardNavigation
             defaultInterval={8000}
             stories={stories2}
