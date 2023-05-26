@@ -252,7 +252,7 @@ const stories2 = [
       duration: 6000,
       render: () => {
         const [feedbackText, setFeedbackText] = useState(''); // Add state for feedback text
-        const handleIconClick = async () => {
+        const HandleIconClick = async () => {
 
           console.log("Submit clicked")
           try {
@@ -284,7 +284,7 @@ const stories2 = [
                 value={feedbackText} // Set the value of StyledInput to feedbackText state
                 onChange={(event: any) => setFeedbackText(event.target.value)} // Update feedbackText state on input change
               />
-              <StyledIcon onClick={handleIconClick as () => void} style={{backgroundImage: `url(${linkImage})`}} />
+              <StyledIcon onClick={HandleIconClick as () => void} style={{backgroundImage: `url(${linkImage})`}} />
             </StyledForm>
           </div>
         )
