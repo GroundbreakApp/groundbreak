@@ -224,7 +224,7 @@ const StyledInput = styled.input`
   font-weight: 500;
   font-size: 16px;
   line-height: 25px;
-  color: rgba(0, 0, 0, 0.5);
+  color: white;
 `;
 
 const StyledIcon = styled.div`
