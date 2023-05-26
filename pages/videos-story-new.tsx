@@ -250,6 +250,7 @@ const stories2 = [
     widgets: [{
       spawnTime: 2000,
       duration: 6000,
+      /*
       render: () => {
         //const [feedbackText, setFeedbackText] = useState(''); // Add state for feedback text
       
@@ -278,6 +279,29 @@ const stories2 = [
           />
           <StyledIcon onClick={handleIconClick as () => void} style={{backgroundImage: `url(${linkImage})`}} />
         </StyledForm>
+        )
+      }
+      */
+      render: () => {
+        return (
+          <div style={{
+            position: "absolute",
+            left: 0,
+            right: 0,
+            width: "100%",
+            height: "100%",
+            zIndex: "9999",
+            pointerEvents: "none"
+          }}>
+           <StyledForm>
+              <StyledInput
+                placeholder="Send Feedback"
+                value={"test"} // Set the value of StyledInput to feedbackText state
+                //onChange={(event: any) => setFeedbackText(event.target.value)} // Update feedbackText state on input change
+              />
+              <StyledIcon /*onClick={handleIconClick as () => void} style={{backgroundImage: `url(${linkImage})`}}*/ />
+            </StyledForm>
+          </div>
         )
       }
     }]
