@@ -269,7 +269,7 @@ export const Renderer: IRenderer = ({
               videoLoaded();
             }}
             onError={(e: any) => { console.log("ERROR", e) }}
-            // autoPlay={story.isAutoplay && !disabled}
+            autoPlay={story.isAutoplay && !disabled}
             onTimeUpdate={onTimeUpdate}
             preload="auto"
           />
