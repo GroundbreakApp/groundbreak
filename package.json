@@ -16,6 +16,7 @@
     "@types/react": "18.0.33",
     "@types/react-dom": "18.0.11",
     "@types/react-redux": "^7.1.25",
+    "@types/styled-components": "^5.1.26",
     "axios": "^1.4.0",
     "clsx": "^1.2.1",
     "eslint": "8.37.0",

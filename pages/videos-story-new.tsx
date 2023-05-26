@@ -4,6 +4,7 @@ import MyStory from '@/components/my-story'
 import LinkSVG from "@/assets/link.svg";
 import styled from 'styled-components';
 import axios from 'axios';
+import { TbSend } from "react-icons/tb"
 
 import linkImage from '../assets/Subtract.png';
 /*
@@ -201,7 +202,7 @@ const stories2 = [
 
 const StyledForm = styled.form`
   position: absolute;
-  top: 100;
+  bottom: 8px;
   left: 0;
   right: 0;
   display: flex;
@@ -265,7 +266,13 @@ const FeedbackForm = () => {
           value={feedbackText} // Set the value of StyledInput to feedbackText state
           onChange={(event: any) => setFeedbackText(event.target.value)} // Update feedbackText state on input change
         />
-        <StyledIcon onClick={handleIconClick as () => void} style={{ backgroundImage: `url(${linkImage})` }} />
+        {/* <StyledIcon onClick={handleIconClick as () => void} style={{ backgroundImage: `url(${linkImage})` }} /> */}
+        <button className="h-8 w-8 text-white fill-current"
+          onClick={handleIconClick}
+        >
+
+          <TbSend />
+        </button>
       </StyledForm>
     </div>
   )
