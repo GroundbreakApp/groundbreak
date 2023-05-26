@@ -161,7 +161,8 @@ export default function Container() {
       <div className={
         clsx(
           "relative flex w-full items-center justify-center pb-12",
-          isMobile && "hidden"
+          isMobile && "hidden",
+          !isMobile && "flex",
         )
       }>
         <div className="self-center">
@@ -225,6 +226,5 @@ const styles = {
     position: "absolute" as const,
     height: "inherit",
     width: "inherit",
-    display: "flex",
   },
 };
