@@ -194,9 +194,7 @@ export const Renderer: IRenderer = ({
         bottom: 0,
         opacity: 0.5,
         background: currentBlurColor,
-        filter: "blur(4px)",
         zIndex: 9999,
-        marginBottom: "9px"
       }}
       >
       </div>
