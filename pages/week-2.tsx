@@ -6,6 +6,8 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { TbSend } from "react-icons/tb"
 
+import { isMobile } from 'react-device-detect';
+
 import linkImage from '../assets/Subtract.png';
 import { useAppDispatch } from "@/stores/hook";
 import { setPause } from "@/components/my-story/slices/story.slice";
@@ -349,12 +351,44 @@ const stories2 = [
 
 
 function App() {
+  var loadIgnore = false;
+
   const [height, setHeight] = useState('100vh'); // default to vh
 
   useEffect(() => {
     if ('CSS' in window && CSS.supports('height', '100svh')) {
       setHeight('100svh'); // switch to svh if supported
     }
+
+    if (!loadIgnore){
+      const searchParams = new URLSearchParams(location.search);
+      const parameterValue = searchParams.get('clicksrc');
+
+      var clicksrc = 'none'
+      var deviceType = 'desktop'
+      if (parameterValue) {
+          clicksrc = parameterValue
+      }
+      if (isMobile) {
+          deviceType = 'mobile'
+      }
+      console.log("Making post call")
+      
+      const makeCall = async () => {
+          try {
+              var response = await axios.post('https://groundbreak.onrender.com/metrics/tracking', {
+                  deviceType: deviceType,
+                  clickSrc: clicksrc,
+              });
+              console.log(response)
+          }catch(error){
+              console.error('Error making call:', error);
+          }
+      };
+      //makeCall()
+      
+  }
+  loadIgnore = true
   }, []);
 
   return (
