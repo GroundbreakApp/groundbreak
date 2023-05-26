@@ -28,7 +28,6 @@ const Story = (props: StoryProps) => {
     return (
       <InnerContent
         action={props.action}
-        isPaused={props.playState}
         story={props.story}
         config={config}
         disabled={props.disabled}

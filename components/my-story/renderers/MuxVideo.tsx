@@ -13,7 +13,6 @@ import { useAppSelector } from "@/stores/hook";
 export const Renderer: IRenderer = ({
   story,
   action,
-  isPaused,
   config,
   disabled,
   messageHandler,
@@ -23,6 +22,7 @@ export const Renderer: IRenderer = ({
   const { width, height, loader, storyStyles } = config;
   const [innerStatus, setInnerStatus] = React.useState<"playing" | "paused" | "disabled" | "ended">("paused")
   const currentBlurColor = useAppSelector(state => state.story.currentBlurColor);
+  const isPaused = useAppSelector(state => state.story.pause);
 
   const initWidgetState = story.widgets ?
     story.widgets.map((widget) => ({
@@ -101,10 +101,6 @@ export const Renderer: IRenderer = ({
   //   }
   // }, [isPaused, disabled]);
 
-  const onWaiting = () => {
-    action("pause");
-  };
-
   const onPlaying = () => {
     action("play");
   };
@@ -169,8 +165,7 @@ export const Renderer: IRenderer = ({
 
 
   const onTimeUpdate = () => {
-    const vid = document.querySelector("mux-player");
-    const media: any = vid?.shadowRoot?.querySelector("mux-video");
+    const media: any = vid.current.shadowRoot.querySelector("mux-video");
     const currentTime = media?.currentTime ?? 0;
 
     const newWidgets = story?.widgets?.map(widget => {
@@ -255,28 +250,19 @@ export const Renderer: IRenderer = ({
             // widgets={widgetsJSON}
             muted={muted}
             onPlaying={() => {
-              if (innerStatus === "disabled") {
-                stopVideo();
-                return;
-              };
               onPlaying();
             }}
-            onWaiting={() => {
+            onPause={() => {
+              console.log("on pause called");
+              if (disabled) return;
+              onPause()
+            }}
+            onEnded={() => {
+              console.log("on ended called");
               if (disabled) return;
 
-              onWaiting()
+              onEnded()
             }}
-            // onPause={() => {
-            //   console.log("on pause called");
-            //   if (disabled) return;
-            //   onPause()
-            // }}
-            // onEnded={() => {
-            //   console.log("on ended called");
-            //   if (disabled) return;
-
-            //   onEnded()
-            // }}
             onLoadedData={() => {
               if (disabled) return;
 

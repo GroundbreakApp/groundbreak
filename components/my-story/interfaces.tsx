@@ -67,7 +67,6 @@ export interface ContainerState {
 export type Action = (action: string, bufferAction?: boolean) => void;
 export type Renderer = React.FC<{
   action: Action;
-  isPaused: boolean;
   disabled: boolean;
   story: Story;
   config: {
@@ -88,7 +87,6 @@ export type Tester = (story: Story) => {
 export interface StoryProps {
   story: Story;
   action: Action;
-  playState: boolean;
   getVideoDuration: Function;
   disabled: boolean;
 }

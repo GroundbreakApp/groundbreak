@@ -11,7 +11,7 @@ import StoriesContext from "./../context/Stories";
 import { timestamp } from "../util/time";
 import { useAppDispatch, useAppSelector } from "@/stores/hook";
 
-import { nextSlide, setPause } from "../slices/story.slice";
+import { nextSlide } from "../slices/story.slice";
 
 export default function ProgressArray() {
   const [count, setCount] = useState<number>(0);

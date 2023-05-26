@@ -113,7 +113,6 @@ export default function Container() {
                     <div>
                       <Story
                         action={toggleState}
-                        playState={pause}
                         disabled={index !== currentId}
                         story={story}
                         getVideoDuration={getVideoDuration}

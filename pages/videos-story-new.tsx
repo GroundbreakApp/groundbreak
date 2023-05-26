@@ -43,16 +43,16 @@ const stories2 = [
               style={{
                 pointerEvents: "auto",
                 position: "absolute",
-                left: "27%",
-                top: "66%",
-                padding: "10px 20px",
+                left: "22%",
+                top: "63%",
+                padding: "7px 15px",
                 fontSize: "24px",
                 color: "black",
                 display: "flex",
                 alignItems: "center",
                 cursor: "pointer",
                 borderRadius: "40px",
-                border: "5px solid black"
+                border: "2px solid black"
               }}
             >
               <span style={{
@@ -94,7 +94,7 @@ const stories2 = [
     isAutoplay: true,
     overlayColor: "#CAFDF5",
     widgets: [{
-      spawnTime: 0,
+      spawnTime: 250,
       duration: 9000,
       render: () => {
         return (
@@ -113,18 +113,18 @@ const stories2 = [
               style={{
                 pointerEvents: "auto",
                 position: "absolute",
-                left: "20%",
+                left: "18%",
                 top: "30%",
-                width: "60%",
+                width: "70%",
                 padding: "10px",
-                fontSize: "24px",
+                fontSize: "16px",
                 color: "black",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 cursor: "pointer",
                 borderRadius: "40px",
-                border: "5px solid black"
+                border: "2px solid black"
               }}
             >
               <span style={{
@@ -139,18 +139,18 @@ const stories2 = [
               style={{
                 pointerEvents: "auto",
                 position: "absolute",
-                left: "20%",
+                left: "18%",
                 top: "45%",
-                width: "60%",
+                width: "70%",
                 padding: "10px",
-                fontSize: "24px",
+                fontSize: "16px",
                 color: "black",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 cursor: "pointer",
                 borderRadius: "40px",
-                border: "5px solid black"
+                border: "2px solid black"
               }}
             >
               <span style={{
@@ -165,18 +165,18 @@ const stories2 = [
               style={{
                 pointerEvents: "auto",
                 position: "absolute",
-                left: "20%",
+                left: "18%",
                 top: "60%",
-                width: "60%",
+                width: "70%",
                 padding: "10px",
-                fontSize: "24px",
+                fontSize: "16px",
                 color: "black",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 cursor: "pointer",
                 borderRadius: "40px",
-                border: "5px solid black"
+                border: "2px solid black"
               }}
             >
               <span style={{
