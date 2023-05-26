@@ -163,7 +163,7 @@ export const Renderer: IRenderer = ({
   };
 
   function unMute() {
-    dispatch(setMuted(true));
+    dispatch(setMuted(false));
   }
 
 
@@ -207,7 +207,7 @@ export const Renderer: IRenderer = ({
       padding: "10px 25px",
       position: "absolute",
       color: "black",
-      zIndex: 9999,
+      zIndex: 99999,
       cursor: "pointer",
       left: "10px",
       top: "30px",

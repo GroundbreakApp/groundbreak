@@ -192,6 +192,7 @@ export default function Container() {
           clsx(
             {
               "hidden": !isMobile,
+              "flex": isMobile,
               "pointer-events-none": true
             }
           )
@@ -200,7 +201,7 @@ export default function Container() {
         {isPause && <Play />}
         <div
           className="pointer-events-auto"
-          style={{ width: "50%", zIndex: 999 }}
+          style={{ width: "50%", zIndex: 999, height: "50%", alignSelf: "center" }}
           // onTouchStart={debouncePause}
           onTouchEnd={mouseUp("previous")}
           // onMouseDown={debouncePause}
@@ -208,7 +209,7 @@ export default function Container() {
         />
         <div
           className="pointer-events-auto"
-          style={{ width: "50%", zIndex: 999 }}
+          style={{ width: "50%", zIndex: 999, height: "50%", alignSelf: "center" }}
           // onTouchStart={debouncePause}
           onTouchEnd={mouseUp("next")}
           // onMouseDown={debouncePause}
