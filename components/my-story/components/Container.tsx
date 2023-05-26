@@ -228,7 +228,7 @@ export default function Container() {
         {isPause && <Play />}
         <div
           className="pointer-events-auto"
-          style={{ width: "50%", zIndex: 999, height: "50%", alignSelf: "center" }}
+          style={{ width: "50%", zIndex: 999, height: "25%", alignSelf: "center" }}
           // onTouchStart={debouncePause}
           onTouchEnd={mouseUp("previous")}
           // onMouseDown={debouncePause}
@@ -236,7 +236,7 @@ export default function Container() {
         />
         <div
           className="pointer-events-auto"
-          style={{ width: "50%", zIndex: 999, height: "50%", alignSelf: "center" }}
+          style={{ width: "50%", zIndex: 999, height: "25%", alignSelf: "center" }}
           // onTouchStart={debouncePause}
           onTouchEnd={mouseUp("next")}
           // onMouseDown={debouncePause}
