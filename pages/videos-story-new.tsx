@@ -274,8 +274,8 @@ const stories2 = [
           <StyledForm>
           <StyledInput
             placeholder="Send Feedback"
-            value={feedbackText} // Set the value of StyledInput to feedbackText state
-            onChange={(event: any) => setFeedbackText(event.target.value)} // Update feedbackText state on input change
+            value={"test"} // Set the value of StyledInput to feedbackText state
+            //onChange={(event: any) => setFeedbackText(event.target.value)} // Update feedbackText state on input change
           />
           <StyledIcon onClick={handleIconClick as () => void} style={{backgroundImage: `url(${linkImage})`}} />
         </StyledForm>
