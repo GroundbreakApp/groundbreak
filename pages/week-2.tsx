@@ -385,7 +385,7 @@ function App() {
               console.error('Error making call:', error);
           }
       };
-      //makeCall()
+      makeCall()
       
   }
   loadIgnore = true
@@ -396,8 +396,8 @@ function App() {
       <div className="stories">
         <Suspense>
           <MyStory
-            height={height}
-            width="calc(100svh * 9 / 16)" // replace this with the corresponding svh calculation if it exists
+            height="100svh"
+            width="100svw"
             keyboardNavigation
             defaultInterval={8000}
             stories={stories2}

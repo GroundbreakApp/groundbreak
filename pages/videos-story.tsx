@@ -201,8 +201,8 @@ function App() {
       <div className="stories">
         <Suspense>
           <StoriesLazy
-            height="100svh"
-            width="100svw"
+            height={height}
+            width="calc(100svh * 9 / 16)" // replace this with the corresponding svh calculation if it exists
             loop
             keyboardNavigation
             defaultInterval={8000}
