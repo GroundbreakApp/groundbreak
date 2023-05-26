@@ -200,8 +200,8 @@ const stories2 = [
 
 
 const StyledForm = styled.form`
-  position: relative;
-  bottom: 0;
+  position: absolute;
+  top: 100;
   left: 0;
   right: 0;
   display: flex;
