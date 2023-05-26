@@ -1,6 +1,5 @@
 import * as React from "react";
-import MuxPlayer from '@groundbreak/groundbreak-player-react';
-// import MuxPlayer from '../../node_modules/@groundbreak/groundbreak-player-react/src/index'
+import MuxPlayer from '@mux/mux-player-react';
 import Spinner from "../components/Spinner";
 import { Renderer as IRenderer, Tester } from "./../interfaces";
 import WithHeader from "./wrappers/withHeader";

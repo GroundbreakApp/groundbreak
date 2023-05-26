@@ -127,7 +127,7 @@ export default function Container() {
         </swiper-container>
       </div>
       <div className="relative flex w-full items-center justify-center pb-12">
-        <div className="w-80 self-center">
+        <div className="self-center">
           <button
             className="bg-black bg-opacity-30  mr-5 px-4 rounded-xl"
             onClick={togglePause}

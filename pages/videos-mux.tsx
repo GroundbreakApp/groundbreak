@@ -1,5 +1,5 @@
 // import MuxPlayer from "@mux/mux-player-react";
-import MuxPlayer from '@groundbreak/groundbreak-player-react';
+import MuxPlayer from '@mux/mux-player-react';
 import Head from 'next/head';
 
 export default function VideoPage() {
