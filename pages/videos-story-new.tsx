@@ -232,6 +232,46 @@ const StyledIcon = styled.div`
   border-radius: 1px;
 `;
 
+const FeedbackForm = () => {
+  const [feedbackText, setFeedbackText] = useState(''); // Add state for feedback text
+  const handleIconClick = async () => {
+
+    console.log("Submit clicked")
+    try {
+        console.log("Making call to send feedback")
+
+        const response = await axios.post('https://groundbreak.onrender.com/metrics/feedback', {
+          text: feedbackText,
+        });
+
+        console.log(response)
+        setFeedbackText('');
+    } catch (error) {
+        console.error('Error sending feedback call:', error);
+    }
+  };
+  return (
+    <div style={{
+      position: "absolute",
+      left: 0,
+      right: 0,
+      width: "100%",
+      height: "100%",
+      zIndex: "20000",
+      pointerEvents: "none"
+    }}>
+     <StyledForm>
+        <StyledInput
+          placeholder="Send Feedback"
+          value={feedbackText} // Set the value of StyledInput to feedbackText state
+          onChange={(event: any) => setFeedbackText(event.target.value)} // Update feedbackText state on input change
+        />
+        <StyledIcon onClick={handleIconClick as () => void} style={{backgroundImage: `url(${linkImage})`}} />
+      </StyledForm>
+    </div>
+  )
+}
+
 const stories2 = [
   {
     playbackId: "7GTNWaH02xd6HXl9jl602bHkOkLVQUT8VWjnJmVfn00bFc",
@@ -250,45 +290,7 @@ const stories2 = [
     widgets: [{
       spawnTime: 2000,
       duration: 6000,
-      render: () => {
-        const [feedbackText, setFeedbackText] = useState(''); // Add state for feedback text
-        const HandleIconClick = async () => {
-
-          console.log("Submit clicked")
-          try {
-              console.log("Making call to send feedback")
-      
-              const response = await axios.post('https://groundbreak.onrender.com/metrics/feedback', {
-                text: feedbackText,
-              });
-      
-              console.log(response)
-              setFeedbackText('');
-          } catch (error) {
-              console.error('Error sending feedback call:', error);
-          }
-        };
-        return (
-          <div style={{
-            position: "absolute",
-            left: 0,
-            right: 0,
-            width: "100%",
-            height: "100%",
-            zIndex: "20000",
-            pointerEvents: "none"
-          }}>
-           <StyledForm>
-              <StyledInput
-                placeholder="Send Feedback"
-                value={feedbackText} // Set the value of StyledInput to feedbackText state
-                onChange={(event: any) => setFeedbackText(event.target.value)} // Update feedbackText state on input change
-              />
-              <StyledIcon onClick={HandleIconClick as () => void} style={{backgroundImage: `url(${linkImage})`}} />
-            </StyledForm>
-          </div>
-        )
-      }
+      render: FeedbackForm
     }]
   },
   {
