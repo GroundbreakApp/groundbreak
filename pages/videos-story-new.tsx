@@ -250,39 +250,24 @@ const stories2 = [
     widgets: [{
       spawnTime: 2000,
       duration: 6000,
-      /*
       render: () => {
-        //const [feedbackText, setFeedbackText] = useState(''); // Add state for feedback text
-      
+        const [feedbackText, setFeedbackText] = useState(''); // Add state for feedback text
         const handleIconClick = async () => {
-      
+
           console.log("Submit clicked")
           try {
               console.log("Making call to send feedback")
       
               const response = await axios.post('https://groundbreak.onrender.com/metrics/feedback', {
-                text: "test",
+                text: feedbackText,
               });
       
               console.log(response)
-              //setFeedbackText('');
+              setFeedbackText('');
           } catch (error) {
               console.error('Error sending feedback call:', error);
           }
         };
-        return (
-          <StyledForm>
-          <StyledInput
-            placeholder="Send Feedback"
-            value={"test"} // Set the value of StyledInput to feedbackText state
-            //onChange={(event: any) => setFeedbackText(event.target.value)} // Update feedbackText state on input change
-          />
-          <StyledIcon onClick={handleIconClick as () => void} style={{backgroundImage: `url(${linkImage})`}} />
-        </StyledForm>
-        )
-      }
-      */
-      render: () => {
         return (
           <div style={{
             position: "absolute",
@@ -290,16 +275,16 @@ const stories2 = [
             right: 0,
             width: "100%",
             height: "100%",
-            zIndex: "9999",
+            zIndex: "20000",
             pointerEvents: "none"
           }}>
            <StyledForm>
               <StyledInput
                 placeholder="Send Feedback"
-                value={"test"} // Set the value of StyledInput to feedbackText state
-                //onChange={(event: any) => setFeedbackText(event.target.value)} // Update feedbackText state on input change
+                value={feedbackText} // Set the value of StyledInput to feedbackText state
+                onChange={(event: any) => setFeedbackText(event.target.value)} // Update feedbackText state on input change
               />
-              <StyledIcon /*onClick={handleIconClick as () => void} style={{backgroundImage: `url(${linkImage})`}}*/ />
+              <StyledIcon onClick={handleIconClick as () => void} style={{backgroundImage: `url(${linkImage})`}} />
             </StyledForm>
           </div>
         )
