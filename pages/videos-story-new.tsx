@@ -7,6 +7,8 @@ import axios from 'axios';
 import { TbSend } from "react-icons/tb"
 
 import linkImage from '../assets/Subtract.png';
+import { useAppDispatch } from "@/stores/hook";
+import { setPause } from "@/components/my-story/slices/story.slice";
 /*
 const stories2 = [
   {
@@ -251,6 +253,7 @@ const FeedbackForm = () => {
       console.error('Error sending feedback call:', error);
     }
   };
+  const dispatch = useAppDispatch();
   return (
     <div style={{
       position: "absolute",
@@ -265,6 +268,7 @@ const FeedbackForm = () => {
           placeholder="Send Feedback"
           value={feedbackText} // Set the value of StyledInput to feedbackText state
           onChange={(event: any) => setFeedbackText(event.target.value)} // Update feedbackText state on input change
+          onFocus={() => dispatch(setPause(true))}
         />
         {/* <StyledIcon onClick={handleIconClick as () => void} style={{ backgroundImage: `url(${linkImage})` }} /> */}
         <button className="h-8 w-8 text-white fill-current"
