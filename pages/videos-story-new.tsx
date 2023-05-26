@@ -334,7 +334,7 @@ const stories2 = [
     overlayColor: "#DA721B",
     widgets: [{
       spawnTime: 0,
-      //duration: 15860,
+      duration: 300000,
       render: FeedbackForm
     }]
   },
