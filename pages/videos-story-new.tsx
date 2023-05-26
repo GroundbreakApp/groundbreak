@@ -351,12 +351,12 @@ const stories2 = [
 function App() {
   
   return (
-    <div className="App" style={{ display: 'grid', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+    <div className="App" style={{ display: 'grid', justifyContent: 'center', alignItems: 'center', height: '100svh' }}>
       <div className="stories">
         <Suspense>
           <MyStory
-            height="100vh"
-            width="100vw"
+            height="100svh"
+            width="100svw"
             keyboardNavigation
             defaultInterval={8000}
             stories={stories2}
