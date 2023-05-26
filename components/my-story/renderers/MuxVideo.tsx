@@ -8,7 +8,8 @@ import WithHeader from "./wrappers/withHeader";
 import WithSeeMore from "./wrappers/withSeeMore";
 import MuteSVG from "@/components/story/assets/mute.svg";
 import { BsFillPlayFill } from "react-icons/bs"
-import { useAppSelector } from "@/stores/hook";
+import { useAppDispatch, useAppSelector } from "@/stores/hook";
+import { setMuted } from "../slices/story.slice"
 
 export const Renderer: IRenderer = ({
   story,
@@ -18,11 +19,13 @@ export const Renderer: IRenderer = ({
   messageHandler,
 }) => {
   const [loaded, setLoaded] = React.useState(false);
-  const [muted, setMuted] = React.useState(false);
+
   const { width, height, loader, storyStyles } = config;
   const [innerStatus, setInnerStatus] = React.useState<"playing" | "paused" | "disabled" | "ended">("paused")
   const currentBlurColor = useAppSelector(state => state.story.currentBlurColor);
   const isPaused = useAppSelector(state => state.story.pause);
+  const muted = useAppSelector(state => state.story.muted);
+  const dispatch = useAppDispatch();
 
   const initWidgetState = story.widgets ?
     story.widgets.map((widget) => ({
@@ -133,7 +136,7 @@ export const Renderer: IRenderer = ({
       .catch((e: any) => {
         console.error(e)
 
-        setMuted(true);
+        dispatch(setMuted(true));
         vid?.current.play().finally(() => {
           action("play");
         });
@@ -160,7 +163,7 @@ export const Renderer: IRenderer = ({
   };
 
   function unMute() {
-    setMuted(false);
+    dispatch(setMuted(true));
   }
 
 

@@ -11,9 +11,9 @@ import {
 } from "./../interfaces";
 import useIsMounted from "./../util/use-is-mounted";
 import { register } from 'swiper/element/bundle';
-import { BsVolumeMute, BsFillPlayFill, BsFillPauseFill } from "react-icons/bs"
+import { BsVolumeMute, BsFillPlayFill, BsFillPauseFill, BsFillVolumeUpFill } from "react-icons/bs"
 import { useAppDispatch, useAppSelector } from "@/stores/hook";
-import { setCurrentBlur, setCurrentIndex, setPause, togglePause as togglePauseAction, nextSlide, prevSlide } from "../slices/story.slice";
+import { setCurrentBlur, setCurrentIndex, setPause, togglePause as togglePauseAction, nextSlide, prevSlide, setMuted } from "../slices/story.slice";
 import useMobileDetect from "@/hooks/useMobileDetect";
 
 register();
@@ -43,6 +43,7 @@ export default function Container() {
   const { pause } = useAppSelector(state => state.story);
   const currentIndex = useAppSelector(state => state.story.currentIndex);
   const [isMobile, setIsMobile] = useState(false)
+  const muted = useAppSelector(state => state.story.muted);
 
   const dispatch = useAppDispatch();
 
@@ -175,8 +176,13 @@ export default function Container() {
               <BsFillPauseFill className="text-white fill-current w-8 h-8" />
             }
           </button>
-          <button className="bg-black bg-opacity-30 px-4 rounded-xl">
-            <BsVolumeMute className="text-white fill-current w-8 h-8" />
+          <button className="bg-black bg-opacity-30 px-4 rounded-xl"
+            onClick={() => {
+              dispatch(setMuted(!muted))
+            }}
+          >
+            {muted && <BsVolumeMute className="text-white fill-current w-8 h-8" />}
+            {!muted && <BsFillVolumeUpFill className="text-white fill-current w-8 h-8" />}
           </button>
         </div>
       </div>
