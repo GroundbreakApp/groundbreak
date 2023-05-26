@@ -1,7 +1,11 @@
 
-import React, { Suspense } from "react";
+import React, { Suspense,useState, useEffect } from "react";
 import MyStory from '@/components/my-story'
 import LinkSVG from "@/assets/link.svg";
+import styled from 'styled-components';
+import axios from 'axios';
+
+import linkImage from '../assets/Subtract.png';
 /*
 const stories2 = [
   {
@@ -193,6 +197,81 @@ const stories2 = [
   },
 ];
 */
+
+
+const StyledForm = styled.form`
+  position: absolute;
+  top: 100;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5); // semi-transparent background
+  padding: 10px;
+`;
+
+const StyledInput = styled.input`
+  box-sizing: border-box;
+  flex-grow: 1;
+  background: transparent;
+  border: none;
+  font-family: 'Graphik';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 25px;
+  color: rgba(0, 0, 0, 0.5);
+`;
+
+const StyledIcon = styled.div`
+  width: 25px;
+  height: 25px;
+  opacity: 0.5;
+  background: #33363F;
+  border-radius: 1px;
+`;
+
+const FeedbackForm = () => {
+  const [feedbackText, setFeedbackText] = useState(''); // Add state for feedback text
+  const handleIconClick = async () => {
+
+    console.log("Submit clicked")
+    try {
+        console.log("Making call to send feedback")
+
+        const response = await axios.post('https://groundbreak.onrender.com/metrics/feedback', {
+          text: feedbackText,
+        });
+
+        console.log(response)
+        setFeedbackText('');
+    } catch (error) {
+        console.error('Error sending feedback call:', error);
+    }
+  };
+  return (
+    <div style={{
+      position: "absolute",
+      left: 0,
+      right: 0,
+      width: "100%",
+      height: "100%",
+      zIndex: "20000",
+      pointerEvents: "none"
+    }}>
+     <StyledForm>
+        <StyledInput
+          placeholder="Send Feedback"
+          value={feedbackText} // Set the value of StyledInput to feedbackText state
+          onChange={(event: any) => setFeedbackText(event.target.value)} // Update feedbackText state on input change
+        />
+        <StyledIcon onClick={handleIconClick as () => void} style={{backgroundImage: `url(${linkImage})`}} />
+      </StyledForm>
+    </div>
+  )
+}
+
 const stories2 = [
   {
     playbackId: "7GTNWaH02xd6HXl9jl602bHkOkLVQUT8VWjnJmVfn00bFc",
@@ -201,12 +280,18 @@ const stories2 = [
     isAutoplay: false,
     overlayColor: "#FFFFFF"
   },
+
   {
     playbackId: "KzQwJ4SJDpw01gRqM46dOkXtEIfHsjjyx42Bxirm01aGo", // groundbreak is short form video
     type: "mux-video",
     duration: 10.8 * 1000,
     isAutoplay: true,
-    overlayColor: "#EFE4AF"
+    overlayColor: "#EFE4AF",
+    widgets: [{
+      spawnTime: 2000,
+      duration: 6000,
+      render: FeedbackForm
+    }]
   },
   {
     playbackId: "sWIY011z63lA4hBLmKcuyAUp78CTfGUdZ5JLjx7ljwfk", // groundbreak is short form video
