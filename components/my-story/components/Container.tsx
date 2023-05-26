@@ -107,8 +107,11 @@ export default function Container() {
   //
   // for iphone
   //
-  document.body.style.background = stories[currentId].overlayColor ?? "transparent"
-  document.body.style.backgroundColor = stories[currentId].overlayColor ?? "transparent"
+  if (global.window) {
+    global.window.document.body.style.background = stories[currentId].overlayColor ?? "transparent"
+    global.window.document.body.style.backgroundColor = stories[currentId].overlayColor ?? "transparent"
+  }
+
   return (
     <div
       className={clsx({
