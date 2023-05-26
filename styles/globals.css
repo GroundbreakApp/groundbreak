@@ -141,6 +141,7 @@ mux-player {
 swiper-container {
   width: 100%;
   height: 600px;
+  border-radius: 15px;
 }
 
 swiper-slide {

@@ -13,7 +13,7 @@ import useIsMounted from "./../util/use-is-mounted";
 import { register } from 'swiper/element/bundle';
 import { BsVolumeMute, BsFillPlayFill, BsFillPauseFill } from "react-icons/bs"
 import { useAppDispatch, useAppSelector } from "@/stores/hook";
-import { setCurrentBlur, setCurrentIndex, setPause, togglePause as togglePauseAction } from "../slices/story.slice";
+import { setCurrentBlur, setCurrentIndex, setPause, togglePause as togglePauseAction, nextSlide, prevSlide } from "../slices/story.slice";
 import useMobileDetect from "@/hooks/useMobileDetect";
 
 register();
@@ -23,6 +23,7 @@ export default function Container() {
   const swiperElRef = useRef<any>(null);
 
   const currentId = useAppSelector((state) => state.story.currentIndex);
+  const isPause = useAppSelector(state => state.story.pause);
 
   const [videoDuration, setVideoDuration] = useState<number>(0);
   const isMounted = useIsMounted();
@@ -79,6 +80,26 @@ export default function Container() {
   const togglePause = () => {
     dispatch(togglePauseAction())
   }
+  const Play = () => <button
+    className="absolute w-full h-full flex items-center justify-center pointer-events-none z-[99999]
+    "
+  >
+    <BsFillPlayFill className="text-white fill-current w-8 h-8 pointer-events-auto" onClick={() => {
+      dispatch(setPause(false))
+    }} />
+  </button>
+
+  const mouseUp =
+    (type: string) => (e: React.MouseEvent | React.TouchEvent) => {
+      e.preventDefault();
+      mousedownId.current && clearTimeout(mousedownId.current);
+      // if (pause) {
+      //   toggleState("play");
+      // } else {
+      type === "next" ? dispatch(nextSlide()) : dispatch(prevSlide());
+      // }
+    };
+
 
   return (
     <div
@@ -106,7 +127,7 @@ export default function Container() {
         }}
       >
       </div>
-      <div className={clsx("relative w-full h-full")}>
+      <div className={clsx("relative w-full h-full p-3 sm:p-0 rounded-xl overflow-hidden ")}>
         <swiper-container
           ref={swiperElRef}
           slides-per-view={isMobile ? 1 : "auto"}
@@ -158,6 +179,36 @@ export default function Container() {
           </button>
         </div>
       </div>
+
+      <div
+        className={
+          clsx(
+            {
+              "hidden": !isMobile,
+              "pointer-events-none": true
+            }
+          )
+        }
+        style={styles.overlay}>
+        {isPause && <Play />}
+        <div
+          className="pointer-events-auto"
+          style={{ width: "50%", zIndex: 999 }}
+          // onTouchStart={debouncePause}
+          onTouchEnd={mouseUp("previous")}
+          // onMouseDown={debouncePause}
+          onMouseUp={mouseUp("previous")}
+        />
+        <div
+          className="pointer-events-auto"
+          style={{ width: "50%", zIndex: 999 }}
+          // onTouchStart={debouncePause}
+          onTouchEnd={mouseUp("next")}
+          // onMouseDown={debouncePause}
+          onMouseUp={mouseUp("next")}
+        />
+      </div>
+
     </div>
   );
 }

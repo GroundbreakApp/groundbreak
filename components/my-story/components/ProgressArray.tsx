@@ -128,9 +128,9 @@ const styles = {
 
     flexWrap: "nowrap" as const,
     // position: "absolute" as const,
-    width: "98%",
+    width: "90%",
     padding: 5,
-    paddingTop: 7,
+    paddingTop: 20,
     alignSelf: "center",
     zIndex: 1001,
     filter: "drop-shadow(0 1px 8px #222)",
