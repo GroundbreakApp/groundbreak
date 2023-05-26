@@ -200,16 +200,15 @@ const stories2 = [
 
 
 const StyledForm = styled.form`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   position: relative;
-  width: 343px;
-  height: 43px;
-  background: rgba(203, 253, 85, 0.5);
-  border: 3px solid rgba(255, 255, 255, 0.5);
-  border-radius: 8px;
-  padding: 0 10px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5); // semi-transparent background
+  padding: 10px;
 `;
 
 const StyledInput = styled.input`
