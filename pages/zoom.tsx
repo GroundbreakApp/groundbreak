@@ -3,7 +3,7 @@ import { isMobile } from 'react-device-detect';
 import styled from 'styled-components';
 import axios from 'axios';
 
-import linkImage from '../assets/link.svg';
+import linkImage from '../assets/Subtract.png';
 
 const StyledForm = styled.form`
   display: flex;
@@ -32,6 +32,7 @@ const StyledInput = styled.input`
 `;
 
 const StyledIcon = styled.div`
+  background-image: url(../assets/Subtract.png)
   width: 25px;
   height: 25px;
   opacity: 0.5;
@@ -88,7 +89,7 @@ const App = () => {
                 console.error('Error making call:', error);
             }
         };
-        makeCall()
+        //makeCall()
         
     }
     loadIgnore = true
