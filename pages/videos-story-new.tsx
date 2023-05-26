@@ -1,5 +1,5 @@
 
-import React, { Suspense,useState, useEffect } from "react";
+import React, { Suspense, useState, useEffect } from "react";
 import MyStory from '@/components/my-story'
 import LinkSVG from "@/assets/link.svg";
 import styled from 'styled-components';
@@ -238,16 +238,16 @@ const FeedbackForm = () => {
 
     console.log("Submit clicked")
     try {
-        console.log("Making call to send feedback")
+      console.log("Making call to send feedback")
 
-        const response = await axios.post('https://groundbreak.onrender.com/metrics/feedback', {
-          text: feedbackText,
-        });
+      const response = await axios.post('https://groundbreak.onrender.com/metrics/feedback', {
+        text: feedbackText,
+      });
 
-        console.log(response)
-        setFeedbackText('');
+      console.log(response)
+      setFeedbackText('');
     } catch (error) {
-        console.error('Error sending feedback call:', error);
+      console.error('Error sending feedback call:', error);
     }
   };
   return (
@@ -260,13 +260,13 @@ const FeedbackForm = () => {
       zIndex: "20000",
       pointerEvents: "none"
     }}>
-     <StyledForm>
+      <StyledForm>
         <StyledInput
           placeholder="Send Feedback"
           value={feedbackText} // Set the value of StyledInput to feedbackText state
           onChange={(event: any) => setFeedbackText(event.target.value)} // Update feedbackText state on input change
         />
-        <StyledIcon onClick={handleIconClick as () => void} style={{backgroundImage: `url(${linkImage})`}} />
+        <StyledIcon onClick={handleIconClick as () => void} style={{ backgroundImage: `url(${linkImage})` }} />
       </StyledForm>
     </div>
   )
@@ -333,7 +333,7 @@ const stories2 = [
     duration: 5 * 1000,
     type: "mux-video",
     isAutoplay: true,
-    overlayColor: "#DA721B",
+    overlayColor: "#000000",
   },
 ];
 
