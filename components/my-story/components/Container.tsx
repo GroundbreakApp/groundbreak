@@ -1,4 +1,5 @@
 import React, { useContext, useState, useRef, useEffect } from "react";
+import clsx from "clsx"
 import GlobalContext from "./../context/Global";
 import StoriesContext from "./../context/Stories";
 import ProgressContext from "./../context/Progress";
@@ -13,6 +14,7 @@ import { register } from 'swiper/element/bundle';
 import { BsVolumeMute, BsFillPlayFill, BsFillPauseFill } from "react-icons/bs"
 import { useAppDispatch, useAppSelector } from "@/stores/hook";
 import { setCurrentBlur, setCurrentIndex, setPause, togglePause as togglePauseAction } from "../slices/story.slice";
+import useMobileDetect from "@/hooks/useMobileDetect";
 
 register();
 
@@ -39,8 +41,15 @@ export default function Container() {
   const { stories } = useContext<StoriesContextInterface>(StoriesContext);
   const { pause } = useAppSelector(state => state.story);
   const currentIndex = useAppSelector(state => state.story.currentIndex);
+  const [isMobile, setIsMobile] = useState(false)
 
   const dispatch = useAppDispatch();
+
+  let mobileDetect = useMobileDetect();
+
+  useEffect(() => {
+    setIsMobile(mobileDetect.isMobile())
+  }, [])
 
   useEffect(() => {
     // listen for Swiper events using addEventListener
@@ -73,6 +82,9 @@ export default function Container() {
 
   return (
     <div
+      className={clsx({
+        "pt-14": !isMobile
+      })}
       style={{
         ...styles.container,
         ...storyContainerStyles,
@@ -94,12 +106,12 @@ export default function Container() {
         }}
       >
       </div>
-      <div className="relative w-full h-full mt-12">
+      <div className={clsx("relative w-full h-full")}>
         <swiper-container
           ref={swiperElRef}
-          slides-per-view="auto"
+          slides-per-view={isMobile ? 1 : "auto"}
           centered-slides={true}
-          space-between="30"
+          space-between={isMobile ? 0 : "30"}
         >
           {
             stories.map((story, index) => {
@@ -125,7 +137,12 @@ export default function Container() {
           }
         </swiper-container>
       </div>
-      <div className="relative flex w-full items-center justify-center pb-12">
+      <div className={
+        clsx(
+          "relative flex w-full items-center justify-center pb-12",
+          isMobile && "hidden"
+        )
+      }>
         <div className="self-center">
           <button
             className="bg-black bg-opacity-30  mr-5 px-4 rounded-xl"
@@ -152,7 +169,6 @@ const styles = {
     background: "#434458",
     position: "relative" as const,
     WebkitUserSelect: 'none' as const,
-    paddingTop: "30px"
   },
   overlay: {
     position: "absolute" as const,

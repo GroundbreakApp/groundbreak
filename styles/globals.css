@@ -133,6 +133,8 @@ mux-player {
   --time-range: none;
   --time-display: none;
   --duration-display: none;
+  --media-background-color: transparent;
+  --media-object-fit: cover;
   z-index: 1000;
 }
 
@@ -161,4 +163,18 @@ swiper-slide > div {
   min-width: 200px !important;
   width: 80%;
   margin: auto;
+}
+
+@media (max-width: 600px) {
+  swiper-container {
+    height: 100%;
+  }
+  swiper-slide > div {
+    align-items: stretch;
+    justify-content: stretch;
+    height: 100%;
+  }
+  swiper-slide > div > div {
+    height: 100%;
+  }
 }

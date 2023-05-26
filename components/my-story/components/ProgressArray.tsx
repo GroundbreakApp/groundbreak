@@ -12,6 +12,8 @@ import { timestamp } from "../util/time";
 import { useAppDispatch, useAppSelector } from "@/stores/hook";
 
 import { nextSlide } from "../slices/story.slice";
+import useMobileDetect from "@/hooks/useMobileDetect";
+import clsx from "clsx";
 
 export default function ProgressArray() {
   const [count, setCount] = useState<number>(0);
@@ -31,6 +33,15 @@ export default function ProgressArray() {
     progressContainerStyles,
   } = useContext<GlobalCtx>(GlobalContext);
   const { stories } = useContext<StoriesContextInterface>(StoriesContext);
+
+  const [isMobile, setIsMobile] = useState(false)
+
+
+  let mobileDetect = useMobileDetect();
+
+  useEffect(() => {
+    setIsMobile(mobileDetect.isMobile())
+  }, [])
 
   useEffect(() => {
     setCount(0);
@@ -91,11 +102,13 @@ export default function ProgressArray() {
   };
 
   return (
-    <div style={{
-      ...styles.progressArr,
-      ...progressContainerStyles,
-      ...opacityStyles
-    }}>
+    <div
+      className={clsx({ 'absolute': isMobile, 'max-w-[400px]': !isMobile })}
+      style={{
+        ...styles.progressArr,
+        ...progressContainerStyles,
+        ...opacityStyles
+      }}>
       {stories.map((_, i) => (
         <Progress
           key={i}
@@ -112,7 +125,7 @@ const styles = {
   progressArr: {
     display: "flex",
     justifyContent: "center",
-    maxWidth: "40%",
+
     flexWrap: "nowrap" as const,
     // position: "absolute" as const,
     width: "98%",
