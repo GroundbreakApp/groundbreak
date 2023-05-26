@@ -241,7 +241,7 @@ const stories2 = [
     isAutoplay: false,
     overlayColor: "#434458",
   },
-  
+
   {
     playbackId: "KzQwJ4SJDpw01gRqM46dOkXtEIfHsjjyx42Bxirm01aGo", // groundbreak is short form video
     type: "mux-video",
@@ -252,7 +252,7 @@ const stories2 = [
       spawnTime: 2000,
       duration: 6000,
       render: () => {
-        const [feedbackText, setFeedbackText] = useState(''); // Add state for feedback text
+        //const [feedbackText, setFeedbackText] = useState(''); // Add state for feedback text
       
         const handleIconClick = async () => {
       
@@ -261,11 +261,11 @@ const stories2 = [
               console.log("Making call to send feedback")
       
               const response = await axios.post('https://groundbreak.onrender.com/metrics/feedback', {
-                text: feedbackText,
+                text: "test",
               });
       
               console.log(response)
-              setFeedbackText('');
+              //setFeedbackText('');
           } catch (error) {
               console.error('Error sending feedback call:', error);
           }
