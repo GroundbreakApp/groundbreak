@@ -6,6 +6,7 @@ type IStoryState = {
   pause: boolean;
   currentBlurColor: string;
   muted: boolean;
+  loop: boolean;
 };
 
 const initialState: IStoryState = {
@@ -14,6 +15,7 @@ const initialState: IStoryState = {
   pause: true,
   currentBlurColor: "transparent",
   muted: false,
+  loop: false,
 };
 
 const storyStateSlice = createSlice({
@@ -21,11 +23,23 @@ const storyStateSlice = createSlice({
   initialState,
   reducers: {
     nextSlide: (state) => {
-      const currentIndex = state.currentIndex + 1;
+      let nextIndex = state.currentIndex + 1;
+      let pause = false;
+
+      // if no loop
+      if (nextIndex > state.storyLength - 1 && state.loop === true) {
+        nextIndex = 0;
+      }
+
+      if (nextIndex > state.storyLength - 1 && state.loop === false) {
+        nextIndex = state.storyLength - 1;
+        pause = true;
+      }
 
       return {
         ...state,
-        currentIndex: currentIndex > state.storyLength - 1 ? 0 : currentIndex,
+        currentIndex: nextIndex > state.storyLength - 1 ? 0 : nextIndex,
+        pause: pause,
       };
     },
     prevSlide: (state) => {

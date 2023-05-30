@@ -9,6 +9,7 @@ import { TbSend } from "react-icons/tb"
 import { isMobile } from 'react-device-detect';
 
 import linkImage from '../assets/Subtract.png';
+import UpLeft from '../assets/up-left.svg';
 import { useAppDispatch } from "@/stores/hook";
 import { setPause } from "@/components/my-story/slices/story.slice";
 
@@ -95,7 +96,7 @@ const FeedbackForm = () => {
 const stories2 = [
   {
     playbackId: "00qf3wmH00DHhiTZl8oe8RyulJPpa01jfQClmC5PbnAZ7Y",
-    duration: 12.7127 * 1000,
+    duration: 12.8 * 1000,
     type: "mux-video",
     isAutoplay: false,
     overlayColor: "#FFFFFF"
@@ -104,35 +105,53 @@ const stories2 = [
   {
     playbackId: "3P00vfla6A2ds7wBnZIsZEDenPent9RwobTDi3GYWEfI", // groundbreak is short form video
     type: "mux-video",
-    duration: 15.58 * 1000,
+    duration: 15.6 * 1000,
     isAutoplay: true,
     overlayColor: "#EFE4AF",
   },
   {
     playbackId: "Lrt72Y00TT2XyT6tqZ8OxbLDatFNt02eBLvbuAAju7LD00", // groundbreak is short form video
     type: "mux-video",
-    duration: 7.6 * 1000,
+    duration: 7.7 * 1000,
     isAutoplay: true,
     overlayColor: "#659DAD",
-    widgets: [{
-      spawnTime: 0,
-      duration: 4000,
-      render: () => {
-        return (
-          <div className="flex justify-center items-end h-full w-full absolute left-0 top-0 z-[99999]">
-            <div className="flex flex-col items-stretch bg-white w-[80%] mb-2 gap-4 p-2">
-              <p className="font-semibold text-sm">Fill out the form to join the waitlist</p>
-              <input type="text" className="text-gray-800 bg-transparent border border-gray-400 rounded-lg px-2 py-1" placeholder="First name" />
-              <input type="text" className="text-gray-800 bg-transparent border border-gray-400 rounded-lg px-2 py-1" placeholder="Last name" />
-              <input type="email" className="text-gray-800 bg-transparent border border-gray-400 rounded-lg px-2 py-1" placeholder="Email" />
-              <button className="bg-[#CBFD55] rounded-lg font-semibold py-2">
-                Join Waitlist
-              </button>
-            </div>
+    widgets: [
+      {
+        spawnTime: 0,
+        duration: 7000,
+        render: () => {
+          return <div className="flex justify-center items-start h-full w-full absolute left-0 top-0 z-[99999] ">
+            <a href="http://pmf.highalpha.com" target="_blank" className="mt-4 bg-[#FFBB86] text-[#172358] rounded-lg font-semibold py-2 flex items-center justify-center px-2">
+              Register Here
+              <span className="ml-2 w-4 h-4"> <UpLeft /> </span>
+            </a>
           </div>
-        )
-      }
-    }]
+        }
+      },
+      //   {
+      //   spawnTime: 0,
+      //   duration: 7000,
+      //   render: () => {
+      //     // eslint-disable-next-line react-hooks/rules-of-hooks
+      //     const dispatch = useAppDispatch();
+      //     return (
+      //       <div className="flex justify-center items-end h-full w-full absolute left-0 top-0 z-[99999]"
+      //         onFocus={() => dispatch(setPause(true))}
+      //       >
+      //         <div className="flex flex-col items-stretch bg-white w-[80%] mb-2 gap-4 p-2">
+      //           <p className="font-semibold text-sm">Fill out the form to join the waitlist</p>
+      //           <input type="text" className="text-gray-800 bg-transparent border border-gray-400 rounded-lg px-2 py-1" placeholder="First name" />
+      //           <input type="text" className="text-gray-800 bg-transparent border border-gray-400 rounded-lg px-2 py-1" placeholder="Last name" />
+      //           <input type="email" className="text-gray-800 bg-transparent border border-gray-400 rounded-lg px-2 py-1" placeholder="Email" />
+      //           <button className="bg-[#CBFD55] rounded-lg font-semibold py-2">
+      //             Join Waitlist
+      //           </button>
+      //         </div>
+      //       </div>
+      //     )
+      //   }
+      // }
+    ]
   },
 ];
 
