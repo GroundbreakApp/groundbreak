@@ -47,13 +47,13 @@ export const RegisterForm = () => {
 
   }
   return (
-    <div className="flex justify-center items-start h-full w-full absolute left-0 top-0 z-[99999]"
+    <div className="flex justify-center h-full w-full absolute left-0 top-0 z-[99999]"
       style={{
         zoom: 0.7
       }}
       onFocus={() => dispatch(setPause(true))}
     >
-      <div className="flex flex-col items-stretch bg-white w-[80%] mb-2 gap-4 p-2 mt-2">
+      <div className="flex flex-col items-stretch absolute top-80 bg-white w-[80%] mb-2 gap-4 p-2 mt-2">
         <p className="font-semibold text-base">Fill out the form to join the waitlist</p>
         <input
           type="text"
