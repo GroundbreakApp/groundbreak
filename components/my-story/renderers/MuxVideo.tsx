@@ -256,10 +256,10 @@ export const Renderer: IRenderer = ({
             onPlaying={() => {
               onPlaying();
             }}
-            onLoadStart={() => {
-              if (disabled) return;
-              dispatch(setLoading(true));
-            }}
+            // onLoadStart={() => {
+            //   if (disabled) return;
+            //   dispatch(setLoading(true));
+            // }}
             onPause={() => {
               if (disabled) return;
               console.log("on pause called 1");
@@ -274,7 +274,7 @@ export const Renderer: IRenderer = ({
             }}
             onLoadedData={() => {
               if (disabled) return;
-
+              console.log("Video loaded called");
               videoLoaded();
             }}
             onError={(e: any) => { console.log("ERROR", e) }}

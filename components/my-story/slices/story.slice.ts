@@ -17,7 +17,7 @@ const initialState: IStoryState = {
   currentBlurColor: "transparent",
   muted: false,
   loop: false,
-  loading: false,
+  loading: true,
 };
 
 const storyStateSlice = createSlice({
