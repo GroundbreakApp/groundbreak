@@ -10,7 +10,7 @@ import {
   StoriesContext as StoriesContextInterface,
 } from "./../interfaces";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
-
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import useIsMounted from "./../util/use-is-mounted";
 import { register } from 'swiper/element/bundle';
 import { BsVolumeMute, BsFillPlayFill, BsFillPauseFill, BsFillVolumeUpFill } from "react-icons/bs"
@@ -46,6 +46,7 @@ export default function Container() {
   const currentIndex = useAppSelector(state => state.story.currentIndex);
   const [isMobile, setIsMobile] = useState(false)
   const muted = useAppSelector(state => state.story.muted);
+  const isLoading = useAppSelector(state => state.story.loading);
 
   const dispatch = useAppDispatch();
 
@@ -84,12 +85,21 @@ export default function Container() {
     dispatch(togglePauseAction())
   }
   const Play = () => <button
-    className="absolute w-full h-full flex items-center justify-center pointer-events-none z-[99999]
-    "
+    className={clsx(
+      "absolute w-full h-full flex items-center justify-center pointer-events-none z-[99999]",
+    )}
+    disabled={isLoading}
   >
-    <BsFillPlayFill className="text-white fill-current w-8 h-8 pointer-events-auto" onClick={() => {
-      dispatch(setPause(false))
-    }} />
+    {isLoading ?
+      <AiOutlineLoading3Quarters className="text-[#CBFD55] fill-current w-8 h-8 pointer-events-auto animate-spin" />
+      : <a className="rounded-2xl font-sans text-xl font-semibold flex items-center justify-center text-black pointer-events-auto bg-[#CBFD55] py-2 px-4 font" onClick={() => {
+        dispatch(setPause(false))
+      }}>
+        <BsFillPlayFill className="fill-current w-8 h-8 mr-2" />
+        Play
+      </a>
+    }
+
   </button>
 
   const mouseUp =
@@ -198,6 +208,7 @@ export default function Container() {
           <button
             className="bg-black bg-opacity-30  mr-5 px-4 rounded-xl"
             onClick={togglePause}
+            disabled={isLoading}
           >
 
             {pause ? <BsFillPlayFill className="text-white fill-current w-8 h-8" /> :
