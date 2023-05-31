@@ -13,7 +13,9 @@ import { setPause } from "@/components/my-story/slices/story.slice";
 import { RegisterForm } from "@/components/RegisterForm";
 import { Logo } from "@/components/logo";
 
+import { useScrollBlock } from "@/hooks/useScrollBlock";
 
+const [blockScroll, allowScroll] = useScrollBlock();
 const stories2 = [
   {
     playbackId: "lEkxLDgI9UtYHavO02tMkeFiOb7JhalcI013mQYavsTpE",
@@ -122,6 +124,8 @@ function App() {
     }
     loadIgnore = true
   }, []);
+
+  blockScroll();
 
   return (
     <div className="App" style={{ display: 'grid', justifyContent: 'center', alignItems: 'center', height }}>
