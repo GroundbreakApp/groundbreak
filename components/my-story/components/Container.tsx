@@ -71,6 +71,11 @@ export default function Container() {
     dispatch(setCurrentBlur(stories[currentIndex].overlayColor))
   }, [currentIndex])
 
+  useEffect(() => {
+    window.addEventListener('touchmove', function(e){ e.preventDefault(); }, { passive: false });
+  }, [])
+  
+
   const toggleState = (action: string) => {
     dispatch(setPause(action === "pause"))
   };
