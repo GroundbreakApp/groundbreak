@@ -11,6 +11,7 @@ import { isMobile } from 'react-device-detect';
 import { useAppDispatch } from "@/stores/hook";
 import { setPause } from "@/components/my-story/slices/story.slice";
 import { RegisterForm } from "@/components/RegisterForm";
+import { Logo } from "@/components/logo";
 
 
 const stories2 = [
@@ -137,6 +138,7 @@ function App() {
             onStoryStart={(s: any, st: any) => { }}
             storyContainerStyles={{ borderRadius: 8, overflow: "hidden" }}
           />
+          <Logo />
         </Suspense>
       </div>
     </div>
