@@ -161,6 +161,7 @@ export default function Container() {
           slides-per-view={isMobile ? 1 : "auto"}
           centered-slides={true}
           space-between={isMobile ? 0 : "30"}
+          speed={isMobile ? 1 : 400}
         >
           {
             stories.map((story, index) => {
