@@ -53,7 +53,7 @@ export const RegisterForm = () => {
       }}
       onFocus={() => dispatch(setPause(true))}
     >
-      <div className="flex flex-col items-stretch absolute top-80 bg-white w-[80%] mb-2 gap-4 p-2 mt-2">
+      <div className="flex flex-col items-stretch absolute bg-white w-[80%] mb-2 gap-4 p-2 mt-16">
         <p className="font-semibold text-base">Fill out the form to join the waitlist</p>
         <input
           type="text"
