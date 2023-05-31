@@ -171,6 +171,8 @@ export const Renderer: IRenderer = ({
   const onTimeUpdate = () => {
     const media: any = vid.current.shadowRoot.querySelector("mux-video");
     const currentTime = media?.currentTime ?? 0;
+    console.log("onTimeUpdate", currentTime);
+
 
     const newWidgets = story?.widgets?.map(widget => {
       const isVisible = widget.spawnTime <= currentTime * 1000 &&
@@ -235,7 +237,7 @@ export const Renderer: IRenderer = ({
         }>
           {story.overlay && <story.overlay></story.overlay>}
           {!disabled && muted && <UnMute />}
-          {innerStatus !== "disabled" && innerStatus === "paused" && loaded === true && <Play />}
+          {innerStatus !== "disabled" && innerStatus === "paused" && <Play />}
           {widgets.map((widget, index) => {
             const Render: React.ElementType = widget.render
             return (<React.Fragment key={index}>
@@ -288,7 +290,7 @@ export const Renderer: IRenderer = ({
             onTimeUpdate={onTimeUpdate}
             preload="auto"
           />
-          {/* {!loaded && (
+          {!loaded && (
             <div
               style={{
                 width: "100%",
@@ -306,7 +308,7 @@ export const Renderer: IRenderer = ({
             >
               {loader || <Spinner />}
             </div>
-          )} */}
+          )}
         </div>
       </WithSeeMore>
     </WithHeader>

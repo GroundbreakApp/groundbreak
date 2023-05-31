@@ -46,7 +46,8 @@ export default function Container() {
   const currentIndex = useAppSelector(state => state.story.currentIndex);
   const [isMobile, setIsMobile] = useState(false)
   const muted = useAppSelector(state => state.story.muted);
-  const isLoading = useAppSelector(state => state.story.loading);
+  // const isLoading = useAppSelector(state => state.story.loading);
+  const isLoading = false;
 
   const dispatch = useAppDispatch();
 
