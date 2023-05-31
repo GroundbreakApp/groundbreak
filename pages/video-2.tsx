@@ -128,7 +128,7 @@ function App() {
 
   
   return (
-    <div className="App" style={{ display: 'grid', justifyContent: 'center', alignItems: 'center', height, overflow : 'hidden' }}>
+    <div className="App" style={{ position: 'relative', display: 'grid', justifyContent: 'center', alignItems: 'center', height, overflow : 'hidden' }}>
       <div className="stories">
         <Suspense>
           <MyStory
