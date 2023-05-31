@@ -154,7 +154,7 @@ export const Renderer: IRenderer = ({
     dispatch(setLoading(false))
 
     // this story slide is disabled
-    if (disabled) return;
+    if (innerStatus === "disabled") return;
 
     if (!story.isAutoplay) return;
 
@@ -256,10 +256,14 @@ export const Renderer: IRenderer = ({
             onPlaying={() => {
               onPlaying();
             }}
-            // onLoadStart={() => {
-            //   if (disabled) return;
-            //   dispatch(setLoading(true));
-            // }}
+            onCanPlay={() => {
+              console.log("onCanPlay")
+              setLoaded(true);
+              dispatch(setLoading(false))
+            }}
+            onLoadStart={() => {
+              dispatch(setLoading(true));
+            }}
             onPause={() => {
               if (disabled) return;
               console.log("on pause called 1");
@@ -273,8 +277,10 @@ export const Renderer: IRenderer = ({
               onEnded()
             }}
             onLoadedData={() => {
+              console.log("Video loaded called A");
+
               if (disabled) return;
-              console.log("Video loaded called");
+              console.log("Video loaded called B");
               videoLoaded();
             }}
             onError={(e: any) => { console.log("ERROR", e) }}
