@@ -127,6 +127,7 @@ function App() {
 
   blockScroll();
 
+  
   return (
     <div className="App" style={{ display: 'grid', justifyContent: 'center', alignItems: 'center', height }}>
       <div className="stories">
