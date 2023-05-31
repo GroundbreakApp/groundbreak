@@ -92,8 +92,8 @@ function App() {
       setHeight('100svh'); // switch to svh if supported
     }
 
-    window.addEventListener('touchstart', function(e){ e.preventDefault(); });
-    //window.addEventListener('touchmove', function(e){ e.preventDefault(); }, { passive: false });
+    //window.addEventListener('touchstart', function(e){ e.preventDefault(); });
+    window.addEventListener('touchmove', function(e){ e.preventDefault(); }, { passive: false });
 
     if (!loadIgnore) {
       const searchParams = new URLSearchParams(location.search);
