@@ -10,6 +10,7 @@ import { isMobile } from 'react-device-detect';
 
 import { useAppDispatch } from "@/stores/hook";
 import { setPause } from "@/components/my-story/slices/story.slice";
+import { RegisterForm } from "@/components/RegisterForm";
 
 
 const stories2 = [
@@ -73,28 +74,7 @@ const stories2 = [
       {
         spawnTime: 0,
         duration: 7000,
-        render: () => {
-          // eslint-disable-next-line react-hooks/rules-of-hooks
-          const dispatch = useAppDispatch();
-          return (
-            <div className="flex justify-center items-start h-full w-full absolute left-0 top-0 z-[99999]"
-              style={{
-                zoom: 0.7
-              }}
-              onFocus={() => dispatch(setPause(true))}
-            >
-              <div className="flex flex-col items-stretch bg-white w-[80%] mb-2 gap-4 p-2 mt-2">
-                <p className="font-semibold text-base">Fill out the form to join the waitlist</p>
-                <input type="text" className="text-gray-800 bg-transparent border border-gray-400 rounded-lg px-2 py-1" placeholder="First name" />
-                <input type="text" className="text-gray-800 bg-transparent border border-gray-400 rounded-lg px-2 py-1" placeholder="Last name" />
-                <input type="email" className="text-gray-800 bg-transparent border border-gray-400 rounded-lg px-2 py-1" placeholder="Email" />
-                <button className="bg-[#CBFD55] rounded-lg font-semibold py-2">
-                  Join Waitlist
-                </button>
-              </div>
-            </div>
-          )
-        }
+        render: () => <RegisterForm />
       }
     ]
   },
