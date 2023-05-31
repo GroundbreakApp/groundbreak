@@ -66,12 +66,14 @@ export const RegisterForm = () => {
           type="text"
           className="text-gray-800 bg-transparent border border-gray-400 rounded-lg px-2 py-1"
           placeholder="Last name"
+          name="lastName"
           onChange={(e) => handleChange(e)}
         />
         <input
           type="email"
           className="text-gray-800 bg-transparent border border-gray-400 rounded-lg px-2 py-1"
           placeholder="Email"
+          name="email"
           onChange={(e) => handleChange(e)}
         />
         <SubmitButton />
