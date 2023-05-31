@@ -13,9 +13,7 @@ import { setPause } from "@/components/my-story/slices/story.slice";
 import { RegisterForm } from "@/components/RegisterForm";
 import { Logo } from "@/components/logo";
 
-import { useScrollBlock } from "@/hooks/useScrollBlock";
 
-const [blockScroll, allowScroll] = useScrollBlock();
 const stories2 = [
   {
     playbackId: "lEkxLDgI9UtYHavO02tMkeFiOb7JhalcI013mQYavsTpE",
@@ -94,6 +92,8 @@ function App() {
       setHeight('100svh'); // switch to svh if supported
     }
 
+    window.addEventListener('touchmove', function(e){ e.preventDefault(); });
+
     if (!loadIgnore) {
       const searchParams = new URLSearchParams(location.search);
       const parameterValue = searchParams.get('clicksrc');
@@ -125,7 +125,6 @@ function App() {
     loadIgnore = true
   }, []);
 
-  blockScroll();
 
   
   return (
