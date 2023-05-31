@@ -92,6 +92,9 @@ function App() {
       setHeight('100svh'); // switch to svh if supported
     }
 
+    //window.addEventListener('touchstart', function(e){ e.preventDefault(); });
+    window.addEventListener('touchmove', function(e){ e.preventDefault(); }, { passive: false });
+
     if (!loadIgnore) {
       const searchParams = new URLSearchParams(location.search);
       const parameterValue = searchParams.get('clicksrc');
@@ -123,8 +126,10 @@ function App() {
     loadIgnore = true
   }, []);
 
+
+  
   return (
-    <div className="App" style={{ display: 'grid', justifyContent: 'center', alignItems: 'center', height }}>
+    <div className="App" style={{ display: 'grid', justifyContent: 'center', alignItems: 'center', height, }}>
       <div className="stories">
         <Suspense>
           <MyStory
