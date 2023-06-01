@@ -74,9 +74,9 @@ export default function Container() {
   }, [currentIndex])
 
   useEffect(() => {
-    window.addEventListener('touchmove', function(e){ e.preventDefault(); }, { passive: false });
+    window.addEventListener('touchmove', function (e) { e.preventDefault(); }, { passive: false });
   }, [])
-  
+
 
   const toggleState = (action: string) => {
     dispatch(setPause(action === "pause"))
@@ -90,23 +90,23 @@ export default function Container() {
   const togglePause = () => {
     dispatch(togglePauseAction())
   }
-  const Play = () => <button
-    className={clsx(
-      "absolute w-full h-full flex items-center justify-center pointer-events-none z-[99999]",
-    )}
-    disabled={isLoading}
-  >
-    {isLoading ?
-      <AiOutlineLoading3Quarters className="text-[#CBFD55] fill-current w-8 h-8 pointer-events-auto animate-spin" />
-      : <a className="rounded-2xl font-sans text-xl font-semibold flex items-center justify-center text-black pointer-events-auto bg-[#CBFD55] py-2 px-4 font" onClick={() => {
-        dispatch(setPause(false))
-      }}>
-        <BsFillPlayFill className="fill-current w-8 h-8 mr-2" />
-        Play
-      </a>
-    }
+  // const Play = () => <button
+  //   className={clsx(
+  //     "absolute w-full h-full flex items-center justify-center pointer-events-none z-[99999]",
+  //   )}
+  //   disabled={isLoading}
+  // >
+  //   {isLoading ?
+  //     <AiOutlineLoading3Quarters className="text-[#CBFD55] fill-current w-8 h-8 pointer-events-auto animate-spin" />
+  //     : <a className="rounded-2xl font-sans text-xl font-semibold flex items-center justify-center text-black pointer-events-auto bg-[#CBFD55] py-2 px-4 font" onClick={() => {
+  //       dispatch(setPause(false))
+  //     }}>
+  //       <BsFillPlayFill className="fill-current w-8 h-8 mr-2" />
+  //       Play
+  //     </a>
+  //   }
 
-  </button>
+  // </button>
 
   const mouseUp =
     (type: string) => (e: React.MouseEvent | React.TouchEvent) => {
@@ -243,10 +243,9 @@ export default function Container() {
           )
         }
         style={styles.overlay}>
-        {isPause && <Play />}
         <div
           className="pointer-events-auto"
-          style={{ width: "50%", zIndex: 999, height: "25%", alignSelf: "center" }}
+          style={{ background: "blue", width: "30%", zIndex: 999, height: "25%", alignSelf: "center" }}
           // onTouchStart={debouncePause}
           onTouchEnd={mouseUp("previous")}
           // onMouseDown={debouncePause}
@@ -254,7 +253,7 @@ export default function Container() {
         />
         <div
           className="pointer-events-auto"
-          style={{ width: "50%", zIndex: 999, height: "25%", alignSelf: "center" }}
+          style={{ background: "yellow", width: "30%", zIndex: 999, height: "25%", alignSelf: "center" }}
           // onTouchStart={debouncePause}
           onTouchEnd={mouseUp("next")}
           // onMouseDown={debouncePause}
@@ -278,5 +277,8 @@ const styles = {
     position: "absolute" as const,
     height: "inherit",
     width: "inherit",
+    background: "red",
+    justifyContent: "space-between",
+    alignItems: "center"
   },
 };
