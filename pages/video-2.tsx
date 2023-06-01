@@ -16,7 +16,7 @@ import { Logo } from "@/components/logo";
 
 const stories2 = [
   {
-    playbackId: "lEkxLDgI9UtYHavO02tMkeFiOb7JhalcI013mQYavsTpE",
+    playbackId: "i4f025tuVa2024JMiniMEEdR013EVwhbJpJK800ehk4pVmc",
     duration: 12.8 * 1000,
     type: "mux-video",
     isAutoplay: false,

@@ -99,7 +99,7 @@ const FeedbackForm = () => {
 
 const stories2 = [
   {
-    playbackId: "00qf3wmH00DHhiTZl8oe8RyulJPpa01jfQClmC5PbnAZ7Y",
+    playbackId: "i4f025tuVa2024JMiniMEEdR013EVwhbJpJK800ehk4pVmc",
     duration: 12.8 * 1000,
     type: "mux-video",
     isAutoplay: false,
