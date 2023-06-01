@@ -86,6 +86,19 @@ a {
 .click-on {
   pointer-events: auto;
 }
+#outer {
+    width: 351px;
+    height: 627px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+}
+.video {
+  position: relative;
+  left: 0;
+  top: 0;
+  opacity: 1;
+}
 </style>
     </div>
     <main class="main-wrap">
@@ -119,7 +132,7 @@ a {
         </div>
       </section>
       <section class="section video">
-        <div class="container video">
+        <div class="container video" id="outer">
           <video width="351" height="627" controls>
             <source src="videos/video-main.MOV" type="video/mp4">
             Your browser does not support the video tag.
