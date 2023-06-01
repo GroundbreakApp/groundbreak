@@ -55,7 +55,7 @@ const stories2 = [
         spawnTime: 0,
         duration: 7000,
         render: () => {
-          return <div className="flex justify-center items-start h-full w-full absolute left-0 top-0 z-[99999] ">
+          return <div className="flex justify-center items-start h-full w-full absolute left-0 top-8 z-[99999] ">
             <a href="http://pmf.highalpha.com" target="_blank" className="mt-4 bg-[#FFBB86] text-[#172358] rounded-lg font-semibold py-2 flex items-center justify-center px-2">
               View the Report
               <span className="ml-2 w-4 h-4"> <UpLeft /> </span>
