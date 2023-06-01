@@ -9,7 +9,7 @@ import WithSeeMore from "./wrappers/withSeeMore";
 import MuteSVG from "@/components/story/assets/mute.svg";
 import { BsFillPlayFill } from "react-icons/bs"
 import { useAppDispatch, useAppSelector } from "@/stores/hook";
-import { setLoading, setMuted } from "../slices/story.slice"
+import { setActiveVideoRef, setLoading, setMuted } from "../slices/story.slice"
 
 export const Renderer: IRenderer = ({
   story,
@@ -42,7 +42,12 @@ export const Renderer: IRenderer = ({
   };
 
   let vid = React.useRef<any>(null);
+
   useEffect(() => {
+
+    if (disabled !== true) {
+      dispatch(setActiveVideoRef(vid.current));
+    }
 
     if (disabled === true) {
       setInnerStatus("disabled");
@@ -71,7 +76,6 @@ export const Renderer: IRenderer = ({
         break;
       case "disabled":
         stopVideo();
-        vid.current.currentTime = 0;
         break;
     }
 
@@ -131,14 +135,12 @@ export const Renderer: IRenderer = ({
 
     vid?.current.play()
       .then(() => {
-        action("play");
       })
       .catch((e: any) => {
         console.error(e)
 
         dispatch(setMuted(true));
         vid?.current.play().finally(() => {
-          action("play");
         });
       });
   }
@@ -235,7 +237,7 @@ export const Renderer: IRenderer = ({
         }>
           {story.overlay && <story.overlay></story.overlay>}
           {!disabled && muted && <UnMute />}
-          {innerStatus !== "disabled" && innerStatus === "paused" && loaded === true && <Play />}
+          {innerStatus !== "disabled" && innerStatus === "paused" && <Play />}
           {widgets.map((widget, index) => {
             const Render: React.ElementType = widget.render
             return (<React.Fragment key={index}>
@@ -286,9 +288,8 @@ export const Renderer: IRenderer = ({
             onError={(e: any) => { console.log("ERROR", e) }}
             autoPlay={story.isAutoplay && !disabled}
             onTimeUpdate={onTimeUpdate}
-            preload="auto"
           />
-          {/* {!loaded && (
+          {!loaded && (
             <div
               style={{
                 width: "100%",
@@ -306,7 +307,7 @@ export const Renderer: IRenderer = ({
             >
               {loader || <Spinner />}
             </div>
-          )} */}
+          )}
         </div>
       </WithSeeMore>
     </WithHeader>

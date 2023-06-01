@@ -20,7 +20,7 @@ const stories2 = [
     duration: 12.8 * 1000,
     type: "mux-video",
     isAutoplay: false,
-    overlayColor: "#FFFFFF"
+    overlayColor: "#45476d"
   },
 
   {
@@ -28,28 +28,28 @@ const stories2 = [
     type: "mux-video",
     duration: 4.1 * 1000,
     isAutoplay: true,
-    overlayColor: "#EFE4AF",
+    overlayColor: "#222c67",
   },
   {
     playbackId: "pV02Txnt7SFyO6OAhH3W5o6IWwd5Zpfc02r7meaKimPt00", // groundbreak is short form video
     type: "mux-video",
     duration: 3.6 * 1000,
     isAutoplay: true,
-    overlayColor: "#659DAD",
+    overlayColor: "#664636",
   },
   {
     playbackId: "3I9gOOM2LpVqjOv00ejZx3nYQ2q5xluD4HtSez02MDN00w", // groundbreak is short form video
     type: "mux-video",
     duration: 4.0 * 1000,
     isAutoplay: true,
-    overlayColor: "#659DAD",
+    overlayColor: "#b8a0da",
   },
   {
     playbackId: "b5NrVCRkAobl02NKKtf96HkXzIKzdnBuRlKopG8ZZRpI", // groundbreak is short form video
     type: "mux-video",
     duration: 3.5 * 1000,
     isAutoplay: true,
-    overlayColor: "#659DAD",
+    overlayColor: "#ebc38e",
     widgets: [
       {
         spawnTime: 0,
@@ -70,7 +70,7 @@ const stories2 = [
     type: "mux-video",
     duration: 7.7 * 1000,
     isAutoplay: true,
-    overlayColor: "#659DAD",
+    overlayColor: "#ffffff",
     widgets: [
       {
         spawnTime: 0,
@@ -78,6 +78,13 @@ const stories2 = [
         render: () => <RegisterForm />
       }
     ]
+  },
+  {
+    playbackId: "4ErHAaYolNXfnJHyyYP8NqhCVs3EaSI5VrJBXLlzwIE", // groundbreak is short form video
+    type: "mux-video",
+    duration: 5 * 1000,
+    isAutoplay: true,
+    overlayColor: "#CBFD55",
   },
 ];
 
@@ -93,7 +100,7 @@ function App() {
     }
 
     //window.addEventListener('touchstart', function(e){ e.preventDefault(); });
-    window.addEventListener('touchmove', function(e){ e.preventDefault(); }, { passive: false });
+    window.addEventListener('touchmove', function (e) { e.preventDefault(); }, { passive: false });
 
     if (!loadIgnore) {
       const searchParams = new URLSearchParams(location.search);
@@ -127,25 +134,23 @@ function App() {
   }, []);
 
 
-  
+
   return (
     <div className="App" style={{ display: 'grid', justifyContent: 'center', alignItems: 'center', height, }}>
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"></meta>
       <div className="stories">
-        <Suspense>
-          <MyStory
-            height="100svh"
-            width="100svw"
-            keyboardNavigation
-            defaultInterval={8000}
-            stories={stories2}
-            onStoryEnd={(s: any, st: any) => { }}
-            onAllStoriesEnd={(s: any, st: any) => { }}
-            onStoryStart={(s: any, st: any) => { }}
-            storyContainerStyles={{ borderRadius: 8, overflow: "hidden" }}
-          />
-          <Logo />
-        </Suspense>
+        <MyStory
+          height="100svh"
+          width="100svw"
+          keyboardNavigation
+          defaultInterval={8000}
+          stories={stories2}
+          onStoryEnd={(s: any, st: any) => { }}
+          onAllStoriesEnd={(s: any, st: any) => { }}
+          onStoryStart={(s: any, st: any) => { }}
+          storyContainerStyles={{ borderRadius: 8, overflow: "hidden" }}
+        />
+        <Logo />
       </div>
     </div>
   );

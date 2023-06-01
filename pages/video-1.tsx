@@ -103,7 +103,7 @@ const stories2 = [
     duration: 12.8 * 1000,
     type: "mux-video",
     isAutoplay: false,
-    overlayColor: "#FFFFFF"
+    overlayColor: "#45476d"
   },
 
   {
@@ -111,14 +111,14 @@ const stories2 = [
     type: "mux-video",
     duration: 15.6 * 1000,
     isAutoplay: true,
-    overlayColor: "#EFE4AF",
+    overlayColor: "#f7d4e2",
   },
   {
     playbackId: "Lrt72Y00TT2XyT6tqZ8OxbLDatFNt02eBLvbuAAju7LD00", // groundbreak is short form video
     type: "mux-video",
     duration: 7.7 * 1000,
     isAutoplay: true,
-    overlayColor: "#659DAD",
+    overlayColor: "#d09269",
     widgets: [
       {
         spawnTime: 0,
@@ -126,6 +126,13 @@ const stories2 = [
         render: () => <RegisterForm />
       }
     ]
+  },
+  {
+    playbackId: "4ErHAaYolNXfnJHyyYP8NqhCVs3EaSI5VrJBXLlzwIE", // groundbreak is short form video
+    type: "mux-video",
+    duration: 5 * 1000,
+    isAutoplay: true,
+    overlayColor: "#CBFD55",
   },
 ];
 
