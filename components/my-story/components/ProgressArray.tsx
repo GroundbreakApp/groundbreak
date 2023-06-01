@@ -71,7 +71,6 @@ export default function ProgressArray() {
       countCopy = count + (dt * 100) / (interval ?? 1000);
       // return countCopy;
       if (currentId === stories.length - 1) {
-        console.log(currentId, countCopy)
         return countCopy;
       }
       return countCopy > 100 ? 0 : countCopy;
@@ -104,7 +103,6 @@ export default function ProgressArray() {
   const opacityStyles = {
     opacity: 1,
   };
-  console.log("count", count)
 
   return (
     <div
