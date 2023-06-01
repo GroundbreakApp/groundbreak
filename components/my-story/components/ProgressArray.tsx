@@ -69,13 +69,17 @@ export default function ProgressArray() {
     setCount((count: number) => {
       const interval = getCurrentInterval();
       countCopy = count + (dt * 100) / (interval ?? 1000);
+      // return countCopy;
+      if (currentId === stories.length - 1) {
+        console.log(currentId, countCopy)
+        return countCopy;
+      }
       return countCopy > 100 ? 0 : countCopy;
     });
     if (countCopy < 100) {
       animationFrameId.current = requestAnimationFrame(incrementCount);
     } else {
       cancelAnimationFrame(animationFrameId.current ?? 0);
-      setCount(0);
       storyEndCallback();
       dispatch(nextSlide());
       onNext();
@@ -100,6 +104,7 @@ export default function ProgressArray() {
   const opacityStyles = {
     opacity: 1,
   };
+  console.log("count", count)
 
   return (
     <div

@@ -245,7 +245,7 @@ export default function Container() {
         style={styles.overlay}>
         <div
           className="pointer-events-auto"
-          style={{ background: "blue", width: "30%", zIndex: 999, height: "25%", alignSelf: "center" }}
+          style={{ width: "30%", zIndex: 999, height: "25%", alignSelf: "center" }}
           // onTouchStart={debouncePause}
           onTouchEnd={mouseUp("previous")}
           // onMouseDown={debouncePause}
@@ -253,7 +253,7 @@ export default function Container() {
         />
         <div
           className="pointer-events-auto"
-          style={{ background: "yellow", width: "30%", zIndex: 999, height: "25%", alignSelf: "center" }}
+          style={{ width: "30%", zIndex: 999, height: "25%", alignSelf: "center" }}
           // onTouchStart={debouncePause}
           onTouchEnd={mouseUp("next")}
           // onMouseDown={debouncePause}
@@ -277,7 +277,6 @@ const styles = {
     position: "absolute" as const,
     height: "inherit",
     width: "inherit",
-    background: "red",
     justifyContent: "space-between",
     alignItems: "center"
   },

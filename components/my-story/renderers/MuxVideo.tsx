@@ -71,7 +71,6 @@ export const Renderer: IRenderer = ({
         break;
       case "disabled":
         stopVideo();
-        vid.current.currentTime = 0;
         break;
     }
 
@@ -171,8 +170,6 @@ export const Renderer: IRenderer = ({
   const onTimeUpdate = () => {
     const media: any = vid.current.shadowRoot.querySelector("mux-video");
     const currentTime = media?.currentTime ?? 0;
-    console.log("onTimeUpdate", currentTime);
-
 
     const newWidgets = story?.widgets?.map(widget => {
       const isVisible = widget.spawnTime <= currentTime * 1000 &&
