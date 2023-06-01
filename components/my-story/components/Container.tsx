@@ -199,7 +199,38 @@ export default function Container() {
                 >
                   <swiper-slide
                   >
-                    <div>
+                    <div style={{
+                      transform: "scale(1)",
+                      position: "relative"
+                    }}>
+                      <div
+                        className={
+                          clsx(
+                            {
+                              "hidden": !isMobile,
+                              "flex": isMobile,
+                              "pointer-events-none": true
+                            }
+                          )
+                        }
+                        style={styles.overlay}>
+                        <div
+                          className="pointer-events-auto"
+                          style={{ width: "30%", zIndex: 999, height: "25%", alignSelf: "center" }}
+                          // onTouchStart={debouncePause}
+                          onTouchEnd={mouseUp("previous")}
+                          // onMouseDown={debouncePause}
+                          onMouseUp={mouseUp("previous")}
+                        />
+                        <div
+                          className="pointer-events-auto"
+                          style={{ width: "30%", zIndex: 999, height: "25%", alignSelf: "center" }}
+                          // onTouchStart={debouncePause}
+                          onTouchEnd={mouseUp("next")}
+                          // onMouseDown={debouncePause}
+                          onMouseUp={mouseUp("next")}
+                        />
+                      </div>
                       <Story
                         action={toggleState}
                         disabled={index !== currentId}
@@ -242,36 +273,6 @@ export default function Container() {
           </button>
         </div>
       </div>
-
-      <div
-        className={
-          clsx(
-            {
-              "hidden": !isMobile,
-              "flex": isMobile,
-              "pointer-events-none": true
-            }
-          )
-        }
-        style={styles.overlay}>
-        <div
-          className="pointer-events-auto"
-          style={{ width: "30%", zIndex: 999, height: "25%", alignSelf: "center" }}
-          // onTouchStart={debouncePause}
-          onTouchEnd={mouseUp("previous")}
-          // onMouseDown={debouncePause}
-          onMouseUp={mouseUp("previous")}
-        />
-        <div
-          className="pointer-events-auto"
-          style={{ width: "30%", zIndex: 999, height: "25%", alignSelf: "center" }}
-          // onTouchStart={debouncePause}
-          onTouchEnd={mouseUp("next")}
-          // onMouseDown={debouncePause}
-          onMouseUp={mouseUp("next")}
-        />
-      </div>
-
     </div >
   );
 }
@@ -286,9 +287,10 @@ const styles = {
   },
   overlay: {
     position: "absolute" as const,
-    height: "inherit",
-    width: "inherit",
+    height: "100%",
+    width: "100%",
     justifyContent: "space-between",
-    alignItems: "center"
+    alignItems: "center",
+    zIndex: 1006
   },
 };
