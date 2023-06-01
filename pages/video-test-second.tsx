@@ -21,6 +21,7 @@ const MuxTest = () => {
         });
       });
   }
+  
   return <div className="w-60 flex items-center justify-center flex-col">
     <button onClick={playVideo}>
       Play button
