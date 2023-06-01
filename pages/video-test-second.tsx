@@ -34,6 +34,7 @@ const MuxTest = () => {
       playsInline={true}
       preload="auto"
       streamType="on-demand"
+      crossOrigin='true'
     />
   </div>
 }
