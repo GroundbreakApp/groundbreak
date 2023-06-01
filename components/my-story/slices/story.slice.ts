@@ -8,6 +8,7 @@ type IStoryState = {
   muted: boolean;
   loop: boolean;
   loading: boolean;
+  activeVideoRef: any;
 };
 
 const initialState: IStoryState = {
@@ -18,6 +19,7 @@ const initialState: IStoryState = {
   muted: false,
   loop: false,
   loading: true,
+  activeVideoRef: null,
 };
 
 const storyStateSlice = createSlice({
@@ -94,6 +96,12 @@ const storyStateSlice = createSlice({
         loading: action.payload,
       };
     },
+    setActiveVideoRef: (state, action) => {
+      return {
+        ...state,
+        activeVideoRef: action.payload,
+      };
+    },
   },
 });
 
@@ -109,6 +117,7 @@ export const {
   setCurrentBlur,
   setMuted,
   setLoading,
+  setActiveVideoRef,
 } = actions;
 
 export default reducer;

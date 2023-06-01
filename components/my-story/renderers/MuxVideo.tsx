@@ -9,7 +9,7 @@ import WithSeeMore from "./wrappers/withSeeMore";
 import MuteSVG from "@/components/story/assets/mute.svg";
 import { BsFillPlayFill } from "react-icons/bs"
 import { useAppDispatch, useAppSelector } from "@/stores/hook";
-import { setLoading, setMuted } from "../slices/story.slice"
+import { setActiveVideoRef, setLoading, setMuted } from "../slices/story.slice"
 
 export const Renderer: IRenderer = ({
   story,
@@ -42,7 +42,12 @@ export const Renderer: IRenderer = ({
   };
 
   let vid = React.useRef<any>(null);
+
   useEffect(() => {
+
+    if (disabled !== true) {
+      dispatch(setActiveVideoRef(vid.current));
+    }
 
     if (disabled === true) {
       setInnerStatus("disabled");
@@ -130,14 +135,12 @@ export const Renderer: IRenderer = ({
 
     vid?.current.play()
       .then(() => {
-        action("play");
       })
       .catch((e: any) => {
         console.error(e)
 
         dispatch(setMuted(true));
         vid?.current.play().finally(() => {
-          action("play");
         });
       });
   }

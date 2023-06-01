@@ -46,6 +46,7 @@ export default function Container() {
   const currentIndex = useAppSelector(state => state.story.currentIndex);
   const [isMobile, setIsMobile] = useState(false)
   const muted = useAppSelector(state => state.story.muted);
+  const activeVideoRef = useAppSelector(state => state.story.activeVideoRef);
   // const isLoading = useAppSelector(state => state.story.loading);
   const isLoading = false;
 
@@ -88,7 +89,17 @@ export default function Container() {
   };
 
   const togglePause = () => {
-    dispatch(togglePauseAction())
+
+    // current state is paused and start playing video
+    if (pause === true) {
+      if (activeVideoRef) {
+        activeVideoRef.play();
+      }
+    }
+    else {
+      dispatch(setPause(true));
+    }
+
   }
   // const Play = () => <button
   //   className={clsx(
