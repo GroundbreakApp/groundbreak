@@ -28,7 +28,7 @@ const MuxTest = () => {
     </button>
     <MuxPlayer
       ref={vid}
-      playbackId="QOPDsM02p3hD2YlOsjM5ogW1sDcfB01KxOGGgdsmrGJI00"//"lEkxLDgI9UtYHavO02tMkeFiOb7JhalcI013mQYavsTpE"
+      playbackId="VGdXspSYWo111LMGbQbEyRyft3YLQDV1mV02vAMC28K00"//"lEkxLDgI9UtYHavO02tMkeFiOb7JhalcI013mQYavsTpE"
       style={{
         height: "100vh"
       }}
