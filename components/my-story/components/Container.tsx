@@ -17,7 +17,7 @@ import { BsVolumeMute, BsFillPlayFill, BsFillPauseFill, BsFillVolumeUpFill } fro
 import { useAppDispatch, useAppSelector } from "@/stores/hook";
 import { setCurrentBlur, setCurrentIndex, setPause, togglePause as togglePauseAction, nextSlide, prevSlide, setMuted } from "../slices/story.slice";
 import useMobileDetect from "@/hooks/useMobileDetect";
-import { Swiper, SwiperSlide } from 'swiper/react';
+
 register();
 
 export default function Container() {
@@ -183,14 +183,12 @@ export default function Container() {
             <SlArrowRight />
           </button>
         </div>
-        <Swiper
+        <swiper-container
           ref={swiperElRef}
-          spaceBetween={isMobile ? 0 : "30"}
-          slidesPerView={isMobile ? 1 : "auto"}
-          onSlideChange={() => console.log('slide change')}
-          onSwiper={(swiper) => console.log(swiper)}
+          slides-per-view={isMobile ? 1 : "auto"}
+          centered-slides={true}
+          space-between={isMobile ? 0 : "30"}
           speed={isMobile ? 1 : 400}
-          centeredSlides={true}
         >
           {
             stories.map((story, index) => {
@@ -199,7 +197,7 @@ export default function Container() {
                 <React.Fragment
                   key={index}
                 >
-                  <SwiperSlide
+                  <swiper-slide
                   >
                     <div style={{
                       transform: "scale(1)",
@@ -240,12 +238,12 @@ export default function Container() {
                         getVideoDuration={getVideoDuration}
                       />
                     </div>
-                  </SwiperSlide>
+                  </swiper-slide>
                 </React.Fragment>
               )
             })
           }
-        </Swiper>
+        </swiper-container>
       </div>
       <div className={
         clsx(
