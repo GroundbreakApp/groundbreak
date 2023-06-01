@@ -1,5 +1,5 @@
 import { useJoinWaitList } from "@/services/api";
-import { useAppDispatch } from "@/stores/hook";
+import { useAppDispatch, useAppSelector } from "@/stores/hook";
 import { useState } from "react";
 import { AiOutlineLoading3Quarters, AiOutlineCheck } from "react-icons/ai";
 import { setPause } from "../my-story/slices/story.slice";
@@ -11,6 +11,7 @@ export const RegisterForm = () => {
   const [data, setData] = useState({ firstName: '', lastName: '', email: '' })
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const jointWaitlist = useJoinWaitList();
+  const videoRef = useAppSelector(state => state.story.activeVideoRef);
 
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -46,9 +47,12 @@ export const RegisterForm = () => {
         Join Waitlist
       </a>
     )
-
-
   }
+
+  if (isSubmitted) {
+    videoRef.play();
+  }
+
   return (
     <div className="flex justify-center h-full w-full absolute left-0 top-0 z-[99999]"
       style={{
