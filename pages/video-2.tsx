@@ -138,20 +138,18 @@ function App() {
   return (
     <div className="App" style={{ display: 'grid', justifyContent: 'center', alignItems: 'center', height, }}>
       <div className="stories">
-        <Suspense>
-          <MyStory
-            height="100svh"
-            width="100svw"
-            keyboardNavigation
-            defaultInterval={8000}
-            stories={stories2}
-            onStoryEnd={(s: any, st: any) => { }}
-            onAllStoriesEnd={(s: any, st: any) => { }}
-            onStoryStart={(s: any, st: any) => { }}
-            storyContainerStyles={{ borderRadius: 8, overflow: "hidden" }}
-          />
-          <Logo />
-        </Suspense>
+        <MyStory
+          height="100svh"
+          width="100svw"
+          keyboardNavigation
+          defaultInterval={8000}
+          stories={stories2}
+          onStoryEnd={(s: any, st: any) => { }}
+          onAllStoriesEnd={(s: any, st: any) => { }}
+          onStoryStart={(s: any, st: any) => { }}
+          storyContainerStyles={{ borderRadius: 8, overflow: "hidden" }}
+        />
+        <Logo />
       </div>
     </div>
   );
