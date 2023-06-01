@@ -288,7 +288,6 @@ export const Renderer: IRenderer = ({
             onError={(e: any) => { console.log("ERROR", e) }}
             autoPlay={story.isAutoplay && !disabled}
             onTimeUpdate={onTimeUpdate}
-            preload="auto"
           />
           {!loaded && (
             <div
