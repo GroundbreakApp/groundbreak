@@ -51,6 +51,7 @@ export const Renderer: IRenderer = ({
 
     if (disabled !== true) {
       dispatch(setActiveVideoRef(vid.current));
+      setInnerStatus("playing")
     }
 
     if (disabled === true) {
