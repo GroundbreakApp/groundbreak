@@ -8,7 +8,10 @@ type WaitListDTO = {
 };
 
 const joinWaitList = (data: WaitListDTO): Promise<any> => {
-  return axios.post("https://groundbreak.onrender.com/metrics/waitlist", data);
+  return axios.post(
+    `${process.env.NEXT_PUBLIC_RENDER_ADDRESS}/metrics/waitlist`,
+    data
+  );
 };
 
 export const useJoinWaitList = () => {
