@@ -118,7 +118,7 @@ function App() {
 
       const makeCall = async () => {
         try {
-          var response = await axios.post('${process.env.NEXT_PUBLIC_RENDER_ADDRESS}/metrics/tracking', {
+          var response = await axios.post(`${process.env.NEXT_PUBLIC_RENDER_ADDRESS}/metrics/tracking`, {
             deviceType: deviceType,
             clickSrc: clicksrc,
             page: "ph2"
