@@ -7,6 +7,10 @@ const nextConfig = {
         source: '/',
         destination: '/index.html',
       },
+      {
+        source: '/xxx',
+        destination: 'https://groundbreak-landing-page.webflow.io/',
+      },
     ]
   },
   compiler: {
@@ -20,15 +24,6 @@ const nextConfig = {
     });
 
     return config;
-  },
-  async rewrites() {
-    return [
-      {
-        source: '/xxx',
-        destination: 'https://google.com/',
-      },
-
-    ];
   },
 };
 
