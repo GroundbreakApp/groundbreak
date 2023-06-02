@@ -31,7 +31,7 @@ export const RegisterForm = () => {
   const SubmitButton = () => {
     if (jointWaitlist.isLoading) {
       return (
-        <button className="bg-[#CBFD55] rounded-lg font-semibold py-2 flex items-center justify-center" disabled={jointWaitlist.isLoading}>
+        <button className="font-serif bg-[#CBFD55] rounded-lg font-semibold py-2 flex items-center justify-center" disabled={jointWaitlist.isLoading}>
           <AiOutlineLoading3Quarters className="mr-2 animate-spin w-4 h-4" /> Wait a moment
         </button>
       )
@@ -50,7 +50,7 @@ export const RegisterForm = () => {
       <a className="cursor-pointer bg-[#CBFD55] rounded-lg font-semibold py-2 pointer-events-auto" onClick={() => {
         jointWaitlist.mutate(data);
       }}>
-        Join Waitlist
+        Register
       </a>
     )
   }
@@ -60,30 +60,30 @@ export const RegisterForm = () => {
   return (
     <div className="flex h-full w-full fixed left-0 top-0 z-[99999]"
       style={{
-        zoom: 0.5
+        zoom: 1.0
       }}
       onFocus={() => dispatch(setPause(true))}
     >
       {!isSubmitted && (
-        <div className="flex flex-col items-stretch fixed left-0 right-0  m-auto bg-white w-[80%] mb-2 gap-4 p-2 top-[20%] rounded-3xl overflow-hidden">
-          <p className="font-semibold text-base">Fill out the form to join the waitlist</p>
+        <div className="flex flex-col items-stretch fixed left-0 right-0  m-auto bg-white w-[70%] mb-2 gap-4 p-2 top-[20%] rounded-[12px] overflow-hidden">
+          <p className="font-semibold text-xs font-serif">Project Horizon Webinar Registration</p>
           <input
             type="text"
-            className="text-gray-800 bg-transparent border border-gray-400 rounded-lg px-2 py-1"
+            className="font-serif text-xs text-[#393939] bg-transparent border border-[#E4E4E4] rounded-lg p-2"
             placeholder="First name"
             name="firstName"
             onChange={(e) => handleChange(e)}
           />
           <input
             type="text"
-            className="text-gray-800 bg-transparent border border-gray-400 rounded-lg px-2 py-1"
+            className="font-serif text-xs text-[#393939] bg-transparent border border-[#E4E4E4] rounded-lg p-2"
             placeholder="Last name"
             name="lastName"
             onChange={(e) => handleChange(e)}
           />
           <input
             type="email"
-            className="text-gray-800 bg-transparent border border-gray-400 rounded-lg px-2 py-1"
+            className="font-serif text-xs text-[#393939] bg-transparent border border-[#E4E4E4] rounded-lg p-2"
             placeholder="Email"
             name="email"
             onChange={(e) => handleChange(e)}

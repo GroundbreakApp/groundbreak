@@ -215,7 +215,7 @@ export const Renderer: IRenderer = ({
       padding: "10px 25px",
       position: "absolute",
       color: "black",
-      zIndex: 99999,
+      zIndex: 999999,
       cursor: "pointer",
       left: "10px",
       top: "30px",

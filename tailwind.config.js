@@ -12,6 +12,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["SF Pro Display", "sans-serif"],
+        serif: ["Graphik", "sans-serif"],
       },
     },
   },
