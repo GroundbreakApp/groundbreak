@@ -207,7 +207,7 @@ export const Renderer: IRenderer = ({
     onClick={unMute}
     style={{
       display: "flex",
-      background: "white",
+      background: "#CBFD55",
       borderRadius: "15px",
       padding: "10px 25px",
       position: "absolute",
