@@ -168,6 +168,7 @@ export const Renderer: IRenderer = ({
   };
 
   function unMute() {
+    console.log("unMute is called")
     dispatch(setMuted(false));
   }
 
