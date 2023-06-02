@@ -25,7 +25,7 @@ const nextConfig = {
     return [
       {
         source: '/xxx',
-        destination: 'www.google.com',
+        destination: 'https://google.com/',
         permanent: true,
       },
 
