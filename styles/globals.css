@@ -114,6 +114,7 @@ a {
 }
 
 mux-player {
+  display: inherit;
   --dialog: none;
 
   /* --media-control-display: none; */
