@@ -293,12 +293,12 @@ export const Renderer: IRenderer = ({
             onLoadStart={() => {
               dispatch(setLoading(true));
             }}
-            onPause={() => {
-              if (disabled) return;
-              console.log("on pause called 1");
-              onPause()
-              console.log("on pause called 2");
-            }}
+            // onPause={() => {
+            //   if (disabled) return;
+            //   console.log("on pause called 1");
+            //   onPause()
+            //   console.log("on pause called 2");
+            // }}
             onEnded={() => {
               console.log("on ended called");
               if (disabled) return;
