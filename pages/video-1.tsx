@@ -184,8 +184,8 @@ function App() {
       <div className="stories">
         <Suspense>
           <MyStory
-            height="100svh"
-            width="100svw"
+            height="100vh"
+            width="100vw"
             keyboardNavigation
             defaultInterval={8000}
             stories={stories2}
