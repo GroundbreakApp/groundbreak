@@ -8,7 +8,7 @@ const nextConfig = {
         destination: '/index.html',
       },
       {
-        source: '/xxx',
+        source: '/pmf',
         destination: 'https://groundbreak-landing-page.webflow.io/',
       },
     ]
