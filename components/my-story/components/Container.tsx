@@ -254,22 +254,22 @@ export default function Container() {
       }>
         <div className="self-center">
           <button
-            className="bg-black bg-opacity-30  mr-5 px-4 rounded-xl"
+            className="bg-[#CBFD55] mr-5 px-4 rounded-xl"
             onClick={togglePause}
             disabled={isLoading}
           >
 
-            {pause ? <BsFillPlayFill className="text-white fill-current w-8 h-8" /> :
-              <BsFillPauseFill className="text-white fill-current w-8 h-8" />
+            {pause ? <BsFillPlayFill className="text-black fill-current w-8 h-8" /> :
+              <BsFillPauseFill className="text-black fill-current w-8 h-8" />
             }
           </button>
-          <button className="bg-black bg-opacity-30 px-4 rounded-xl"
+          <button className="bg-[#CBFD55]  px-4 rounded-xl"
             onClick={() => {
               dispatch(setMuted(!muted))
             }}
           >
-            {muted && <BsVolumeMute className="text-white fill-current w-8 h-8" />}
-            {!muted && <BsFillVolumeUpFill className="text-white fill-current w-8 h-8" />}
+            {muted && <BsVolumeMute className="text-black fill-current w-8 h-8" />}
+            {!muted && <BsFillVolumeUpFill className="text-black fill-current w-8 h-8" />}
           </button>
         </div>
       </div>
