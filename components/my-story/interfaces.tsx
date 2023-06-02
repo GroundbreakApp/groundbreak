@@ -70,6 +70,7 @@ export type Renderer = React.FC<{
   disabled: boolean;
   story: Story;
   isPaused?: boolean;
+  isLastSlide?: boolean;
   config: {
     width?: NumberOrString;
     height?: NumberOrString;
@@ -90,6 +91,7 @@ export interface StoryProps {
   action: Action;
   getVideoDuration: Function;
   disabled: boolean;
+  isLastSlide?: boolean;
 }
 
 export interface StoryState {

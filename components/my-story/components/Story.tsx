@@ -32,6 +32,7 @@ const Story = (props: StoryProps) => {
         config={config}
         disabled={props.disabled}
         messageHandler={rendererMessageHandler}
+        isLastSlide={props.isLastSlide}
       />
     );
   };

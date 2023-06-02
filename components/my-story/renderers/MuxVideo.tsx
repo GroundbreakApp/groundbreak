@@ -19,11 +19,13 @@ export const Renderer: IRenderer = ({
   config,
   disabled,
   messageHandler,
+  isLastSlide
 }) => {
   const [loaded, setLoaded] = React.useState(false);
 
   const { width, height, loader, storyStyles } = config;
   const [innerStatus, setInnerStatus] = React.useState<"playing" | "paused" | "disabled" | "ended">("paused")
+  const [isEnded, setIsEnded] = React.useState<boolean>(false)
   const currentBlurColor = useAppSelector(state => state.story.currentBlurColor);
   const isPaused = useAppSelector(state => state.story.pause);
   const muted = useAppSelector(state => state.story.muted);
@@ -58,6 +60,14 @@ export const Renderer: IRenderer = ({
 
     if (isPaused) {
       setInnerStatus("paused");
+      console.log(vid.current.currentTime * 1000)
+      console.log((story.duration ?? 1000) - 400);
+      console.log(isEnded);
+      if (vid.current.currentTime * 1000 > (story.duration ?? 1000) - 400 && isLastSlide) {
+        setIsEnded(true);
+      } else {
+        setIsEnded(false);
+      }
       return;
     }
 
@@ -253,7 +263,7 @@ export const Renderer: IRenderer = ({
         }>
           {story.overlay && <story.overlay></story.overlay>}
           {!disabled && muted && <UnMute />}
-          {innerStatus !== "disabled" && innerStatus === "paused" && <Play />}
+          {innerStatus !== "disabled" && innerStatus === "paused" && !isEnded && <Play />}
           {widgets.map((widget, index) => {
             const Render: React.ElementType = widget.render
             return (<React.Fragment key={index}>

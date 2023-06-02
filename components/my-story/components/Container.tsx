@@ -236,6 +236,7 @@ export default function Container() {
                         disabled={index !== currentId}
                         story={story}
                         getVideoDuration={getVideoDuration}
+                        isLastSlide={index === stories.length - 1}
                       />
                     </div>
                   </swiper-slide>
