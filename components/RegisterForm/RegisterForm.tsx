@@ -1,6 +1,6 @@
 import { useJoinWaitList } from "@/services/api";
 import { useAppDispatch, useAppSelector } from "@/stores/hook";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlineLoading3Quarters, AiOutlineCheck } from "react-icons/ai";
 import { setPause } from "../my-story/slices/story.slice";
 
@@ -21,6 +21,12 @@ export const RegisterForm = () => {
       [event.target.name]: event.target.value
     })
   }
+
+  useEffect(() => {
+    if (isSubmitted) {
+      videoRef.play();
+    }
+  }, [isSubmitted])
 
   const SubmitButton = () => {
     if (jointWaitlist.isLoading) {
@@ -49,9 +55,7 @@ export const RegisterForm = () => {
     )
   }
 
-  if (isSubmitted) {
-    videoRef.play();
-  }
+
 
   return (
     <div className="flex justify-center h-full w-full absolute left-0 top-0 z-[99999]"
