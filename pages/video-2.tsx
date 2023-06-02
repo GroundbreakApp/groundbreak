@@ -80,7 +80,7 @@ const stories2 = [
     ]
   },
   {
-    playbackId: "4ErHAaYolNXfnJHyyYP8NqhCVs3EaSI5VrJBXLlzwIE", // groundbreak is short form video
+    playbackId: "Mahil2YLAqtLr0101txaKF1fw5mJrWMl54SKIy302zW02uw", // groundbreak is short form video
     type: "mux-video",
     duration: 5.2 * 1000,
     isAutoplay: true,
