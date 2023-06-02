@@ -66,7 +66,7 @@ export const RegisterForm = () => {
     >
       {!isSubmitted && (
         <div className="flex flex-col items-stretch fixed left-0 right-0  m-auto bg-white w-[70%] mb-2 gap-2 p-2 top-[20%] rounded-[12px] overflow-hidden">
-          <p className="font-semibold text-xs font-serif">Project Horizon Webinar Registration</p>
+          <p className="font-semibold text-xs font-serif text-black">Project Horizon Webinar Registration</p>
           <input
             type="text"
             className="font-serif text-xs text-[#393939] bg-transparent border border-[#E4E4E4] rounded-lg p-2"
