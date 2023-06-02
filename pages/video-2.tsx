@@ -17,7 +17,7 @@ import { Logo } from "@/components/logo";
 const stories2 = [
   {
     playbackId: "i4f025tuVa2024JMiniMEEdR013EVwhbJpJK800ehk4pVmc",
-    duration: 12.8 * 1000,
+    duration: 13 * 1000,
     type: "mux-video",
     isAutoplay: false,
     overlayColor: "#45476d"
@@ -26,28 +26,28 @@ const stories2 = [
   {
     playbackId: "txu6bFcw502HhhA2SkZc14pUujOwQi1lZzrNEIkULIkQ", // groundbreak is short form video
     type: "mux-video",
-    duration: 4.1 * 1000,
+    duration: 4.3 * 1000,
     isAutoplay: true,
     overlayColor: "#222c67",
   },
   {
     playbackId: "pV02Txnt7SFyO6OAhH3W5o6IWwd5Zpfc02r7meaKimPt00", // groundbreak is short form video
     type: "mux-video",
-    duration: 3.6 * 1000,
+    duration: 3.8 * 1000,
     isAutoplay: true,
     overlayColor: "#664636",
   },
   {
     playbackId: "3I9gOOM2LpVqjOv00ejZx3nYQ2q5xluD4HtSez02MDN00w", // groundbreak is short form video
     type: "mux-video",
-    duration: 4.0 * 1000,
+    duration: 4.2 * 1000,
     isAutoplay: true,
     overlayColor: "#b8a0da",
   },
   {
     playbackId: "b5NrVCRkAobl02NKKtf96HkXzIKzdnBuRlKopG8ZZRpI", // groundbreak is short form video
     type: "mux-video",
-    duration: 3.5 * 1000,
+    duration: 3.7 * 1000,
     isAutoplay: true,
     overlayColor: "#ebc38e",
     widgets: [
@@ -68,7 +68,7 @@ const stories2 = [
   {
     playbackId: "4W00hZ4pMCakw02ndar56omDgA5sWguaflfc002ckR7qwU", // groundbreak is short form video
     type: "mux-video",
-    duration: 7.7 * 1000,
+    duration: 7.9 * 1000,
     isAutoplay: true,
     overlayColor: "#ffffff",
     widgets: [
@@ -82,7 +82,7 @@ const stories2 = [
   {
     playbackId: "4ErHAaYolNXfnJHyyYP8NqhCVs3EaSI5VrJBXLlzwIE", // groundbreak is short form video
     type: "mux-video",
-    duration: 5 * 1000,
+    duration: 5.2 * 1000,
     isAutoplay: true,
     overlayColor: "#000000",
   },
