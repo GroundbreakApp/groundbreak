@@ -65,7 +65,7 @@ export const RegisterForm = () => {
       onFocus={() => dispatch(setPause(true))}
     >
       {!isSubmitted && (
-        <div className="flex flex-col items-stretch fixed left-0 right-0  m-auto bg-white w-[70%] mb-2 gap-4 p-2 top-[20%] rounded-[12px] overflow-hidden">
+        <div className="flex flex-col items-stretch fixed left-0 right-0  m-auto bg-white w-[70%] mb-2 gap-2 p-2 top-[20%] rounded-[12px] overflow-hidden">
           <p className="font-semibold text-xs font-serif">Project Horizon Webinar Registration</p>
           <input
             type="text"
