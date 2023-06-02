@@ -21,6 +21,17 @@ const nextConfig = {
 
     return config;
   },
+  async redirects() {
+    return [
+      {
+        source: '/xxx',
+        destination: 'www.google.com',
+        permanent: true,
+      },
+
+    ];
+  },
 };
+
 
 module.exports = nextConfig;
