@@ -47,8 +47,8 @@ export default function Container() {
   const [isMobile, setIsMobile] = useState(false)
   const muted = useAppSelector(state => state.story.muted);
   const activeVideoRef = useAppSelector(state => state.story.activeVideoRef);
-  // const isLoading = useAppSelector(state => state.story.loading);
-  const isLoading = false;
+  const isLoading = useAppSelector(state => state.story.loading);
+  // const isLoading = false;
 
   const dispatch = useAppDispatch();
 
@@ -248,7 +248,7 @@ export default function Container() {
       <div className={
         clsx(
           "relative flex w-full items-center justify-center pb-12",
-          isMobile && "hidden",
+          (isMobile || isLoading) && "hidden",
           !isMobile && "flex",
         )
       }>

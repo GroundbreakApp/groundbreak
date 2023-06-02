@@ -56,7 +56,8 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
     width: "100%",
-    borderRadius: "40px"
+    borderRadius: "40px",
+    minHeight: "528px"
   },
   storyContent: {
     width: "auto",
