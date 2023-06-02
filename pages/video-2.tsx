@@ -84,7 +84,7 @@ const stories2 = [
     type: "mux-video",
     duration: 5 * 1000,
     isAutoplay: true,
-    overlayColor: "#CBFD55",
+    overlayColor: "#000000",
   },
 ];
 
