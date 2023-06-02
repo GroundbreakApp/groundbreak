@@ -203,7 +203,7 @@ export const Renderer: IRenderer = ({
       </div>
     )
   }
-  const UnMute = () => <div
+  const UnMute = () => <button
     onClick={unMute}
     style={{
       display: "flex",
@@ -224,7 +224,7 @@ export const Renderer: IRenderer = ({
       marginLeft: "5px",
       fontSize: "19px"
     }}>Unmute</span>
-  </div>
+  </button>
   // const Play = () => <button
   //   className="absolute w-full h-full flex items-center justify-center pointer-events-none z-[99999]
   //   "
