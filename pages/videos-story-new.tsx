@@ -245,7 +245,7 @@ const FeedbackForm = () => {
     try {
       console.log("Making call to send feedback")
 
-      const response = await axios.post('https://groundbreak.onrender.com/metrics/feedback', {
+      const response = await axios.post('${process.env.NEXT_PUBLIC_RENDER_ADDRESS}/metrics/feedback', {
         text: feedbackText,
       });
 
@@ -379,6 +379,7 @@ function App() {
               var response = await axios.post('https://groundbreak.onrender.com/metrics/tracking', {
                   deviceType: deviceType,
                   clickSrc: clicksrc,
+                  page: "video-story-new"
               });
               console.log(response)
           }catch(error){
