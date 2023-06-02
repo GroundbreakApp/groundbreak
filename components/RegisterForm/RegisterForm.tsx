@@ -58,14 +58,14 @@ export const RegisterForm = () => {
 
 
   return (
-    <div className="flex h-full w-full fixed left-0 top-0 z-[99999]"
+    <div className="flex h-full w-full fixed left-0 top-0 z-[99999] pointer-events-none"
       style={{
         zoom: 1.0
       }}
       onFocus={() => dispatch(setPause(true))}
     >
       {!isSubmitted && (
-        <div className="flex flex-col items-stretch fixed left-0 right-0  m-auto bg-white w-[70%] mb-2 gap-2 p-2 top-[20%] rounded-[12px] overflow-hidden">
+        <div className="flex flex-col items-stretch fixed left-0 right-0  m-auto bg-white w-[70%] mb-2 gap-2 p-2 top-[20%] rounded-[12px] overflow-hidden pointer-events-auto">
           <p className="font-semibold text-xs font-serif text-black">Project Horizon Webinar Registration</p>
           <input
             type="text"
