@@ -54,7 +54,9 @@ const styles = {
     position: "relative" as "relative",
     overflow: "hidden",
     alignItems: "center",
-    width: "100%"
+    justifyContent: "center",
+    width: "100%",
+    borderRadius: "40px"
   },
   storyContent: {
     width: "auto",

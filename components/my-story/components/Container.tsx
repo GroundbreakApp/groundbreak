@@ -291,6 +291,6 @@ const styles = {
     width: "100%",
     justifyContent: "space-between",
     alignItems: "center",
-    zIndex: 1006
+    zIndex: 1006,
   },
 };
