@@ -4,6 +4,8 @@
 
 @import url("https://fonts.cdnfonts.com/css/sf-pro-display");
 
+@import url("https://fonts.cdnfonts.com/css/graphik");
+
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
@@ -114,6 +116,7 @@ a {
 }
 
 mux-player {
+  display: inherit;
   --dialog: none;
 
   /* --media-control-display: none; */

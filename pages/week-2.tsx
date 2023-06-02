@@ -360,35 +360,35 @@ function App() {
       setHeight('100svh'); // switch to svh if supported
     }
 
-    if (!loadIgnore){
+    if (!loadIgnore) {
       const searchParams = new URLSearchParams(location.search);
       const parameterValue = searchParams.get('clicksrc');
 
       var clicksrc = 'none'
       var deviceType = 'desktop'
       if (parameterValue) {
-          clicksrc = parameterValue
+        clicksrc = parameterValue
       }
       if (isMobile) {
-          deviceType = 'mobile'
+        deviceType = 'mobile'
       }
       console.log("Making post call")
-      
+
       const makeCall = async () => {
-          try {
-              var response = await axios.post('https://groundbreak.onrender.com/metrics/tracking', {
-                  deviceType: deviceType,
-                  clickSrc: clicksrc,
-              });
-              console.log(response)
-          }catch(error){
-              console.error('Error making call:', error);
-          }
+        try {
+          var response = await axios.post('https://groundbreak.onrender.com/metrics/tracking', {
+            deviceType: deviceType,
+            clickSrc: clicksrc,
+          });
+          console.log(response)
+        } catch (error) {
+          console.error('Error making call:', error);
+        }
       };
       makeCall()
-      
-  }
-  loadIgnore = true
+
+    }
+    loadIgnore = true
   }, []);
 
   return (
@@ -396,8 +396,8 @@ function App() {
       <div className="stories">
         <Suspense>
           <MyStory
-            height="100svh"
-            width="100svw"
+            height="100vh"
+            width="100vw"
             keyboardNavigation
             defaultInterval={8000}
             stories={stories2}

@@ -47,8 +47,8 @@ export default function Container() {
   const [isMobile, setIsMobile] = useState(false)
   const muted = useAppSelector(state => state.story.muted);
   const activeVideoRef = useAppSelector(state => state.story.activeVideoRef);
-  // const isLoading = useAppSelector(state => state.story.loading);
-  const isLoading = false;
+  const isLoading = useAppSelector(state => state.story.loading);
+  // const isLoading = false;
 
   const dispatch = useAppDispatch();
 
@@ -172,12 +172,12 @@ export default function Container() {
             { "hidden": isMobile }
           )
         }>
-          <button className={"px-4 py-2 rounded-xl bg-opacity-50 bg-black text-white pointer-events-auto"}
+          <button className={"px-4 py-2 ml-8 rounded-xl bg-opacity-50 bg-black text-white pointer-events-auto"}
             onClick={() => { dispatch(prevSlide()) }}
           >
             <SlArrowLeft />
           </button>
-          <button className="px-4 py-2 rounded-xl bg-opacity-50 bg-black text-white pointer-events-auto"
+          <button className="px-4 py-2 mr-8 rounded-xl bg-opacity-50 bg-black text-white pointer-events-auto"
             onClick={() => { dispatch(nextSlide()) }}
           >
             <SlArrowRight />
@@ -248,28 +248,28 @@ export default function Container() {
       <div className={
         clsx(
           "relative flex w-full items-center justify-center pb-12",
-          isMobile && "hidden",
+          (isMobile || isLoading) && "hidden",
           !isMobile && "flex",
         )
       }>
         <div className="self-center">
           <button
-            className="bg-black bg-opacity-30  mr-5 px-4 rounded-xl"
+            className="bg-[#CBFD55] mr-5 px-4 rounded-xl"
             onClick={togglePause}
             disabled={isLoading}
           >
 
-            {pause ? <BsFillPlayFill className="text-white fill-current w-8 h-8" /> :
-              <BsFillPauseFill className="text-white fill-current w-8 h-8" />
+            {pause ? <BsFillPlayFill className="text-black fill-current w-8 h-8" /> :
+              <BsFillPauseFill className="text-black fill-current w-8 h-8" />
             }
           </button>
-          <button className="bg-black bg-opacity-30 px-4 rounded-xl"
+          <button className="bg-[#CBFD55]  px-4 rounded-xl"
             onClick={() => {
               dispatch(setMuted(!muted))
             }}
           >
-            {muted && <BsVolumeMute className="text-white fill-current w-8 h-8" />}
-            {!muted && <BsFillVolumeUpFill className="text-white fill-current w-8 h-8" />}
+            {muted && <BsVolumeMute className="text-black fill-current w-8 h-8" />}
+            {!muted && <BsFillVolumeUpFill className="text-black fill-current w-8 h-8" />}
           </button>
         </div>
       </div>
@@ -291,6 +291,6 @@ const styles = {
     width: "100%",
     justifyContent: "space-between",
     alignItems: "center",
-    zIndex: 1006
+    zIndex: 1006,
   },
 };

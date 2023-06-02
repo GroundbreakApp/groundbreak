@@ -10,6 +10,8 @@ import MuteSVG from "@/components/story/assets/mute.svg";
 import { BsFillPlayFill } from "react-icons/bs"
 import { useAppDispatch, useAppSelector } from "@/stores/hook";
 import { setActiveVideoRef, setLoading, setMuted } from "../slices/story.slice"
+import clsx from "clsx";
+import { AiOutlineLoading3Quarters } from "react-icons/ai"
 
 export const Renderer: IRenderer = ({
   story,
@@ -166,6 +168,7 @@ export const Renderer: IRenderer = ({
   };
 
   function unMute() {
+    console.log("unMute is called")
     dispatch(setMuted(false));
   }
 
@@ -201,16 +204,18 @@ export const Renderer: IRenderer = ({
       </div>
     )
   }
-  const UnMute = () => <div
+  const UnMute = () => <button
     onClick={unMute}
     style={{
       display: "flex",
-      background: "white",
+      alignItems: "center",
+      justifyContent: "center",
+      background: "#CBFD55",
       borderRadius: "15px",
       padding: "10px 25px",
       position: "absolute",
       color: "black",
-      zIndex: 99999,
+      zIndex: 999999,
       cursor: "pointer",
       left: "10px",
       top: "30px",
@@ -220,12 +225,23 @@ export const Renderer: IRenderer = ({
       marginLeft: "5px",
       fontSize: "19px"
     }}>Unmute</span>
-  </div>
+  </button>
+  // const Play = () => <button
+  //   className="absolute w-full h-full flex items-center justify-center pointer-events-none z-[99999]
+  //   "
+  // >
+  //   <BsFillPlayFill className="text-white fill-current w-8 h-8 pointer-events-auto" onClick={playVideo} />
+  // </button>
   const Play = () => <button
-    className="absolute w-full h-full flex items-center justify-center pointer-events-none z-[99999]
-    "
+    className={clsx(
+      "absolute w-full h-full flex items-center justify-center pointer-events-none z-[99999]",
+    )}
   >
-    <BsFillPlayFill className="text-white fill-current w-8 h-8 pointer-events-auto" onClick={playVideo} />
+    <a className="rounded-2xl font-sans text-xl font-semibold flex items-center justify-center text-black pointer-events-auto bg-[#CBFD55] py-2 px-4 font" onClick={playVideo}>
+      <BsFillPlayFill className="fill-current w-8 h-8 mr-2" />
+      Play
+    </a>
+
   </button>
 
   return (
