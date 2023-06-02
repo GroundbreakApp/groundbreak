@@ -31,7 +31,7 @@ export const RegisterForm = () => {
   const SubmitButton = () => {
     if (jointWaitlist.isLoading) {
       return (
-        <button className="text-xs font-serif bg-[#CBFD55] rounded-lg font-semibold py-2 flex items-center justify-center" disabled={jointWaitlist.isLoading}>
+        <button className="text-black text-xs font-serif bg-[#CBFD55] rounded-lg font-semibold py-2 flex items-center justify-center" disabled={jointWaitlist.isLoading}>
           <AiOutlineLoading3Quarters className="mr-2 animate-spin w-4 h-4" /> Wait a moment
         </button>
       )
@@ -40,14 +40,14 @@ export const RegisterForm = () => {
     if (jointWaitlist.isSuccess) {
       setIsSubmitted(true);
       return (
-        <button className="text-xs font-serif bg-[#CBFD55] rounded-lg font-semibold py-2 flex items-center justify-center">
+        <button className="text-black text-xs font-serif bg-[#CBFD55] rounded-lg font-semibold py-2 flex items-center justify-center">
           <AiOutlineCheck className="mr-2 w-4 h-4" /> Sent
         </button>
       )
     }
 
     return (
-      <a className="text-xs cursor-pointer font-serif bg-[#CBFD55] rounded-lg font-semibold py-2 pointer-events-auto" onClick={() => {
+      <a className="text-black text-xs cursor-pointer font-serif bg-[#CBFD55] rounded-lg font-semibold py-2 pointer-events-auto" onClick={() => {
         jointWaitlist.mutate(data);
       }}>
         Register
