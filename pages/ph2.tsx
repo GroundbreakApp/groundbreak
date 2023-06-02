@@ -118,9 +118,10 @@ function App() {
 
       const makeCall = async () => {
         try {
-          var response = await axios.post('https://groundbreak.onrender.com/metrics/tracking', {
+          var response = await axios.post(`${process.env.NEXT_PUBLIC_RENDER_ADDRESS}/metrics/tracking`, {
             deviceType: deviceType,
             clickSrc: clicksrc,
+            page: "ph2"
           });
           console.log(response)
         } catch (error) {
