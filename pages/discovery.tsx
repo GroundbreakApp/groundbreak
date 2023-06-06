@@ -5,7 +5,7 @@ import LinkSVG from "@/assets/link.svg";
 import styled from 'styled-components';
 import axios from 'axios';
 import { TbSend } from "react-icons/tb"
-
+import Head from "next/head"
 import { isMobile } from 'react-device-detect';
 
 import linkImage from '../assets/Subtract.png';
@@ -138,7 +138,44 @@ function App() {
     loadIgnore = true
   }, []);
 
-  return (
+  return (<>
+    <Head>
+      <meta
+        content="Groundbreak is a B2B vertical video platform that gets your foot in the door through personalized, disruptive experiences."
+        name="description"
+      />
+      <meta content="Groundbreak - Break Through the Noise" property="og:title" />
+      <meta
+        content="Groundbreak is a B2B vertical video platform that gets your foot in the door through personalized, disruptive experiences."
+        property="og:description"
+      />
+      <meta
+        content="https://groundbreak-qa.vercel.app/images/GB-Newsletter.gif"
+        property="og:image"
+      />
+      <meta
+        content="Groundbreak - Break Through the Noise"
+        property="twitter:title"
+      />
+      <meta
+        content="Groundbreak is a B2B vertical video platform that gets your foot in the door through personalized, disruptive experiences."
+        property="twitter:description"
+      />
+      <meta
+        content="https://groundbreak-qa.vercel.app/images/GB-Newsletter.gif"
+        property="twitter:image"
+      />
+      <meta property="og:type" content="website" />
+      <meta content="summary_large_image" name="twitter:card" />
+      <meta content="width=device-width, initial-scale=1" name="viewport" />
+      <meta
+        property="og:image:secure_url"
+        content="https://groundbreak-qa.vercel.app/images/GB-Newsletter.gif"
+      />
+      <meta property="og:image:type" content="image/gif" />
+      <meta property="og:image:width" content="270" />
+      <meta property="og:image:height" content="480" />
+    </Head>
     <div className="App" style={{ display: 'grid', justifyContent: 'center', alignItems: 'center', height }}>
       <div className="stories">
         <Suspense>
@@ -156,6 +193,8 @@ function App() {
         </Suspense>
       </div>
     </div>
+  </>
+
   );
 }
 
