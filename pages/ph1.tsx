@@ -182,6 +182,10 @@ function App() {
   return (
     <div className="App" style={{ display: 'grid', justifyContent: 'center', alignItems: 'center', height }}>
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"></meta>
+      <meta property="og:image:secure_url" content="https://https://media.giphy.com/media/8VrtCswiLDNnO/giphy.gif" />
+      <meta property="og:image:type" content="image/gif" />
+      <meta property="og:image:width" content="300" />
+      <meta property="og:image:height" content="300" />
       <div className="stories">
         <Suspense>
           <MyStory
