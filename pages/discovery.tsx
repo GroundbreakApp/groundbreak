@@ -43,7 +43,7 @@ const stories2 = [
     isAutoplay: true,
     overlayColor: "#D3DCDD",
     widgets: [{
-      spawnTime: 8000,
+      spawnTime: 4000,
       duration: 8500,
       render: () => {
         return (
@@ -85,6 +85,13 @@ const stories2 = [
         )
       }
     }]
+  },
+  {
+    playbackId: "7SQgcYkf2b9srbLMZIkMpwY8OUewsUdDjsOC7sm02G9Q", // groundbreak is short form video
+    type: "mux-video",
+    duration: 5 * 1000,
+    isAutoplay: true,
+    overlayColor: "#000",
   },
 ];
 
