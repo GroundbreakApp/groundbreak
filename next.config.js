@@ -5,7 +5,11 @@ const nextConfig = {
     return [
       {
         source: '/',
-        destination: '/index.html',
+        destination: 'https://groundbreak-landing-page.webflow.io/',
+      },
+      {
+        source: '/pmf',
+        destination: 'https://groundbreak-landing-page.webflow.io/',
       },
     ]
   },
