@@ -16,6 +16,7 @@ import { setPause } from "@/components/my-story/slices/story.slice";
 import { useJoinWaitList } from "@/services/api";
 import { RegisterForm } from "@/components/RegisterForm";
 import { Logo } from "@/components/logo";
+import Head from "next/head";
 
 const StyledForm = styled.form`
   position: absolute;
@@ -179,7 +180,44 @@ function App() {
     loadIgnore = true
   }, []);
 
-  return (
+  return (<>
+    <Head>
+      <meta
+        content="Groundbreak is a B2B vertical video platform that gets your foot in the door through personalized, disruptive experiences."
+        name="description"
+      />
+      <meta content="Groundbreak - Break Through the Noise" property="og:title" />
+      <meta
+        content="Groundbreak is a B2B vertical video platform that gets your foot in the door through personalized, disruptive experiences."
+        property="og:description"
+      />
+      <meta
+        content="https://groundbreak-qa.vercel.app/images/rj-express.gif"
+        property="og:image"
+      />
+      <meta
+        content="Groundbreak - Break Through the Noise"
+        property="twitter:title"
+      />
+      <meta
+        content="Groundbreak is a B2B vertical video platform that gets your foot in the door through personalized, disruptive experiences."
+        property="twitter:description"
+      />
+      <meta
+        content="https://groundbreak-qa.vercel.app/images/rj-express.gif"
+        property="twitter:image"
+      />
+      <meta property="og:type" content="website" />
+      <meta content="summary_large_image" name="twitter:card" />
+      <meta content="width=device-width, initial-scale=1" name="viewport" />
+      <meta
+        property="og:image:secure_url"
+        content="https://groundbreak-qa.vercel.app/images/rj-express.gif"
+      />
+      <meta property="og:image:type" content="image/gif" />
+      <meta property="og:image:width" content="270" />
+      <meta property="og:image:height" content="480" />
+    </Head>
     <div className="App" style={{ display: 'grid', justifyContent: 'center', alignItems: 'center', height }}>
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"></meta>
       <div className="stories">
@@ -199,6 +237,7 @@ function App() {
         </Suspense>
       </div>
     </div>
+  </>
   );
 }
 
