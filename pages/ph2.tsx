@@ -150,7 +150,7 @@ function App() {
           property="og:description"
         />
         <meta
-          content="https://groundbreak-qa.vercel.app/images/rj-express.gif"
+          content="https://groundbreak-qa.vercel.app/images/polished-gif-v.gif"
           property="og:image"
         />
         <meta
@@ -162,7 +162,7 @@ function App() {
           property="twitter:description"
         />
         <meta
-          content="https://groundbreak-qa.vercel.app/images/rj-express.gif"
+          content="https://groundbreak-qa.vercel.app/images/polished-gif-v.gif"
           property="twitter:image"
         />
         <meta property="og:type" content="website" />
@@ -170,7 +170,7 @@ function App() {
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta
           property="og:image:secure_url"
-          content="https://groundbreak-qa.vercel.app/images/rj-express.gif"
+          content="https://groundbreak-qa.vercel.app/images/polished-gif-v.gif"
         />
         <meta property="og:image:type" content="image/gif" />
         <meta property="og:image:width" content="270" />
