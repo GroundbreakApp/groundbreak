@@ -179,6 +179,7 @@ function App() {
     loadIgnore = true
   }, []);
 
+  
   return (
     <div className="App" style={{ display: 'grid', justifyContent: 'center', alignItems: 'center', height }}>
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"></meta>
