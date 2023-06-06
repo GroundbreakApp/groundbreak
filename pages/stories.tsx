@@ -18,12 +18,11 @@ import { RegisterForm } from "@/components/RegisterForm";
 import { Logo } from "@/components/logo";
 
 
-var stories = [{}];
-
-
 function App() {
 
   const [height, setHeight] = useState('100vh'); // default to vh
+  const [stories, setStories] = useState<any[]>([{}]); // Initialize stories as an empty array
+
   useEffect(() => {
     if ('CSS' in window && CSS.supports('height', '100svh')) {
       setHeight('100svh'); // switch to svh if supported
@@ -33,19 +32,28 @@ function App() {
     const storyId = searchParams.get('storyId');
 
 
+
     const getStories = async () => {
         try {
-          var response = await axios.get(`${process.env.NEXT_PUBLIC_RENDER_ADDRESS}/stories`, {
-            params: {
+          const response = await axios.get(
+            `${process.env.NEXT_PUBLIC_RENDER_ADDRESS}/stories`,
+            {
+              params: {
                 storyId: storyId,
+              },
             }
-          });
-        console.log(response)
+          );
+          const fetchedStories = response.data["videodata"];
+          console.log("reponse " + response)
+          console.log("video data " + response.data["videodata"] )
+          setStories(fetchedStories); // Update the stories state with the fetched data
+          console.log(stories)
         } catch (error) {
-          console.error('Error making stories call:', error);
+          console.error("Error making stories call:", error);
         }
-    };
-    getStories()
+      };
+  
+      getStories();
 
 
 
