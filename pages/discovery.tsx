@@ -125,7 +125,7 @@ function App() {
           var response = await axios.post(`${process.env.NEXT_PUBLIC_RENDER_ADDRESS}/metrics/tracking`, {
             deviceType: deviceType,
             clickSrc: clicksrc,
-            page: "week2"
+            page: "discovery"
           });
           console.log(response)
         } catch (error) {
