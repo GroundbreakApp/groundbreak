@@ -144,7 +144,7 @@ function App() {
           content="Groundbreak is a B2B vertical video platform that gets your foot in the door through personalized, disruptive experiences."
           name="description"
         />
-        <meta content="Groundbreak - Break Through the Noise" property="og:title" />
+        <meta content="Project Horizon - Finding Product-Market Fit" property="og:title" />
         <meta
           content="Groundbreak is a B2B vertical video platform that gets your foot in the door through personalized, disruptive experiences."
           property="og:description"
