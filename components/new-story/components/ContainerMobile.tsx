@@ -100,10 +100,6 @@ export default function ContainerMobile() {
       top: "30px",
     }}>
     <MuteSVG />
-    <span style={{
-      marginLeft: "5px",
-      fontSize: "19px"
-    }}>Unmute</span>
   </button>
 
 

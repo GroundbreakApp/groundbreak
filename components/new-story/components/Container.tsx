@@ -36,6 +36,7 @@ export default function Container() {
       setCurrentTime(vid?.current?.currentTime);
     }
   }, [pause])
+
   useEffect(() => {
     console.log("swiperElref", swiperElRef.current)
     setTimeout(() => {
@@ -147,10 +148,6 @@ export default function Container() {
       top: "30px",
     }}>
     <MuteSVG />
-    <span style={{
-      marginLeft: "5px",
-      fontSize: "19px"
-    }}>Unmute</span>
   </button>
   console.log("currentTime", currentTime)
   console.log(stories[currentId].startTime);
