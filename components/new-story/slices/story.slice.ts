@@ -9,6 +9,7 @@ type IStoryState = {
   loop: boolean;
   muted: boolean;
   loading: boolean;
+  currentBlurColor: string;
 };
 
 const initialState: IStoryState = {
@@ -19,6 +20,7 @@ const initialState: IStoryState = {
   loop: false,
   muted: false,
   loading: false,
+  currentBlurColor: "transparent",
 };
 
 const storyStateSlice = createSlice({
@@ -74,6 +76,12 @@ const storyStateSlice = createSlice({
       ...state,
       loading: action.payload,
     }),
+    setCurrentBlurColor: (state, action) => {
+      return {
+        ...state,
+        currentBlurColor: action.payload,
+      };
+    },
   },
 });
 
@@ -88,6 +96,7 @@ export const {
   setCurrentId,
   setMuted,
   setLoading,
+  setCurrentBlurColor,
 } = actions;
 
 export default reducer;

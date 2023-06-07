@@ -2,7 +2,7 @@ import { useAppDispatch, useAppSelector } from "@/stores/hook"
 import { useState, useEffect, Fragment, useRef } from "react";
 import useMobileDetect from "@/hooks/useMobileDetect";
 import ProgressArray from "./ProgressArray";
-import { nextSlide, prevSlide, setCurrentId, setLoading, setMuted, setPause } from "../slices/story.slice";
+import { nextSlide, prevSlide, setCurrentBlurColor, setCurrentId, setLoading, setMuted, setPause } from "../slices/story.slice";
 import { BsVolumeMute, BsFillPlayFill, BsFillPauseFill, BsFillVolumeUpFill } from "react-icons/bs"
 import clsx from "clsx";
 import MuxPlayer from '@mux/mux-player-react';
@@ -30,6 +30,12 @@ export default function Container() {
     setIsMobile(mobileDetect.isMobile())
   }, [])
 
+  useEffect(() => {
+
+    if (pause) {
+      setCurrentTime(vid?.current?.currentTime);
+    }
+  }, [pause])
   useEffect(() => {
     console.log("swiperElref", swiperElRef.current)
     setTimeout(() => {
@@ -80,7 +86,7 @@ export default function Container() {
     vid.current.currentTime = stories[currentId]?.startTime / 1000;
     setCurrentTime(vid.current.currentTime)
 
-    // dispatch(setCurrentBlur(stories[currentIndex].overlayColor))
+    dispatch(setCurrentBlurColor(stories[currentId].overlayColor))
   }, [currentId])
 
   if (playbackId === null) {
@@ -146,6 +152,8 @@ export default function Container() {
       fontSize: "19px"
     }}>Unmute</span>
   </button>
+  console.log("currentTime", currentTime)
+  console.log(stories[currentId].startTime);
 
   return <div className="w-full h-full flex items-center justify-center flex-col relative">
     <ProgressArray />

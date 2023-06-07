@@ -1,12 +1,11 @@
 import { useAppDispatch, useAppSelector } from "@/stores/hook";
 import { useRef, useEffect, Fragment, useState, ReactElement } from "react";
-import { nextSlide, prevSlide, setLoading, setMuted, setPause } from "../slices/story.slice";
+import { nextSlide, prevSlide, setCurrentBlurColor, setLoading, setMuted, setPause } from "../slices/story.slice";
 import { BsFillPlayFill } from "react-icons/bs";
 import clsx from "clsx";
 import MuxPlayer from "@mux/mux-player-react";
 import ProgressArray from "./ProgressArray";
 import MuteSVG from "@/components/story/assets/mute.svg";
-import useImagePreloader from "@/hooks/useImagePreloader";
 
 export default function ContainerMobile() {
   const stories = useAppSelector(state => state.newStory.stories);
@@ -36,7 +35,8 @@ export default function ContainerMobile() {
 
     vid.current.currentTime = stories[currentId]?.startTime / 1000;
     setCurrentTime(vid.current.currentTime)
-    // dispatch(setCurrentBlur(stories[currentIndex].overlayColor))
+
+    dispatch(setCurrentBlurColor(stories[currentId].overlayColor))
   }, [currentId])
 
   if (playbackId === null) {
