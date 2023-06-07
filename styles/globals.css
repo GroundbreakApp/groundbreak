@@ -153,34 +153,13 @@ swiper-slide {
   width: 300px;
   align-items: center;
   display: flex;
+  justify-content: center;
 }
 
-swiper-slide.swiper-slide-active > div {
+swiper-slide.swiper-slide-active > img {
   width: 100%;
 }
 
-swiper-slide > div {
-  text-align: center;
-  font-size: 18px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: width 0.2s;
-  min-width: 200px !important;
-  width: 80%;
-  margin: auto;
-}
-
-@media (max-width: 600px) {
-  swiper-container {
-    height: 100%;
-  }
-  swiper-slide > div {
-    align-items: stretch;
-    justify-content: stretch;
-    height: 100%;
-  }
-  swiper-slide > div > div {
-    height: 100%;
-  }
+swiper-slide > img {
+  width: 90%;
 }
