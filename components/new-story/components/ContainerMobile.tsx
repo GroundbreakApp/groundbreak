@@ -107,8 +107,8 @@ export default function ContainerMobile() {
   return <div className="w-full h-full flex items-center justify-center flex-col relative">
     <ProgressArray />
     <div className="relative" style={{
-      width: '100svw',
-      height: '100svh'
+      width: '100vw',
+      height: '100vh'
     }}>
       {/** Swiper slide with post images */}
       {pause && <div className="w-full h-full">
