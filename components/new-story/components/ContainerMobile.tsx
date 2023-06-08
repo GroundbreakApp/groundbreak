@@ -27,6 +27,15 @@ export default function ContainerMobile() {
   const dispatch = useAppDispatch();
   let vid = useRef<any>(null);
 
+  const initWidgetState = stories[currentId]?.widgets ?
+    stories[currentId]?.widgets?.map((widget) => ({
+      ...widget,
+      isVisible: false
+    }))
+    : []
+
+  const [widgets, setWidgets] = useState(initWidgetState);
+
   useEffect(() => {
 
     if (!vid.current) return;
@@ -60,6 +69,21 @@ export default function ContainerMobile() {
 
   function unMute() {
     dispatch(setMuted(false));
+  }
+
+  const onTimeUpdate = () => {
+    const media: any = vid.current.shadowRoot.querySelector("mux-video");
+    const currentTime = media?.currentTime ?? 0;
+
+    const newWidgets = stories[currentId].widgets?.map(widget => {
+      const isVisible = widget.spawnTime <= currentTime * 1000 &&
+        widget.spawnTime + widget.duration >= currentTime * 1000 ? true : false;
+      return {
+        ...widget,
+        isVisible
+      }
+    })
+    setWidgets(newWidgets ?? []);
   }
 
   const mouseUp =
@@ -114,6 +138,19 @@ export default function ContainerMobile() {
       {pause && <div className="w-full h-full">
         {currentTime === stories[currentId].startTime ? imagesPreloaded[currentId] : <img src={`https://image.mux.com/${playbackId}/thumbnail.png?time=${currentTime}`} />}
       </div>}
+
+      {/** Widgets Overlay */}
+      <div className="absolute w-full h-full top-0">
+        {
+          widgets?.map((widget, index) => {
+            const Render: React.ElementType = widget.render
+            return (<Fragment key={index}>
+              {widget.isVisible && <Render />}
+            </Fragment>
+            )
+          })
+        }
+      </div>
       {muted && <UnMute />}
       {/** Mux Video player */}
       <div className="absolute left-0 right-0 top-0 bottom-0 m-auto w-full h-full sm:w-[300px] sm:h-[532px] z-[9999] overflow-hidden" style={{
@@ -128,6 +165,7 @@ export default function ContainerMobile() {
           onPause={() => dispatch(setPause(true))}
           onLoadStart={() => { console.log("loading started"); dispatch(setLoading(true)) }}
           onLoadedData={() => { console.log("loading ended"); dispatch(setLoading(false)) }}
+          onTimeUpdate={onTimeUpdate}
         />
       </div>
     </div>
@@ -139,7 +177,7 @@ export default function ContainerMobile() {
     >
       <div
         className="pointer-events-auto"
-        style={{ background: "red", width: "40%", zIndex: 999, height: "45%", alignSelf: "center" }}
+        style={{ width: "40%", zIndex: 999, height: "45%", alignSelf: "center" }}
         // onTouchStart={debouncePause}
         onTouchEnd={mouseUp("previous")}
         // onMouseDown={debouncePause}
@@ -147,7 +185,7 @@ export default function ContainerMobile() {
       />
       <div
         className="pointer-events-auto"
-        style={{ background: "blue", width: "40%", zIndex: 999, height: "45%", alignSelf: "center" }}
+        style={{ width: "40%", zIndex: 999, height: "45%", alignSelf: "center" }}
         // onTouchStart={debouncePause}
         onTouchEnd={mouseUp("next")}
         // onMouseDown={debouncePause}

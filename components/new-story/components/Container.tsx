@@ -24,6 +24,16 @@ export default function Container() {
   const dispatch = useAppDispatch();
   let vid = useRef<any>(null);
 
+  const initWidgetState = stories[currentId]?.widgets ?
+    stories[currentId]?.widgets?.map((widget) => ({
+      ...widget,
+      isVisible: false
+    }))
+    : []
+
+  const [widgets, setWidgets] = useState(initWidgetState);
+
+
   let mobileDetect = useMobileDetect();
 
   useEffect(() => {
@@ -114,6 +124,21 @@ export default function Container() {
     vid?.current.pause();
   }
 
+  const onTimeUpdate = () => {
+    const media: any = vid.current.shadowRoot.querySelector("mux-video");
+    const currentTime = media?.currentTime ?? 0;
+
+    const newWidgets = stories[currentId].widgets?.map(widget => {
+      const isVisible = widget.spawnTime <= currentTime * 1000 &&
+        widget.spawnTime + widget.duration >= currentTime * 1000 ? true : false;
+      return {
+        ...widget,
+        isVisible
+      }
+    })
+    setWidgets(newWidgets ?? []);
+  }
+
   const togglePause = () => {
 
     if (!vid.current) return;
@@ -149,8 +174,6 @@ export default function Container() {
     }}>
     <MuteSVG />
   </button>
-  console.log("currentTime", currentTime)
-  console.log(stories[currentId].startTime);
 
   return <div className="w-full h-full flex items-center justify-center flex-col relative">
     <ProgressArray />
@@ -171,6 +194,19 @@ export default function Container() {
       >
         <SlArrowRight />
       </button>
+    </div>
+
+    {/** Widgets Overlay */}
+    <div className="absolute w-[300px] h-[532px]">
+      {
+        widgets?.map((widget, index) => {
+          const Render: React.ElementType = widget.render
+          return (<Fragment key={index}>
+            {widget.isVisible && <Render />}
+          </Fragment>
+          )
+        })
+      }
     </div>
 
     {/** Mux player container */}
@@ -208,6 +244,7 @@ export default function Container() {
           onPause={() => dispatch(setPause(true))}
           onLoadStart={() => dispatch(setLoading(true))}
           onLoadedData={() => dispatch(setLoading(false))}
+          onTimeUpdate={onTimeUpdate}
         />
       </div>
     </div>
@@ -240,5 +277,5 @@ export default function Container() {
         </button>
       </div>
     </div>
-  </div>
+  </div >
 }
