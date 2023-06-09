@@ -140,7 +140,7 @@ export default function ContainerMobile() {
       </div>}
 
       {/** Widgets Overlay */}
-      <div className="absolute w-full h-full top-0">
+      <div className="absolute w-full h-full top-6 z-[999999] pointer-events-none">
         {
           widgets?.map((widget, index) => {
             const Render: React.ElementType = widget.render
