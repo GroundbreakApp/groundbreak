@@ -129,12 +129,9 @@ export default function ContainerMobile() {
 
 
 
-  return <div className="w-full h-full flex items-center justify-center flex-col relative">
+  return <div className="w-full h-full flex items-center justify-center flex-col relative p-3">
     <ProgressArray />
-    <div className="relative" style={{
-      width: '100vw',
-      height: '100vh'
-    }}>
+    <div className="relative w-full h-full mt-3">
       {/** Swiper slide with post images */}
       {pause && <div className="w-full h-full">
         {currentTime === stories[currentId].startTime ? imagesPreloaded[currentId] : <img src={`https://image.mux.com/${playbackId}/thumbnail.png?time=${currentTime}`} />}
