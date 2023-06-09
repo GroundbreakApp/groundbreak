@@ -154,7 +154,7 @@ export default function ContainerMobile() {
       </div>
       {muted && <UnMute />}
       {/** Mux Video player */}
-      <div className="m-auto flex h-full rounded-3xl overflow-hidden w-full sm:w-[300px] sm:h-[532px] z-[9999]" style={{
+      <div className="m-auto h-full flex rounded-3xl overflow-hidden w-full sm:w-[300px] sm:h-[532px] z-[9999]" style={{
         opacity: pause ? 0 : 1,
       }}>
         <MuxPlayer

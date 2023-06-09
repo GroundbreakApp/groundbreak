@@ -139,7 +139,7 @@ mux-player {
   --time-display: none;
   --duration-display: none;
   --media-background-color: transparent;
-  --media-object-fit: cover;
+  --media-object-fit: fill;
   z-index: 1000;
 }
 
