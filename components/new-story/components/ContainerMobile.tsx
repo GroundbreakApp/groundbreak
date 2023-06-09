@@ -20,7 +20,7 @@ export default function ContainerMobile() {
 
   // preload images per slide to improve performance
   useEffect(() => {
-    const imagesDOM = stories.map((story, index) => <img key={index} src={`https://image.mux.com/${playbackId}/thumbnail.png?time=${story.startTime / 1000}`} />)
+    const imagesDOM = stories.map((story, index) => <img className="h-full rounded-3xl" key={index} src={`https://image.mux.com/${playbackId}/thumbnail.png?time=${story.startTime / 1000}`} />)
     setImagesPreloaded(imagesDOM);
 
   }, [stories])
@@ -129,14 +129,17 @@ export default function ContainerMobile() {
 
 
 
-  return <div className="w-full h-full flex items-center justify-center flex-col relative p-3">
+  return <div className="w-full h-full flex items-center justify-center flex-col relative px-4" style={{
+    minHeight: "100vh",
+    zIndex: 999
+  }}>
     <ProgressArray />
-    <div className="relative w-full h-full mt-3">
+    <div className="relative w-full h-full">
       {/** Swiper slide with post images */}
-      {pause && <div className="w-full h-full">
-        {currentTime === stories[currentId].startTime ? imagesPreloaded[currentId] : <img src={`https://image.mux.com/${playbackId}/thumbnail.png?time=${currentTime}`} />}
+      {pause && <div className="absolute w-full h-full rounded-3xl overflow-hidden">
+        {currentTime === stories[currentId].startTime ? imagesPreloaded[currentId] :
+          <img className="h-full rounded-3xl" alt="" src={`https://image.mux.com/${playbackId}/thumbnail.png?time=${currentTime}`} />}
       </div>}
-
       {/** Widgets Overlay */}
       <div className="absolute w-full h-full top-0 z-[999999] pointer-events-none">
         {
@@ -151,8 +154,9 @@ export default function ContainerMobile() {
       </div>
       {muted && <UnMute />}
       {/** Mux Video player */}
-      <div className="absolute left-0 right-0 top-0 bottom-0 m-auto w-full h-full sm:w-[300px] sm:h-[532px] z-[9999] overflow-hidden" style={{
+      <div className="m-auto w-full h-full sm:w-[300px] sm:h-[532px] z-[9999] overflow-hidden" style={{
         opacity: pause ? 0 : 1,
+        borderRadius: "30px"
       }}>
         <MuxPlayer
           playbackId={playbackId}
