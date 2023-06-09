@@ -150,6 +150,8 @@ function NewDemoPage() {
     <div className="App" style={{ display: 'grid', justifyContent: 'center', alignItems: 'center', height }}>
       <NewStory
         stories={stories}
+        height="100svh"
+        width="100svw"
         playbackId="p17znfBZ6UOEDdt02yWtRJ024dJOx9ZXIqe007NM3PJEAs"
       />
     </div>
