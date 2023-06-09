@@ -131,6 +131,7 @@ export default function ContainerMobile() {
 
   return <div className="w-full h-full flex items-center justify-center flex-col relative p-4 overflow-hidden" style={{
     height: "100svh",
+    width: '100svw',
     zIndex: 999
   }}>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"></meta>
