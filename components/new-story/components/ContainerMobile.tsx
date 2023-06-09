@@ -20,7 +20,7 @@ export default function ContainerMobile() {
 
   // preload images per slide to improve performance
   useEffect(() => {
-    const imagesDOM = stories.map((story, index) => <img className="h-full rounded-3xl" key={index} src={`https://image.mux.com/${playbackId}/thumbnail.png?time=${story.startTime / 1000}`} />)
+    const imagesDOM = stories.map((story, index) => <img className="h-full rounded-3xl object-cover" alt="" key={index} src={`https://image.mux.com/${playbackId}/thumbnail.png?time=${story.startTime / 1000}`} />)
     setImagesPreloaded(imagesDOM);
 
   }, [stories])
@@ -138,7 +138,7 @@ export default function ContainerMobile() {
       {/** Swiper slide with post images */}
       {pause && <div className="absolute w-full h-full rounded-3xl overflow-hidden">
         {currentTime === stories[currentId].startTime ? imagesPreloaded[currentId] :
-          <img className="h-full rounded-3xl" alt="" src={`https://image.mux.com/${playbackId}/thumbnail.png?time=${currentTime}`} />}
+          <img className="h-full rounded-3xl object-cover" alt="" src={`https://image.mux.com/${playbackId}/thumbnail.png?time=${currentTime}`} />}
       </div>}
       {/** Widgets Overlay */}
       <div className="absolute w-full h-full top-0 z-[999999] pointer-events-none">
