@@ -231,8 +231,9 @@ export default function Container() {
       </swiper-container>
       {muted && <UnMute />}
       {/** Mux Video player */}
-      <div className="absolute left-0 right-0 top-0 bottom-0 m-auto w-full h-full sm:w-[300px] sm:h-[532px] z-[9999] overflow-hidden" style={{
+      <div className="rounded-3xl overflow-hidden absolute left-0 right-0 top-0 bottom-0 m-auto w-full h-full sm:w-[300px] sm:h-[532px] z-[9999] overflow-hidden" style={{
         opacity: isHideVideoPlayer || (pause && currentTime * 1000 === stories[currentId].startTime) ? 0 : 1,
+
       }}>
         <MuxPlayer
           playbackId={playbackId}
