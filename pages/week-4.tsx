@@ -2,7 +2,7 @@ import { NewStory } from "@/components/new-story";
 import { setFormSubmitted, setShowForm } from "@/components/new-story/slices/week4.slice";
 import { useAppDispatch, useAppSelector } from "@/stores/hook";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AiOutlineArrowUp, AiOutlineCheck } from "react-icons/ai";
 
 const SendFeedbackForm = () => {
@@ -137,9 +137,17 @@ const stories = [
 ];
 
 function NewDemoPage() {
+  const [height, setHeight] = useState('100vh'); // default to vh
+
+  useEffect(() => {
+    if ('CSS' in window && CSS.supports('height', '100svh')) {
+      setHeight('100svh'); // switch to svh if supported
+    }
+
+  }, []);
 
   return (
-    <div>
+    <div style={{ height }}>
       <NewStory
         stories={stories}
         playbackId="p17znfBZ6UOEDdt02yWtRJ024dJOx9ZXIqe007NM3PJEAs"
