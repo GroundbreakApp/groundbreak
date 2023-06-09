@@ -154,8 +154,12 @@ swiper-slide {
   align-items: center;
   display: flex;
   justify-content: center;
+  border-radius: 30px;
 }
 
+swiper-slide > img {
+  border-radius: 20px;
+}
 swiper-slide.swiper-slide-active > img {
   width: 100%;
   opacity: 1;
