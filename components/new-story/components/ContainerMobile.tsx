@@ -6,6 +6,7 @@ import clsx from "clsx";
 import MuxPlayer from "@mux/mux-player-react";
 import ProgressArray from "./ProgressArray";
 import MuteSVG from "@/components/story/assets/mute.svg";
+import { Logo } from "@/components/logo";
 
 export default function ContainerMobile() {
   const stories = useAppSelector(state => state.newStory.stories);
@@ -194,5 +195,6 @@ export default function ContainerMobile() {
     </div>
     {/** Mobile play button */}
     {pause && <Play />}
+    <Logo />
   </div>
 }

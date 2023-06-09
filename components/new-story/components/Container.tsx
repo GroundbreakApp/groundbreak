@@ -8,6 +8,7 @@ import clsx from "clsx";
 import MuxPlayer from '@mux/mux-player-react';
 import MuteSVG from "@/components/story/assets/mute.svg";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
+import { Logo } from "@/components/logo";
 
 
 export default function Container() {
@@ -175,6 +176,7 @@ export default function Container() {
   </button>
 
   return <div className="w-full h-full flex items-center justify-center flex-col relative">
+    <Logo />
     <ProgressArray />
     {/**  Left and Right arrow I con*/}
     <div className={
