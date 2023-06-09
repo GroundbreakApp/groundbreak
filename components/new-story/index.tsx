@@ -11,11 +11,10 @@ import ContainerMobile from "./components/ContainerMobile";
 export type INewStoryProps = {
   stories: Array<Story>;
   playbackId: string;
-  width?: NumberOrString;
-  height?: NumberOrString;
+  width?: number;
+  height?: number;
 };
 
-type NumberOrString = number | string;
 
 export const NewStory = (props: INewStoryProps) => {
   const dispatch = useAppDispatch();
