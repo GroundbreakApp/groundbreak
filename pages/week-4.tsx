@@ -118,7 +118,7 @@ const stories = [
   {
     overlayColor: "#D8E5EA",
     startTime: 94.935001 * 1000,
-    duration: 15.8 * 1000,
+    duration: 15.7 * 1000,
     widgets: [
       {
         spawnTime: 97 * 1000,
