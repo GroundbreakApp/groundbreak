@@ -78,7 +78,7 @@ const stories = [
   {
     overlayColor: "#C06E47",
     startTime: 0,
-    duration: 7.1 * 1000,
+    duration: 7.2 * 1000,
   },
   {
     overlayColor: "#C5978C",
