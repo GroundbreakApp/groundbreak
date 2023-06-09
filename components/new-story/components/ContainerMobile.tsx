@@ -129,8 +129,8 @@ export default function ContainerMobile() {
 
 
 
-  return <div className="w-full h-full flex items-center justify-center flex-col relative px-4" style={{
-    minHeight: "100vh",
+  return <div className="w-full h-full flex items-center justify-center flex-col relative p-4" style={{
+    height: "100vh",
     zIndex: 999
   }}>
     <ProgressArray />
@@ -154,11 +154,14 @@ export default function ContainerMobile() {
       </div>
       {muted && <UnMute />}
       {/** Mux Video player */}
-      <div className="m-auto w-full h-full sm:w-[300px] sm:h-[532px] z-[9999] overflow-hidden" style={{
+      <div className="m-auto w-full sm:w-[300px] sm:h-[532px] z-[9999]" style={{
         opacity: pause ? 0 : 1,
-        borderRadius: "30px"
       }}>
         <MuxPlayer
+          style={{
+            borderRadius: "30px",
+            overflow: "hidden"
+          }}
           playbackId={playbackId}
           muted={muted}
           ref={vid}
