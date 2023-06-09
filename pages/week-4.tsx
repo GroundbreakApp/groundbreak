@@ -14,9 +14,9 @@ const SendFeedbackForm = () => {
 
     console.log("Submit clicked")
     try {
-      // await axios.post(`${process.env.NEXT_PUBLIC_RENDER_ADDRESS}/metrics/feedback`, {
-      //   text: feedbackText,
-      // });
+      await axios.post(`${process.env.NEXT_PUBLIC_RENDER_ADDRESS}/metrics/feedback`, {
+        text: feedbackText,
+      });
 
       setFeedbackText('');
       dispatch(setFormSubmitted(true));
