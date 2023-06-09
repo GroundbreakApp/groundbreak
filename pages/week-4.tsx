@@ -78,47 +78,47 @@ const stories = [
   {
     overlayColor: "#C06E47",
     startTime: 0,
-    duration: 7.066667 * 1000,
+    duration: 7.1 * 1000,
   },
   {
     overlayColor: "#C5978C",
     startTime: 7.066667 * 1000,
-    duration: 11.266667 * 1000,
+    duration: 11.3 * 1000,
   },
   {
     overlayColor: "#F5FF54",
     startTime: 18.333334 * 1000,
-    duration: 14.958 * 1000,
+    duration: 15 * 1000,
   },
   {
     overlayColor: "#E0D8D0",
     startTime: 33.291334 * 1000,
-    duration: 8.766667 * 1000,
+    duration: 8.8 * 1000,
   },
   {
     overlayColor: "#193C59",
     startTime: 42.058001 * 1000,
-    duration: 13.477 * 1000,
+    duration: 13.5 * 1000,
   },
   {
     overlayColor: "#C06E47",
     startTime: 55.535001 * 1000,
-    duration: 16.566667 * 1000,
+    duration: 16.6 * 1000,
   },
   {
     overlayColor: "#C5D8E6",
     startTime: 72.101668 * 1000,
-    duration: 12.633333 * 1000,
+    duration: 12.7 * 1000,
   },
   {
     overlayColor: "#5D6166",
     startTime: 84.735001 * 1000,
-    duration: 10.2 * 1000,
+    duration: 10.3 * 1000,
   },
   {
     overlayColor: "#D8E5EA",
     startTime: 94.935001 * 1000,
-    duration: 15.7 * 1000,
+    duration: 15.8 * 1000,
     widgets: [
       {
         spawnTime: 97 * 1000,
@@ -132,7 +132,7 @@ const stories = [
   {
     overlayColor: "#000000",
     startTime: 110.635001 * 1000,
-    duration: 5 * 1000,
+    duration: 5.1 * 1000,
   },
 ];
 
