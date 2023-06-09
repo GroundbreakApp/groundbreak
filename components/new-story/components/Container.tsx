@@ -223,7 +223,9 @@ export default function Container() {
           stories.map((story, index) => (
             <Fragment key={index}>
               <swiper-slide>
-                <img src={`https://image.mux.com/${playbackId}/thumbnail.png?time=${stories[index].startTime / 1000}`} />
+                <img src={`https://image.mux.com/${playbackId}/thumbnail.png?time=${stories[index].startTime / 1000}`} style={{
+                  filter: "drop-shadow(0 0px 2px rgba(0, 0, 0, 0.5))",
+                }} />
               </swiper-slide>
             </Fragment>
           ))
