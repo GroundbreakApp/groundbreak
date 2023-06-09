@@ -147,7 +147,7 @@ function NewDemoPage() {
   }, []);
 
   return (
-    <div style={{ height }}>
+    <div className="App" style={{ display: 'grid', justifyContent: 'center', alignItems: 'center', height }}>
       <NewStory
         stories={stories}
         playbackId="p17znfBZ6UOEDdt02yWtRJ024dJOx9ZXIqe007NM3PJEAs"
