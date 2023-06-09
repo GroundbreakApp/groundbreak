@@ -40,7 +40,7 @@ const SendFeedbackForm = () => {
   if (isShowForm) {
     if (isFormSubmitted) {
       return <>
-        <div className="relative bg-opacity-70 bg-white rounded-md flex flex-col gap-2 p-2 items-center w-[235px] m-auto"
+        <div className="mt-16 relative bg-opacity-70 bg-white rounded-md flex flex-col gap-2 p-2 items-center w-[235px] m-auto"
         >
           <h3 className="flex items-center justify-center font-serif text-[#2C2C2C] font-medium text-sm"> <AiOutlineCheck className="rounded-full w-6 h-6 p-1  bg-[#CBFD55] mr-4 text-black" />
             Your response was sent </h3>
@@ -48,7 +48,7 @@ const SendFeedbackForm = () => {
       </>
     }
     return <>
-      <div className="relative bg-opacity-70 bg-white rounded-md flex flex-col gap-2 p-2 items-center w-[235px] m-auto"
+      <div className="mt-16 relative bg-opacity-70 bg-white rounded-md flex flex-col gap-2 p-2 items-center w-[235px] m-auto"
         onFocus={() => {
           const video: any = document.querySelector('mux-player');
           if (!video) return;
