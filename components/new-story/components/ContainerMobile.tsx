@@ -129,8 +129,8 @@ export default function ContainerMobile() {
 
 
 
-  return <div className="w-full h-full flex items-center justify-center flex-col relative p-4" style={{
-    height: "100vh",
+  return <div className="w-full h-full flex items-center justify-center flex-col relative p-4 overflow-hidden" style={{
+    height: "100svh",
     zIndex: 999
   }}>
     <ProgressArray />
