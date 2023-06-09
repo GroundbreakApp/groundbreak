@@ -133,6 +133,7 @@ export default function ContainerMobile() {
     height: "100svh",
     zIndex: 999
   }}>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"></meta>
     <ProgressArray />
     <div className="relative w-full h-full">
       {/** Swiper slide with post images */}
