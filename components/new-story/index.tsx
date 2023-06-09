@@ -53,6 +53,14 @@ export const NewStory = (props: INewStoryProps) => {
     )
   }
 
+  //
+  // for iphone
+  //
+  if (global.window) {
+    global.window.document.body.style.background = currentBlurColor ?? "transparent"
+    global.window.document.body.style.backgroundColor = currentBlurColor ?? "transparent"
+  }
+
   return <Provider store={store}>
     <Blur />
     {isMobile ? <ContainerMobile /> : <Container />}

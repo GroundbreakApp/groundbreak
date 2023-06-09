@@ -128,7 +128,6 @@ export default function ContainerMobile() {
   </button>
 
 
-
   return <div className="w-full h-full flex items-center justify-center flex-col relative p-4 overflow-hidden" style={{
     height: "100svh",
     width: '100svw',
