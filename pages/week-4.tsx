@@ -142,7 +142,7 @@ function NewDemoPage() {
     <div>
       <NewStory
         stories={stories}
-        playbackId="993fZeHs00PBkIuDXhxC9IaAbWG4bELIPM1LLwUHyrv00"
+        playbackId="p17znfBZ6UOEDdt02yWtRJ024dJOx9ZXIqe007NM3PJEAs"
       />
     </div>
   );
