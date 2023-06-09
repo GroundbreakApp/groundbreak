@@ -48,7 +48,6 @@ export default function Container() {
   }, [pause])
 
   useEffect(() => {
-    console.log("swiperElref", swiperElRef.current)
     setTimeout(() => {
       swiperElRef?.current?.addEventListener('progress', (e: any) => {
         const [swiper, progress] = e.detail;
@@ -92,11 +91,11 @@ export default function Container() {
 
     if (!vid.current) return;
     // reset time
-    console.log("reset time called", stories[currentId]?.startTime / 1000);
 
     vid.current.currentTime = stories[currentId]?.startTime / 1000;
     setCurrentTime(vid.current.currentTime)
 
+    console.log("setCurrentBlurColor", stories[currentId].overlayColor)
     dispatch(setCurrentBlurColor(stories[currentId].overlayColor))
   }, [currentId])
 
@@ -180,7 +179,7 @@ export default function Container() {
     {/**  Left and Right arrow I con*/}
     <div className={
       clsx(
-        "pointer-events-none w-full justify-between items-center absolute z-[9999] h-full flex",
+        "pointer-events-none w-full justify-between items-center absolute z-[99999] h-full flex",
         { "hidden": isMobile }
       )
     }>
@@ -197,7 +196,7 @@ export default function Container() {
     </div>
 
     {/** Widgets Overlay */}
-    <div className="absolute w-[300px] h-[532px]">
+    <div className="absolute w-[300px] h-[532px] z-[99999]">
       {
         widgets?.map((widget, index) => {
           const Render: React.ElementType = widget.render
@@ -210,7 +209,7 @@ export default function Container() {
     </div>
 
     {/** Mux player container */}
-    <div className="relative w-full h-full">
+    <div className="relative w-full h-full z-[9999]">
       {/** Swiper slide with post images */}
       <swiper-container
         ref={swiperElRef}
@@ -252,7 +251,7 @@ export default function Container() {
     {/** Desktop play, mute button */}
     <div className={
       clsx(
-        "relative flex w-full items-center justify-center pb-12",
+        "relative flex w-full items-center justify-center pb-12 z-[999]",
         (isMobile) && "hidden",
         !isMobile && "flex",
       )

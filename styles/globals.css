@@ -158,8 +158,12 @@ swiper-slide {
 
 swiper-slide.swiper-slide-active > img {
   width: 100%;
+  opacity: 1;
 }
 
+swiper-slide {
+  opacity: 0.7;
+}
 swiper-slide > img {
   width: 90%;
 }
