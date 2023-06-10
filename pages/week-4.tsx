@@ -123,7 +123,7 @@ const stories = [
       {
         spawnTime: 97 * 1000,
         duration: 20000,
-        render: () => <div className="pointer-events-auto mt-8 sm:mt-0">
+        render: () => <div className="pointer-events-auto mt-16 sm:mt-0">
           <SendFeedbackForm />
         </div>
       }
