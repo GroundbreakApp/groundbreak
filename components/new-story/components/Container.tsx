@@ -211,7 +211,7 @@ export default function Container() {
     </div>
 
     {/** Mux player container */}
-    <div className="relative w-full h-full z-[9999]">
+    <div className="flex items-center justify-center relative w-full h-full z-[9999]">
       {/** Swiper slide with post images */}
       <swiper-container
         ref={swiperElRef}
