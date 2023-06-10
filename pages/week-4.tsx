@@ -147,7 +147,7 @@ function NewDemoPage() {
   }, []);
 
   return (
-    <div className="App" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: "100svh" }}>
+    <div className="App" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: "100svh", overflow: "hidden" }}>
       <NewStory
         stories={stories}
         playbackId="p17znfBZ6UOEDdt02yWtRJ024dJOx9ZXIqe007NM3PJEAs"
