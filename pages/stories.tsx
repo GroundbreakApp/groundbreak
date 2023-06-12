@@ -19,7 +19,6 @@ import { Logo } from "@/components/logo";
 
 
 function App() {
-
   const [height, setHeight] = useState('100vh'); // default to vh
   const [stories, setStories] = useState<any[]>([{}]); // Initialize stories as an empty array
 
@@ -34,6 +33,7 @@ function App() {
     const getStories = async () => {
       const fetchedStories = [{}]
       setStories(fetchedStories)
+      if (storyId) {
         try {
           const response = await axios.get(
             `${process.env.NEXT_PUBLIC_RENDER_ADDRESS}/stories`,
@@ -53,7 +53,12 @@ function App() {
           setStories(fetchedStories)
           console.error("Error making stories call:", error);
         }
-      };
+      }
+      else {
+        const fetchedStories = [{}]
+        setStories(fetchedStories)
+      }
+    };
   
       getStories();
   }, []);
