@@ -1,12 +1,13 @@
 import { useAppDispatch, useAppSelector } from "@/stores/hook";
 import { useRef, useEffect, Fragment, useState, ReactElement } from "react";
-import { nextSlide, prevSlide, setCurrentBlurColor, setLoading, setMuted, setPause } from "../slices/story.slice";
+import { nextSlide, prevSlide, setCurrentBlurColor, setCurrentId, setLoading, setMuted, setPause } from "../slices/story.slice";
 import { BsFillPlayFill } from "react-icons/bs";
 import clsx from "clsx";
 import MuxPlayer from "@mux/mux-player-react";
 import ProgressArray from "./ProgressArray";
 import MuteSVG from "@/components/story/assets/mute.svg";
 import { Logo } from "@/components/logo";
+import { WatchAgain } from "./WatchAgain";
 
 export default function ContainerMobile() {
   const stories = useAppSelector(state => state.newStory.stories);
@@ -17,6 +18,7 @@ export default function ContainerMobile() {
   const [isHideVideoPlayer, setHideVideoPlayer] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [imagesPreloaded, setImagesPreloaded] = useState<Array<ReactElement>>([]);
+  const [isEnd, setEnd] = useState(false);
 
   // preload images per slide to improve performance
   useEffect(() => {
@@ -106,6 +108,18 @@ export default function ContainerMobile() {
       Play
     </a>
   </button>
+  function watchAgain() {
+    // window.location.reload();
+    setEnd(false);
+    dispatch(setCurrentId(0));
+
+    if (!vid.current) return;
+
+    vid.current.currentTime = 0.1;
+    vid.current.media.load();
+    vid.current.play();
+  }
+
 
   /** Mute button */
   const UnMute = () => <button
@@ -141,6 +155,13 @@ export default function ContainerMobile() {
         {currentTime === stories[currentId].startTime ? imagesPreloaded[currentId] :
           <img className="h-full rounded-3xl object-cover" alt="" src={`https://image.mux.com/${playbackId}/thumbnail.png?time=${currentTime}`} />}
       </div>}
+      {/** Replay button */}
+      {isEnd && <>
+        <div className="absolute left-0 right-0 top-0 bottom-0 m-auto z-[100000] flex items-center justify-center">
+          <WatchAgain onClick={watchAgain} />
+        </div>
+      </>
+      }
       {/** Widgets Overlay */}
       <div className="absolute w-full h-full top-0 z-[999999] pointer-events-none">
         {
@@ -169,6 +190,7 @@ export default function ContainerMobile() {
           }}
           onEnded={() => {
             console.log("onEnded");
+            setEnd(true);
             dispatch(setPause(true))
           }}
           onPause={() => {
@@ -208,7 +230,7 @@ export default function ContainerMobile() {
       />
     </div>
     {/** Mobile play button */}
-    {pause && <Play />}
+    {pause && !isEnd && <Play />}
     <Logo />
   </div>
 }
