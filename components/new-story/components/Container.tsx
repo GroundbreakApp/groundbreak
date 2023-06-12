@@ -260,6 +260,7 @@ export default function Container() {
           onStalled={() => { console.log("stalled"); }}
           onWaiting={() => { console.log("onWaiting"); dispatch(setLoading(true)) }}
           onTimeUpdate={onTimeUpdate}
+          preload="metadata"
         />
       </div>
     </div>
