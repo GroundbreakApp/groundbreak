@@ -32,6 +32,8 @@ function App() {
     const storyId = searchParams.get('storyId');
 
     const getStories = async () => {
+      const fetchedStories = [{}]
+      setStories(fetchedStories)
         try {
           const response = await axios.get(
             `${process.env.NEXT_PUBLIC_RENDER_ADDRESS}/stories`,
@@ -47,6 +49,8 @@ function App() {
           setStories(fetchedStories); // Update the stories state with the fetched data
           console.log(stories)
         } catch (error) {
+          const fetchedStories = [{}]
+          setStories(fetchedStories)
           console.error("Error making stories call:", error);
         }
       };
