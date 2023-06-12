@@ -155,18 +155,30 @@ export default function ContainerMobile() {
       </div>
       {muted && <UnMute />}
       {/** Mux Video player */}
-      <div className="m-auto h-full flex rounded-3xl overflow-hidden w-full sm:w-[300px] sm:h-[532px] z-[9999]" style={{
+      <div className="absolute left-0 right-0 top-0 bottom-0 m-auto h-full flex rounded-3xl overflow-hidden w-full sm:w-[300px] sm:h-[532px] z-[9999]" style={{
         opacity: pause ? 0 : 1,
       }}>
         <MuxPlayer
           playbackId={playbackId}
           muted={muted}
           ref={vid}
-          onPlaying={() => dispatch(setPause(false))}
-          onEnded={() => dispatch(setPause(true))}
-          onPause={() => dispatch(setPause(true))}
+          onPlaying={() => {
+            console.log("onPlaying");
+            dispatch(setPause(false));
+            dispatch(setLoading(false))
+          }}
+          onEnded={() => {
+            console.log("onEnded");
+            dispatch(setPause(true))
+          }}
+          onPause={() => {
+            console.log("onPause");
+            dispatch(setPause(true))
+          }}
           onLoadStart={() => { console.log("loading started"); dispatch(setLoading(true)) }}
           onLoadedData={() => { console.log("loading ended"); dispatch(setLoading(false)) }}
+          onStalled={() => { console.log("stalled"); }}
+          onWaiting={() => { console.log("onWaiting"); dispatch(setLoading(true)) }}
           onTimeUpdate={onTimeUpdate}
         />
       </div>

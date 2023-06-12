@@ -211,7 +211,7 @@ export default function Container() {
     </div>
 
     {/** Mux player container */}
-    <div className="relative w-full h-full z-[9999]">
+    <div className="flex items-center justify-center relative w-full h-full z-[9999]">
       {/** Swiper slide with post images */}
       <swiper-container
         ref={swiperElRef}
@@ -233,7 +233,6 @@ export default function Container() {
           ))
         }
       </swiper-container>
-      {muted && <UnMute />}
       {/** Mux Video player */}
       <div className="rounded-3xl overflow-hidden absolute left-0 right-0 top-0 bottom-0 m-auto w-full h-full sm:w-[300px] sm:h-[532px] z-[9999] overflow-hidden" style={{
         opacity: isHideVideoPlayer || (pause && currentTime * 1000 === stories[currentId].startTime) ? 0 : 1,
@@ -243,11 +242,23 @@ export default function Container() {
           playbackId={playbackId}
           muted={muted}
           ref={vid}
-          onPlaying={() => dispatch(setPause(false))}
-          onEnded={() => dispatch(setPause(true))}
-          onPause={() => dispatch(setPause(true))}
-          onLoadStart={() => dispatch(setLoading(true))}
-          onLoadedData={() => dispatch(setLoading(false))}
+          onPlaying={() => {
+            console.log("onPlaying");
+            dispatch(setPause(false));
+            dispatch(setLoading(false))
+          }}
+          onEnded={() => {
+            console.log("onEnded");
+            dispatch(setPause(true))
+          }}
+          onPause={() => {
+            console.log("onPause");
+            dispatch(setPause(true))
+          }}
+          onLoadStart={() => { console.log("loading started"); dispatch(setLoading(true)) }}
+          onLoadedData={() => { console.log("loading ended"); dispatch(setLoading(false)) }}
+          onStalled={() => { console.log("stalled"); }}
+          onWaiting={() => { console.log("onWaiting"); dispatch(setLoading(true)) }}
           onTimeUpdate={onTimeUpdate}
         />
       </div>

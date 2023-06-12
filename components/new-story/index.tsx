@@ -31,11 +31,9 @@ export const NewStory = (props: INewStoryProps) => {
   }, [props.stories])
 
   useEffect(() => {
-    console.log("playbackId 123", props.playbackId)
     dispatch(setPlaybackId(props.playbackId));
   }, [props.playbackId])
 
-  console.log("currentBlurCOlor", currentBlurColor);
   const Blur = () => {
     return (
       <div style={{
