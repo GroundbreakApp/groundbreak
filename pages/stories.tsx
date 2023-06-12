@@ -19,7 +19,6 @@ import { Logo } from "@/components/logo";
 
 
 function App() {
-
   const [height, setHeight] = useState('100vh'); // default to vh
   const [stories, setStories] = useState<any[]>([{}]); // Initialize stories as an empty array
 
