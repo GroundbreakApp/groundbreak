@@ -33,6 +33,7 @@ function App() {
     const getStories = async () => {
       const fetchedStories = [{}]
       setStories(fetchedStories)
+      if (storyId) {
         try {
           const response = await axios.get(
             `${process.env.NEXT_PUBLIC_RENDER_ADDRESS}/stories`,
@@ -52,7 +53,12 @@ function App() {
           setStories(fetchedStories)
           console.error("Error making stories call:", error);
         }
-      };
+      }
+      else {
+        const fetchedStories = [{}]
+        setStories(fetchedStories)
+      }
+    };
   
       getStories();
   }, []);
