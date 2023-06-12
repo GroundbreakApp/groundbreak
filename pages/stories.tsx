@@ -31,8 +31,6 @@ function App() {
     const searchParams = new URLSearchParams(location.search);
     const storyId = searchParams.get('storyId');
 
-
-
     const getStories = async () => {
         try {
           const response = await axios.get(
