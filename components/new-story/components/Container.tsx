@@ -242,11 +242,23 @@ export default function Container() {
           playbackId={playbackId}
           muted={muted}
           ref={vid}
-          onPlaying={() => dispatch(setPause(false))}
-          onEnded={() => dispatch(setPause(true))}
-          onPause={() => dispatch(setPause(true))}
-          onLoadStart={() => dispatch(setLoading(true))}
-          onLoadedData={() => dispatch(setLoading(false))}
+          onPlaying={() => {
+            console.log("onPlaying");
+            dispatch(setPause(false));
+            dispatch(setLoading(false))
+          }}
+          onEnded={() => {
+            console.log("onEnded");
+            dispatch(setPause(true))
+          }}
+          onPause={() => {
+            console.log("onPause");
+            dispatch(setPause(true))
+          }}
+          onLoadStart={() => { console.log("loading started"); dispatch(setLoading(true)) }}
+          onLoadedData={() => { console.log("loading ended"); dispatch(setLoading(false)) }}
+          onStalled={() => { console.log("stalled"); }}
+          onWaiting={() => { console.log("onWaiting"); dispatch(setLoading(true)) }}
           onTimeUpdate={onTimeUpdate}
         />
       </div>
