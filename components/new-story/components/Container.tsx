@@ -9,6 +9,7 @@ import MuxPlayer from '@mux/mux-player-react';
 import MuteSVG from "@/components/story/assets/mute.svg";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 import { Logo } from "@/components/logo";
+import { WatchAgain } from "./WatchAgain";
 
 
 export default function Container() {
@@ -17,6 +18,7 @@ export default function Container() {
   const currentId = useAppSelector(state => state.newStory.currentId);
   const muted = useAppSelector(state => state.newStory.muted);
   const [currentTime, setCurrentTime] = useState(0);
+  const [isEnd, setEnd] = useState(false);
   const pause = useAppSelector(state => state.newStory.pause)
 
   const [isHideVideoPlayer, setHideVideoPlayer] = useState(false);
@@ -118,6 +120,7 @@ export default function Container() {
         });
       });
   }
+
   const stopVideo = () => {
     if (!vid.current) return;
 
@@ -153,6 +156,17 @@ export default function Container() {
 
   function unMute() {
     dispatch(setMuted(false));
+  }
+
+  function watchAgain() {
+    setEnd(false);
+    dispatch(setCurrentId(0));
+
+    if (!vid.current) return;
+
+    vid.current.currentTime = 0.1;
+    vid.current.media.load();
+    vid.current.play();
   }
 
   /** Mute button */
@@ -196,6 +210,13 @@ export default function Container() {
         <SlArrowRight />
       </button>
     </div>
+    {/** Replay button */}
+    {isEnd && <>
+      <div className="absolute left-0 right-0 top-0 bottom-0 m-auto z-[100000] flex items-center justify-center">
+        <WatchAgain onClick={watchAgain} />
+      </div>
+    </>
+    }
 
     {/** Widgets Overlay */}
     <div className="absolute w-[300px] h-[532px] z-[99999]">
@@ -233,11 +254,12 @@ export default function Container() {
           ))
         }
       </swiper-container>
+
       {/** Mux Video player */}
       <div className="rounded-3xl overflow-hidden absolute left-0 right-0 top-0 bottom-0 m-auto w-full h-full sm:w-[300px] sm:h-[532px] z-[9999] overflow-hidden" style={{
         opacity: isHideVideoPlayer || (pause && currentTime * 1000 === stories[currentId].startTime) ? 0 : 1,
-
       }}>
+
         <MuxPlayer
           playbackId={playbackId}
           muted={muted}
@@ -250,6 +272,7 @@ export default function Container() {
           onEnded={() => {
             console.log("onEnded");
             dispatch(setPause(true))
+            setEnd(true);
           }}
           onPause={() => {
             console.log("onPause");
