@@ -72,7 +72,7 @@ export default function ProgressArray() {
       'absolute top-5 w-3/4 z-[10000]': isMobile,
       'w-[400px]': !isMobile
     },
-      "flex justify-center flex-nowrap p-1 pt-2"
+      "flex justify-center flex-nowrap p-1 sm:pt-8"
     )}
     style={{
       transition: "opacity 400ms ease-in -out"
