@@ -178,6 +178,7 @@ export default function ContainerMobile() {
               {widget.isVisible && <div
                 onFocus={() => {
                   if (widget.isPause === true) {
+                    console.log("OnFocus on Pause called");
                     stopVideo();
                   }
                 }}
