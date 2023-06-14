@@ -27,8 +27,8 @@ export default function Container() {
   const dispatch = useAppDispatch();
   let vid = useRef<any>(null);
 
-  const initWidgetState = stories[currentId]?.widgets ?
-    stories[currentId]?.widgets?.map((widget) => ({
+  const initWidgetState = stories[currentId]?.widgetAttributes ?
+    stories[currentId]?.widgetAttributes?.map((widget) => ({
       ...widget,
       isVisible: false
     }))
@@ -131,7 +131,7 @@ export default function Container() {
     const media: any = vid.current.shadowRoot.querySelector("mux-video");
     const currentTime = media?.currentTime ?? 0;
 
-    const newWidgets = stories[currentId].widgets?.map(widget => {
+    const newWidgets = stories[currentId].widgetAttributes?.map(widget => {
       const isVisible = widget.spawnTime <= currentTime * 1000 &&
         widget.spawnTime + widget.duration >= currentTime * 1000 ? true : false;
       return {
@@ -222,9 +222,9 @@ export default function Container() {
     <div className="absolute w-[300px] h-[532px] z-[99999]">
       {
         widgets?.map((widget, index) => {
-          const Render: React.ElementType = widget.render
+          const widgetData = widget.widget
           return (<Fragment key={index}>
-            {widget.isVisible && <Render />}
+            {widget.isVisible && <div dangerouslySetInnerHTML={{ __html: widgetData }} />}
           </Fragment>
           )
         })
