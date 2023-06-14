@@ -100,7 +100,7 @@ export default function Container() {
 
     console.log("setCurrentBlurColor", stories[currentId].overlayColor)
     dispatch(setCurrentBlurColor(stories[currentId].overlayColor))
-  }, [currentId])
+  }, [currentId, stories])
 
   if (playbackId === null) {
     return <> Loading ...</>
