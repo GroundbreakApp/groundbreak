@@ -74,6 +74,12 @@ export default function ContainerMobile() {
     dispatch(setMuted(false));
   }
 
+  const stopVideo = () => {
+    if (!vid.current) return;
+
+    vid?.current.pause();
+  }
+
   const onTimeUpdate = () => {
     const media: any = vid.current.shadowRoot.querySelector("mux-video");
     const currentTime = media?.currentTime ?? 0;
@@ -169,7 +175,14 @@ export default function ContainerMobile() {
             const widgetData = widget.widget
 
             return (<Fragment key={index}>
-              {widget.isVisible && <div dangerouslySetInnerHTML={{ __html: widgetData }} />}
+              {widget.isVisible && <div
+                onFocus={() => {
+                  if (widget.isPause === true) {
+                    stopVideo();
+                  }
+                }}
+                dangerouslySetInnerHTML={{ __html: widgetData }}
+              />}
             </Fragment>
             )
           })

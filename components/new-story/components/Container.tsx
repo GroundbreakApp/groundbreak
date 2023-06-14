@@ -224,7 +224,14 @@ export default function Container() {
         widgets?.map((widget, index) => {
           const widgetData = widget.widget
           return (<Fragment key={index}>
-            {widget.isVisible && <div dangerouslySetInnerHTML={{ __html: widgetData }} />}
+            {widget.isVisible && <div
+              onFocus={() => {
+                if (widget.isPause === true) {
+                  stopVideo();
+                }
+              }}
+              dangerouslySetInnerHTML={{ __html: widgetData }}
+            />}
           </Fragment>
           )
         })
