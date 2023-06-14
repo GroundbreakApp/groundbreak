@@ -243,6 +243,12 @@ export default function ContainerMobile() {
       />
       <div
         className="pointer-events-auto"
+        style={{ width: "15%", zIndex: 999, height: "45%", alignSelf: "center" }}
+        onClick={() => stopVideo()}
+      >
+      </div>
+      <div
+        className="pointer-events-auto"
         style={{ width: "40%", zIndex: 999, height: "45%", alignSelf: "center" }}
         // onTouchStart={debouncePause}
         onTouchEnd={mouseUp("next")}
