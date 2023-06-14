@@ -182,6 +182,12 @@ export default function ContainerMobile() {
                     stopVideo();
                   }
                 }}
+                onTouchStart={() => {
+                  if (widget.isPause === true) {
+                    console.log("OnFocus on Pause called");
+                    stopVideo();
+                  }
+                }}
                 dangerouslySetInnerHTML={{ __html: widgetData }}
               />}
             </Fragment>
