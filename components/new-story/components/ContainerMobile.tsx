@@ -182,9 +182,9 @@ export default function ContainerMobile() {
                     stopVideo();
                   }
                 }}
-                onTouchStart={() => {
+                onClick={() => {
                   if (widget.isPause === true) {
-                    console.log("OnFocus on Pause called");
+                    console.log("onClick on Pause called");
                     stopVideo();
                   }
                 }}
