@@ -43,55 +43,38 @@ export default function Page() {
 
   const stories = storyInfo.data.videodata;
   const playbackId = storyInfo.data.playbackId;
-  console.log("storyInfo.data", storyInfo.data)
-  console.log("stories", stories);
-  console.log("playbackId", playbackId);
+
   return <>
     <Head>
-      {/* {storyInfo?.data?.data?.previewGif && <>
-        <meta property="og:image:secure_url" content={storyInfo.data.data.previewGif} />
+      {storyInfo?.data?.previewGif && <>
+
         <meta
-          content={storyInfo.data.data.previewGif}
+          content={storyInfo.data.previewGif}
           property="og:image"
         />
-      </>
-      } */}
-
-      <meta
-        content="Groundbreak is a B2B vertical video platform that gets your foot in the door through personalized, disruptive experiences."
-        name="description"
-      />
-      <meta content="Groundbreak - Break Through the Noise" property="og:title" />
-      <meta
-        content="Groundbreak is a B2B vertical video platform that gets your foot in the door through personalized, disruptive experiences."
-        property="og:description"
-      />
-      <meta
-        content="https://groundbreak-qa.vercel.app/images/GB-Newsletter.gif"
-        property="og:image"
-      />
-      <meta
-        content="Groundbreak - Break Through the Noise"
-        property="twitter:title"
-      />
-      <meta
-        content="Groundbreak is a B2B vertical video platform that gets your foot in the door through personalized, disruptive experiences."
-        property="twitter:description"
-      />
-      <meta
-        content="https://groundbreak-qa.vercel.app/images/GB-Newsletter.gif"
-        property="twitter:image"
-      />
-      <meta property="og:type" content="website" />
-      <meta content="summary_large_image" name="twitter:card" />
-      <meta content="width=device-width, initial-scale=1" name="viewport" />
-      <meta
-        property="og:image:secure_url"
-        content="https://groundbreak-qa.vercel.app/images/GB-Newsletter.gif"
-      />
-      <meta property="og:image:type" content="image/gif" />
-      <meta property="og:image:width" content="270" />
-      <meta property="og:image:height" content="480" />
+        <meta
+          content="Groundbreak - Break Through the Noise"
+          property="twitter:title"
+        />
+        <meta
+          content="Groundbreak is a B2B vertical video platform that gets your foot in the door through personalized, disruptive experiences."
+          property="twitter:description"
+        />
+        <meta
+          content={storyInfo.data.previewGif}
+          property="twitter:image"
+        />
+        <meta property="og:type" content="website" />
+        <meta content="summary_large_image" name="twitter:card" />
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta
+          property="og:image:secure_url"
+          content={storyInfo.data.previewGif}
+        />
+        <meta property="og:image:type" content="image/gif" />
+        <meta property="og:image:width" content="270" />
+        <meta property="og:image:height" content="480" />
+      </>}
     </Head>
     <div className="App" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: "100svh", overflow: "hidden" }}>
       <NewStory
