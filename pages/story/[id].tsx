@@ -2,7 +2,7 @@ import { NewStory } from '@/components/new-story';
 import { useGetStoryInfo } from '@/services/api';
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react';
-
+import Head from 'next/head'
 export default function Page() {
   const router = useRouter();
   let id: string = router?.query?.id as string ?? '';;
@@ -27,12 +27,16 @@ export default function Page() {
   console.log("storyInfo.data", storyInfo.data)
   console.log("stories", stories);
   console.log("playbackId", playbackId);
-  return (
+  return <>
+    <Head>
+      {storyInfo?.data?.data?.previewGif && <meta property="og:image:secure_url" content={storyInfo.data.data.previewGif} />}
+    </Head>
     <div className="App" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: "100svh", overflow: "hidden" }}>
       <NewStory
         stories={stories}
         playbackId={playbackId}
       />
     </div>
-  );
+    );
+  </>
 }
