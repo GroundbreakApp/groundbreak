@@ -29,7 +29,14 @@ export default function Page() {
   console.log("playbackId", playbackId);
   return <>
     <Head>
-      {storyInfo?.data?.data?.previewGif && <meta property="og:image:secure_url" content={storyInfo.data.data.previewGif} />}
+      {storyInfo?.data?.data?.previewGif && <>
+        <meta property="og:image:secure_url" content={storyInfo.data.data.previewGif} />
+        <meta
+          content={storyInfo.data.data.previewGif}
+          property="og:image"
+        />
+      </>
+      }
     </Head>
     <div className="App" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: "100svh", overflow: "hidden" }}>
       <NewStory
