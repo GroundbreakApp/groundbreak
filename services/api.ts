@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useMutation, useQuery } from "react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 
 type WaitListDTO = {
   firstName: string;
@@ -20,10 +20,11 @@ export const useJoinWaitList = () => {
   });
 };
 
-const getStoryInfo = (id: string): Promise<any> => {
-  return axios.get(
+export const getStoryInfo = async (id: string) => {
+  const { data } = await axios.get(
     `${process.env.NEXT_PUBLIC_RENDER_ADDRESS}/stories?storyId=${id}`
   );
+  return data;
 };
 
 export const useGetStoryInfo = (id: string) => {

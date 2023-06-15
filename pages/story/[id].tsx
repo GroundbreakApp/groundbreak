@@ -1,8 +1,27 @@
 import { NewStory } from '@/components/new-story';
-import { useGetStoryInfo } from '@/services/api';
+import { getStoryInfo, useGetStoryInfo } from '@/services/api';
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react';
 import Head from 'next/head'
+import { QueryClient, dehydrate } from '@tanstack/react-query';
+
+export const getServerSideProps = async (ctx: any) => {
+
+  const { id } = ctx.params;
+
+  const queryClient = new QueryClient()
+
+  // prefetch data on the server
+  await queryClient.fetchQuery(['getStoryInfo', id], () => getStoryInfo(id))
+
+  return {
+    props: {
+      // dehydrate query cache
+      dehydratedState: dehydrate(queryClient),
+    },
+  }
+}
+
 export default function Page() {
   const router = useRouter();
   let id: string = router?.query?.id as string ?? '';;
@@ -22,8 +41,8 @@ export default function Page() {
     return <> Loading Story...</>
   }
 
-  const stories = storyInfo.data.data.videodata;
-  const playbackId = storyInfo.data.data.playbackId;
+  const stories = storyInfo.data.videodata;
+  const playbackId = storyInfo.data.playbackId;
   console.log("storyInfo.data", storyInfo.data)
   console.log("stories", stories);
   console.log("playbackId", playbackId);
