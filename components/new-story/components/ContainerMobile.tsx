@@ -8,6 +8,7 @@ import ProgressArray from "./ProgressArray";
 import MuteSVG from "@/components/story/assets/mute.svg";
 import { Logo } from "@/components/logo";
 import { WatchAgain } from "./WatchAgain";
+import { Loading } from "@/components/elements";
 
 export default function ContainerMobile() {
   const stories = useAppSelector(state => state.newStory.stories);
@@ -19,6 +20,7 @@ export default function ContainerMobile() {
   const [currentTime, setCurrentTime] = useState(0);
   const [imagesPreloaded, setImagesPreloaded] = useState<Array<ReactElement>>([]);
   const [isEnd, setEnd] = useState(false);
+  const isLoading = useAppSelector(state => state.newStory.loading);
 
   // preload images per slide to improve performance
   useEffect(() => {
@@ -154,6 +156,7 @@ export default function ContainerMobile() {
     zIndex: 999
   }}>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"></meta>
+    {isLoading && <Loading />}
     <ProgressArray />
     <div className="relative w-full h-full">
       {/** Swiper slide with post images */}
@@ -257,7 +260,7 @@ export default function ContainerMobile() {
       />
     </div>
     {/** Mobile play button */}
-    {pause && !isEnd && <Play />}
+    {pause && !isEnd && !isLoading && <Play />}
     <Logo />
   </div>
 }
