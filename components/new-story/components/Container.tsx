@@ -10,7 +10,6 @@ import MuteSVG from "@/components/story/assets/mute.svg";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 import { Logo } from "@/components/logo";
 import { WatchAgain } from "./WatchAgain";
-import { Loading } from "@/components/elements";
 
 
 export default function Container() {
@@ -21,7 +20,6 @@ export default function Container() {
   const [currentTime, setCurrentTime] = useState(0);
   const [isEnd, setEnd] = useState(false);
   const pause = useAppSelector(state => state.newStory.pause)
-  const isLoading = useAppSelector(state => state.newStory.loading);
 
   const [isHideVideoPlayer, setHideVideoPlayer] = useState(false);
   const [isMobile, setIsMobile] = useState(false)
@@ -192,7 +190,6 @@ export default function Container() {
   </button>
 
   return <div className="w-full h-full flex items-center justify-center flex-col relative">
-    {isLoading && <Loading />}
     <Logo />
     <ProgressArray />
     {/**  Left and Right arrow I con*/}
