@@ -6,7 +6,7 @@ type WatchAgainProps = {
 export const WatchAgain = (props: WatchAgainProps) => {
   return <>
     <a
-      className="pointer-events-auto bg-[#CBFD55] text-black p-2 text-sm font-serif flex items-center justify-center flex-row w-[133px] cursor-pointer rounded-lg"
+      className="bg-[#CBFD55] text-black p-2 text-sm font-serif flex items-center justify-center flex-row w-[133px] cursor-pointer rounded-lg"
       onClick={props.onClick}
 
     >
