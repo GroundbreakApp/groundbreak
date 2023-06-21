@@ -263,7 +263,7 @@ export default function Container() {
       </swiper-container>
 
       {/** Mux Video player */}
-      <div className="rounded-3xl overflow-hidden absolute left-0 right-0 top-0 bottom-0 m-auto w-full h-full sm:w-[300px] sm:h-[532px] z-[9999] overflow-hidden" style={{
+      <div className="rounded-3xl absolute left-0 right-0 top-0 bottom-0 m-auto w-full h-full sm:w-[300px] sm:h-[532px] z-[9999] overflow-hidden" style={{
         opacity: isHideVideoPlayer || (pause && currentTime * 1000 === stories[currentId].startTime) ? 0 : 1,
       }}>
 
@@ -298,7 +298,7 @@ export default function Container() {
     {/** Desktop play, mute button */}
     <div className={
       clsx(
-        "relative flex w-full items-center justify-center pb-12 z-[999]",
+        "relative flex w-full items-center justify-center pb-14 z-[999]",
         (isMobile) && "hidden",
         !isMobile && "flex",
       )
