@@ -109,7 +109,7 @@ export default function ContainerMobile() {
       "absolute w-full h-full flex items-center justify-center pointer-events-none z-[99999]",
     )}
   >
-    <a className="rounded-2xl font-sans text-xl font-semibold flex items-center justify-center text-black pointer-events-auto bg-[#CBFD55] py-2 px-4 font" onClick={playVideo}>
+    <a className="rounded-2xl font-sans text-xl font-semibold flex items-center justify-center text-white pointer-events-auto bg-[#000] py-2 px-4 font" onClick={playVideo}>
       <BsFillPlayFill className="fill-current w-8 h-8 mr-2" />
       Play
     </a>
