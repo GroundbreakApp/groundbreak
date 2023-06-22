@@ -102,6 +102,29 @@ export default function Container() {
     dispatch(setCurrentBlurColor(stories[currentId].overlayColor))
   }, [currentId, stories])
 
+  useEffect(() => {
+    const isClient = typeof window !== "undefined" && window.document;
+    if (
+      isClient
+    ) {
+      document.addEventListener("keydown", handleKeyDown);
+      return () => {
+        document.removeEventListener("keydown", handleKeyDown);
+      };
+    }
+  }, []);
+
+  //
+  // Events
+  //
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (e.key === "ArrowLeft") {
+      dispatch(prevSlide());
+    } else if (e.key === "ArrowRight") {
+      dispatch(nextSlide());
+    }
+  };
+
   if (playbackId === null) {
     return <> Loading ...</>
   }
