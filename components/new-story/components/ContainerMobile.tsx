@@ -163,7 +163,7 @@ export default function ContainerMobile() {
       </div>}
       {/** Replay button */}
       {<>
-        <div className="absolute top-6 left-2 z-[100000] flex items-center justify-center">
+        <div className="absolute top-6 right-4 z-[100000] flex items-center justify-center">
           <WatchAgain onClick={watchAgain} />
         </div>
       </>
