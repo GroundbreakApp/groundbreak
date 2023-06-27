@@ -9,7 +9,7 @@ import MuxPlayer from '@mux/mux-player-react';
 import MuteSVG from "@/components/story/assets/mute.svg";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 import { Logo } from "@/components/logo";
-import { WatchAgain } from "./WatchAgain";
+import { CgRedo } from "react-icons/cg";
 
 
 export default function Container() {
@@ -233,13 +233,6 @@ export default function Container() {
         <SlArrowRight />
       </button>
     </div>
-    {/** Replay button */}
-    {isEnd && <>
-      <div className="absolute left-0 right-0 top-0 bottom-0 m-auto z-[100000] flex items-center justify-center">
-        <WatchAgain onClick={watchAgain} />
-      </div>
-    </>
-    }
 
     {/** Widgets Overlay */}
     <div className="absolute w-[300px] h-[532px] z-[99999]">
@@ -336,13 +329,16 @@ export default function Container() {
             <BsFillPauseFill className="text-white fill-current w-8 h-8" />
           }
         </button>
-        <button className="bg-[#000]  px-4 rounded-xl"
+        <button className="bg-[#000]  mr-5 px-4 rounded-xl"
           onClick={() => {
             dispatch(setMuted(!muted))
           }}
         >
           {muted && <BsVolumeMute className="text-white fill-current w-8 h-8" />}
           {!muted && <BsFillVolumeUpFill className="text-white fill-current w-8 h-8" />}
+        </button>
+        <button className="bg-[#000]  px-4 rounded-xl" onClick={watchAgain}>
+          <CgRedo className="text-white fill-current w-8 h-8" />
         </button>
       </div>
     </div>
