@@ -4,14 +4,19 @@ const nextConfig = {
   rewrites: async () => {
     return [
       {
-        source: '/',
-        destination: 'https://groundbreak-landing-page.webflow.io/',
+        source: "/",
+        destination: "https://groundbreak-landing-page.webflow.io/",
       },
       {
-        source: '/pmf',
-        destination: 'https://groundbreak-landing-page.webflow.io/',
+        source: "/pmf",
+        destination: "https://groundbreak-landing-page.webflow.io/",
       },
-    ]
+      {
+        source: "/VPattentive",
+        destination:
+          "https://groundbreak-qa.vercel.app/story/yzj8qLd5MlzRnx5X1Cjwxjd0XURkUnj3",
+      },
+    ];
   },
   compiler: {
     // ssr and displayName are configured by default
