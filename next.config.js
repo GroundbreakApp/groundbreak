@@ -14,7 +14,7 @@ const nextConfig = {
       {
         source: "/VPattentive",
         destination:
-          "https://groundbreak-qa.vercel.app/story/yzj8qLd5MlzRnx5X1Cjwxjd0XURkUnj3",
+          "/story/yzj8qLd5MlzRnx5X1Cjwxjd0XURkUnj3",
       },
     ];
   },
