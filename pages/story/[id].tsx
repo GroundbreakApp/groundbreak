@@ -82,6 +82,5 @@ export default function Page() {
         playbackId={playbackId}
       />
     </div>
-    );
   </>
 }
