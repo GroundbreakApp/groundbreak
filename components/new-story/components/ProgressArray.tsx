@@ -51,13 +51,14 @@ export default function ProgressArray() {
       if (currentId === stories.length - 1) {
         return countCopy;
       }
+
+      if (countCopy >= 100) dispatch(nextSlide());
       return countCopy > 100 ? 0 : countCopy;
     });
     if (countCopy < 100) {
       animationFrameId.current = requestAnimationFrame(incrementCount);
     } else {
       cancelAnimationFrame(animationFrameId.current ?? 0);
-      dispatch(nextSlide());
     }
   };
 
