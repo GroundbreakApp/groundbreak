@@ -162,7 +162,7 @@ export default function ContainerMobile() {
           <img className="h-full rounded-3xl object-cover" alt="" src={`https://image.mux.com/${playbackId}/thumbnail.png?time=${currentTime}`} />}
       </div>}
       {/** Replay button */}
-      {<>
+      {isEnd && <>
         <div className="absolute top-6 right-4 z-[100000] flex items-center justify-center">
           <WatchAgain onClick={watchAgain} />
         </div>
