@@ -51,6 +51,10 @@ export default function ContainerMobile() {
     dispatch(setCurrentBlurColor(stories[currentId].overlayColor))
   }, [currentId])
 
+  useEffect(() => {
+    setCurrentTime(vid.current.currentTime)
+  }, [pause])
+
   if (playbackId === null) {
     return <> Loading ...</>
   }
