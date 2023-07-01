@@ -240,7 +240,7 @@ export default function Container() {
         widgets?.map((widget, index) => {
           const widgetData = widget.widget
           return (<Fragment key={index}>
-            {widget.isVisible && <div
+            {widget.isVisible && <div className="h-full"
               onFocus={() => {
                 if (widget.isPause === true) {
                   stopVideo();

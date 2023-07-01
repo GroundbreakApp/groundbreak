@@ -10,6 +10,7 @@ export default function Document() {
         <meta property="og:image:type" content="image/gif" />
         <meta property="og:image:width" content="270" />
         <meta property="og:image:height" content="480" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.1.4/tailwind.min.css" rel='stylesheet'></link>
       </Head>
       <body
       >
