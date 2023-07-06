@@ -47,8 +47,17 @@ export default function Page() {
   return <>
     <Head>
       <meta content={storyInfo.data.metaTitle} property="og:title" />
+      <meta
+        content={storyInfo.data.metaContent}
+        property="og:description"
+      />
+      <title>{storyInfo.data.metaTitle}</title>
+      <meta
+        content={storyInfo.data.metaContent}
+        name="description"
+      />
+
       {storyInfo?.data?.previewGif && <>
-        <title>{storyInfo.data.metaTitle}</title>
         <meta
           content={storyInfo.data.previewGif}
           property="og:image"
