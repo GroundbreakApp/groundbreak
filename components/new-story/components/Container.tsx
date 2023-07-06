@@ -234,28 +234,28 @@ export default function Container() {
       </button>
     </div>
 
-    {/** Widgets Overlay */}
-    <div className="absolute w-[300px] h-[532px] z-[99999]">
-      {
-        widgets?.map((widget, index) => {
-          const widgetData = widget.widget
-          return (<Fragment key={index}>
-            {widget.isVisible && <div className="h-full"
-              onFocus={() => {
-                if (widget.isPause === true) {
-                  stopVideo();
-                }
-              }}
-              dangerouslySetInnerHTML={{ __html: widgetData }}
-            />}
-          </Fragment>
-          )
-        })
-      }
-    </div>
-
     {/** Mux player container */}
     <div className="flex items-center justify-center relative w-full h-full z-[9999]">
+      {/** Widgets Overlay */}
+      <div className="absolute w-[300px] h-[532px] z-[99999]">
+        {
+          widgets?.map((widget, index) => {
+            const widgetData = widget.widget
+            return (<Fragment key={index}>
+              {widget.isVisible && <div className="h-full"
+                onFocus={() => {
+                  if (widget.isPause === true) {
+                    stopVideo();
+                  }
+                }}
+                dangerouslySetInnerHTML={{ __html: widgetData }}
+              />}
+            </Fragment>
+            )
+          })
+        }
+      </div>
+
       {/** Swiper slide with post images */}
       <swiper-container
         ref={swiperElRef}
