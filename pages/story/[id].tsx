@@ -53,11 +53,11 @@ export default function Page() {
           property="og:image"
         />
         <meta
-          content="Groundbreak - Break Through the Noise"
+          content={storyInfo.data.metaTitle}
           property="twitter:title"
         />
         <meta
-          content="Groundbreak is a B2B vertical video platform that gets your foot in the door through personalized, disruptive experiences."
+          content={storyInfo.data.metaContent}
           property="twitter:description"
         />
         <meta
