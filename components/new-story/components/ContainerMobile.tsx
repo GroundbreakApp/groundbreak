@@ -181,6 +181,7 @@ export default function ContainerMobile() {
 
             return (<Fragment key={index}>
               {widget.isVisible && <div
+                className="pointer-events-auto"
                 onFocus={() => {
                   if (widget.isPause === true) {
                     console.log("OnFocus on Pause called");
