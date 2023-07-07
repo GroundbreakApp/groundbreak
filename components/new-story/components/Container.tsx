@@ -10,7 +10,7 @@ import MuteSVG from "@/components/story/assets/mute.svg";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 import { Logo } from "@/components/logo";
 import { CgRedo } from "react-icons/cg";
-
+import InnerHTML from 'dangerously-set-html-content'
 
 export default function Container() {
   const stories = useAppSelector(state => state.newStory.stories);
@@ -248,8 +248,9 @@ export default function Container() {
                     stopVideo();
                   }
                 }}
-                dangerouslySetInnerHTML={{ __html: widgetData }}
-              />}
+              >
+                <InnerHTML html={widgetData} />
+              </div>}
             </Fragment>
             )
           })

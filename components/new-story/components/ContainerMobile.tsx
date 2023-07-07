@@ -8,6 +8,7 @@ import ProgressArray from "./ProgressArray";
 import MuteSVG from "@/components/story/assets/mute.svg";
 import { Logo } from "@/components/logo";
 import { WatchAgain } from "./WatchAgain";
+import InnerHTML from 'dangerously-set-html-content'
 
 export default function ContainerMobile() {
   const stories = useAppSelector(state => state.newStory.stories);
@@ -192,8 +193,10 @@ export default function ContainerMobile() {
                     stopVideo();
                   }
                 }}
-                dangerouslySetInnerHTML={{ __html: widgetData }}
-              />}
+
+              >
+                <InnerHTML html={widgetData} />
+              </div>}
             </Fragment>
             )
           })

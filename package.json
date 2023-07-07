@@ -20,6 +20,7 @@
     "@types/styled-components": "^5.1.26",
     "axios": "^1.4.0",
     "clsx": "^1.2.1",
+    "dangerously-set-html-content": "^1.0.13",
     "eslint": "8.37.0",
     "eslint-config-next": "13.2.4",
     "firebase": "^9.19.1",
